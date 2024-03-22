@@ -1,0 +1,36 @@
+# Curso
+- https://www.youtube.com/watch?v=Eh-s-n_6zNQ&t=4s
+- Atom: preferencia, añadir autosave, habilitar.
+- Atom: Core, cambiar el encoding.
+- https://github.com/falconmasters/curso-javascript
+- 1:10
+
+# HolaMundoDev
+- vue, angular, react.
+- Ecma, european computer manufacturers associations (especificación).
+- Ecma 334 > c#, ecma 404 > json, ecma 408 > dart, ecma 262 > ecmascript (javascript, jscript, actionscript).
+- EcmaScript 2015: let, const , fat arrow functions, clases.
+- Google Chrome > v8 > Ryan Dahl > NodeJs.
+- VScode > adds : liveserver
+- Código al final del html o entre el body.
+- Refactorizar: cambiar la estructura interna, sin alterar el comportamiento externo.
+- Tipos de datos:
+  - primitivos: number, string, boolean, undefined, null.
+  - referencia: array, object, function, clases.
+- Memoria: stack (primitivos) y heap (de referencia)
+- Tipos de lenguaje de programación: tipo estático y dinámico.
+- let Null = null => objeto (de acuerdo a la implementación)
+- let objeto = {}; ({} literal)
+- Clave (propiedad) : valor,
+- Acceso : objeto.propiedad , objeto['propiedad']
+- delete objeto.propiedad
+- let array = []; ([] literal)
+- acceso : array[0]
+- function
+- Parámetros : funtion suma(parametro){}
+- Argumentos : let resultado = suma (argumento)
+- typeof, arguments,
+- Expression: (expresión) porción de código que se obtiene un valor. (se le puede hacer un CONSOLE.LOG)
+- Declaration: (declaración oral) (referenciado en un futuro) let, const, function , asyncfunction*, class, export/import.
+- Statement: (declaración escrita) if, for, switch.
+- Operadores aritméticos, asignación, relacional, igualdad, lógicos. 1:40
