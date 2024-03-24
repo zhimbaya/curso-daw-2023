@@ -1,9 +1,9 @@
-# Curso
+# Curso FalconMasters
 - https://www.youtube.com/watch?v=Eh-s-n_6zNQ&t=4s
 - Atom: preferencia, añadir autosave, habilitar.
 - Atom: Core, cambiar el encoding.
 - https://github.com/falconmasters/curso-javascript
-- 1:10
+- 1:46
 
 # HolaMundoDev
 - vue, angular, react.
@@ -33,4 +33,10 @@
 - Expression: (expresión) porción de código que se obtiene un valor. (se le puede hacer un CONSOLE.LOG)
 - Declaration: (declaración oral) (referenciado en un futuro) let, const, function , asyncfunction*, class, export/import.
 - Statement: (declaración escrita) if, for, switch.
-- Operadores aritméticos, asignación, relacional, igualdad, lógicos. 1:40
+- Operadores aritméticos, asignación, relacional, igualdad, lógicos.
+- short-circuit: falso (false, 0, '',null, undefined, NaN)
+- bitwise: | coge los bit 1 y crea otro valor. & coge si sólo son 1.
+- orden de prioridad, operador ternario.
+- Control de flujo: if, for, switch, break, continue.
+- for in (para objetos), for of (para array).
+- 3:00
