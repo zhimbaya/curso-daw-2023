@@ -27,7 +27,7 @@
 - let array = []; ([] literal)
 - acceso : array[0]
 - function
-- Parámetros : funtion suma(parametro){}
+- Parámetros : function suma(parametro){}
 - Argumentos : let resultado = suma (argumento)
 - typeof, arguments,
 - Expression: (expresión) porción de código que se obtiene un valor. (se le puede hacer un CONSOLE.LOG)
@@ -39,4 +39,30 @@
 - orden de prioridad, operador ternario.
 - Control de flujo: if, for, switch, break, continue.
 - for in (para objetos), for of (para array).
-- 3:00
+- POO (programación orientada a objetos)
+- Object.freeze ({}) : no puedes añadir, eliminar nuevas propiedades.
+- object.seal({}) : si que se puede modificar sus valores
+- const user = {} : se puede añadir, eliminar, cambiar nuevas propiedades independientemente si es CONST, LET.
+- factory functions : camelCase, return.
+- métodos constructores : UpCamelCase, new, utilización del this.
+- Constructores: Object, Array, String, Number, Boolean.
+- Funciones: son objetos de primera clase, tienen propiedades, pueden ser asignadas a otras variables o constantes, pueden ser pasadas como parámetros a otras funciones, pueden ser retornadas (let f1 = f2(función anónima()); f1(); imprime lo de la función anónima).
+- las funciones tienen constructor Function, pero recomendable NO UTILIZAR.
+- funcion.call (extiende el objeto pasándole otro objeto).
+- funcion.apply (extiende el objeto pasándole un array).
+- Primitivos -> se copian cuando se asignan.
+- Referencia (objetos, array, function)-> se referencia cuando se asignan.
+- Object.keys() : devuelve un array de las propiedades del objeto.
+- Object.entries(): devuelve un array de sus propiedades.
+...
+- Se quedo hasta aquí.
+
+
+
+
+
+
+
+
+
+-
