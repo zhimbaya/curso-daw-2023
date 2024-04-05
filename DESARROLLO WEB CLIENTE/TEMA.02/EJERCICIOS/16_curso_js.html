@@ -10,7 +10,52 @@
 <body>
     <script>
       //bucle for
+      var i;
+      for(i = 0; i <= 5; i++){
+        alert("i" + i);
+      }
+      //variaciones
+      // si omitimos las primera sentencia debemos haber
+      //inicializado la variable con anterioridad.
+      var j = 1;
+      for(; j <= 5; j++){
+        alert ("j = "+j);
+      }
+      // si omitimos la segunda sentencia, dentro del
+      //código a repetir debemos incluir una instrucción break:
+      var k;
+      for(k=1;;k++){
+        alert("k = "+k);
+        if (k == 5){
+          break;
+        }
+      }
+      //si omitimos la tercera sentencia, debemos incrementar
+      //o decrementar el valor de la variable dentro del bucle.
+
+      var l;
+      for(l=1;l<=5;){
+        alert("l = "+l);
+        l++;
+      }
+      //podemos trabajar con dos o más valores dentro del 
+      //bucle for.
+      var m,n;
+      for(m=1,n=10;m<=10,n>=1;m++, n--){
+        alert("m = "+m+" , n = "+n);
+      }
       
+      //BUCLE FOR IN
+      var animal = {
+        nombre: "lola",
+        tipo: "hamster",
+        raza: "ruso",
+        edad: 1,
+      };
+      var prop;
+      for(prop in animal){
+        alert(animal[prop]);
+      }
     </script>
 </body>
 </html>

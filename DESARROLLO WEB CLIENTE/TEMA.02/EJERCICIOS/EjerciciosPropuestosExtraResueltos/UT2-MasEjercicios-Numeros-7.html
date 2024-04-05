@@ -13,15 +13,12 @@
     for (let i = 0; i < numArray.length; i++) {
       for (let j = i + 1; j < numArray.length; j++) {
         if (numArray[i] > numArray[j]) {
-
           let tmp = numArray[i];
           numArray[i] = numArray[j];
-
           numArray[j] = tmp;
         }
       }
     }
-
     return numArray;
   }
 

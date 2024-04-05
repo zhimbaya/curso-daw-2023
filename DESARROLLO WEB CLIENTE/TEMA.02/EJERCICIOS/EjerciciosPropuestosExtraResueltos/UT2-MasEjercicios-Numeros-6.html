@@ -7,7 +7,8 @@
 </head>
 <body>
   <h1>Datos</h1>
-  <label>Números </label><input type="text" name="num1" placeholder="Introduce números separados por comas" id="num1" size="40">
+  <label>Números </label>
+  <input type="text" name="num1" placeholder="Introduce números separados por comas" id="num1" size="40">
   
   <br>
   <button onclick="main()">Púlsame</button>
@@ -19,9 +20,8 @@
     var numeros = document.getElementById("num1").value.split(",");
     var mayor=numeros[0];
     for (let i = 1; i < numeros.length; i++) {
-      if (numeros[i]>mayor) mayor=numeros[i];
+      if (numeros[i] > mayor) mayor = numeros[i];
     }
-
     document.getElementById("demo").innerHTML = mayor;
   }
 </script>

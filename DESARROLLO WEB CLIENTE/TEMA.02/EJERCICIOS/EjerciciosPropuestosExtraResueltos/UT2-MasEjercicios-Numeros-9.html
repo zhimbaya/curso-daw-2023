@@ -7,18 +7,15 @@
 </head>
 <body>
   <p id="demo">Holis</p>
-
 <script>
 
   // Media aritmética simplificada
   var num = 0;
-
   var media = 0;
   var contador = 0;
 
   while (num >= 0) {
     num = parseFloat(prompt("Introduzca un número\n\n(Número negativo para finalizar)"));
-
     if (num >= 0) {
       media += num;
       contador++;
@@ -26,7 +23,6 @@
   }
 
   media /= contador;
-
   document.getElementById("demo").innerHTML = "Media aritmética: " + media;
 </script>
 </body>
