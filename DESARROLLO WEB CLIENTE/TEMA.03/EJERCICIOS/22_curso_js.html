@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //instanciación
+      var daw = "Desarrollo de aplicaciones web";
+      var dam = "Desarrollo de aplicacione multiplataforma";
+      var asir = "Administración de 'sistemas informaticos' en red";
+      var smr = 'Sistemas "microinformáticos" y redes';
+      var ciclos = new String("");
+
+      //concatenación de cadenas
+      ciclos += "Hay 3. ciclos de grado superior: \n";
+      ciclos += daw + " , " + dam + " y " + asir + "\n";
+      ciclos += " y 1 ciclo de grado medio: \n";
+      ciclos += smr;
+      alert(ciclos);
+
+      //propiedades
+      //length
+      alert("la longitud de la cadena es: " + ciclos.length);
+
+      //METODOS
+      //CharAt(): devuelve un caracter
+      alert(ciclos.charAt(16));
+      //IndexOf(): devuelve la posición
+      alert(ciclos.indexOf("a"));
+      alert(ciclos.lastIndexOf("a"));
+      //search(): busca la cadena o expresión regular
+      alert(ciclos.search("web"));
+      //match(): busca una expresión regular en una cadena
+
+      //comparación
+      //localeCompare(): devuelve -1 (antes) 0 (igual) , 1 (después)
+      alert(daw.localeCompare(dam));
+
+      //INCLUYE EMPIEZA O TERMINA
+      //includes(): devuelve true si la cadena contiene el parámetro
+      alert(daw.includes("aplicaciones"));
+      //startsWith(): devuelve true si la cadena empieza por el parámetro
+      alert(daw.startsWith("aplicaciones"));
+      //endsWith(): devuelve true si la cadena finaliza por el parámetro
+      alert(daw.endsWith("aplicaciones"));
+
+      //CONCATENACÍON Y REPETICIÓN
+      //concat(): concatena
+      alert(daw.concat(dam));
+      //repeat(): repetir la cadena el numero de veces.
+      alert(daw.repeat(3));
+
+      //EXTRACCIÓN
+      //slice(): devuelve la cadena entre ambas posiciones.
+      alert(daw.slice(4, 6));
+      //substring(): devuelve la cadena comprendida entre ambas posiciones.
+      //substr(): devuelve la cadena
+      //split(): dividie la cadena en un array de subcadenas
+      alert(daw.split(" "));
+      //trim(): extrae la cadena y elimina los espacios al principio y final.
+      alert(daw.trim());
+
+      //MAYÚSCULAS Y MINÚSCULAS
+      //toLowerCase():
+      alert(daw.toLowerCase());
+      //toUpperCase():
+      alert(daw.toUpperCase());
+
+      //METODOS ESPECIALES
+      //toString(): devuelve el valor del objeto String.
+      //valueOf(): devuelve el valor primitivo del objeto
+    </script>
+  </body>
+</html>
