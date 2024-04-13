@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //CARACTERISTICAS
+      //-Guarda información sobre el navegador
+      //-No hay un estándar público pero la mayoría de los navegadores soportan este objeto
+
+      //PROPIEDADES DEL OBJETO NAVIGATOR
+      var text = "";
+      text += "<br>CodeName: " + navigator.appCodeName; //codename del navegador
+      text += "<br>CodeName: " + navigator.appName; //nombre del navegador
+      text += "<br>CodeName: " + navigator.appVersion; //versión del navegador
+      text += "<br>CodeName: " + navigator.product; //motor del navegador
+      text += "<br>CodeName: " + navigator.platform; //plataforma del navegador
+      text += "<br>CodeName: " + navigator.onLine; //online u offline
+      text += "<br>CodeName: " + navigator.language; //lenguaje o pais
+      text += "<br>CodeName: " + navigator.cookieEnabled; //tiene habilitada las cookies
+      text += "<br>CodeName: " + navigator.userAgent; //versión. de navegador
+      text += "<br>CodeName: " + navigator.geolocation; //devuelve un objeto de geolocalización
+
+      //METODO DEL OBJETO NAVEGADOR
+      //javaEnabled(): devuelve true o false si esta activado java.
+      alert(navigator.javaEnabled());
+
+      document.write(text);
+    </script>
+  </body>
+</html>

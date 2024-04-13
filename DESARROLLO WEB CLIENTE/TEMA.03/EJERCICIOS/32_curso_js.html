@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //CARACTERÍSTICAS LOCATION
+      //Guarda información de la url actual.
+      //No hay un estándar público pero la mayoría de los navegadores soportan este objeto.
+      //PROPIEDADES DEL OBJETO LOCATION
+      var texto = "";
+      //href: url de la página
+      texto += "<br>href: " + location.href;
+      //hostname: nombre del host
+      texto += "<br>hostnanme: " + location.hostname;
+      //pathname: de la página
+      texto += "<br>pathname: " + location.pathname;
+      //protocolo de la pagiana
+      texto += "<br>protocolo: " + location.protocol;
+      //hash o ancla de la página
+      texto += "<br>hash: " + location.hash;
+      //host y puerto
+      texto += "<br>hash: " + location.host;
+      //nombre del protocolo, hostname y puerto
+      texto += "<br>hash: " + location.origin;
+      //search: query de la página (index.html?user=ada)
+      texto += "<br>search: " + location.search;
+      
+      //MÉTODOS DEL OBJETO LOCAIION
+      //asign(url): asigna un nuevo documento a la página.
+      function nuevoDocument(){
+        location.assign("http://www.google.com");
+      }
+      //reload(): recarga la página
+      function recarga(){
+        location.reload();
+      }
+      function sustituye(){
+        location.replace("http://www.google.com");
+      }
+      document.write(texto);
+      document.write("<br>");
+
+    </script>
+    <button onclick="nuevoDocument()">Carga un nuevo documento</button>
+    <button onclick="recarga()">Recarga la página</button>
+    <button onclick="sustituye()">sustituye la página</button>
+  </body>
+</html>

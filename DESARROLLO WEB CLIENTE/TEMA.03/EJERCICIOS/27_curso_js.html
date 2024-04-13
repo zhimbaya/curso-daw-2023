@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //Características
+      //-representa una ventana abierta en un navegador.
+      //-si una ventana tiene etiquetas de tipo <iframe el navegador
+      //cre un objeto window para el html inicial y un para cada <iframe>
+      //- todos los objetos , funciones, variables...son miembros del objeto windows: las funciones son sus métodos, las variables globales y el DOM sus propiedades.
+      //- no todos los métodos sirven para todos los navegadores : hay que comprobar la compatibilidad.
+
+      //PROPIEDADES BÀSICAS DE WINDOWS
+      window.name = "Mi_ventana";
+      var texto = "";
+      texto += "<br> Nombre: " + window.name;
+
+      //tamaño de la ventana con toolbar y scrollbar
+      texto += "<br> Alto externo: " + window.outerHeight;
+      texto += "<br> Ancho externo: " + window.outerWidth;
+
+      //tamaño ventana interior
+      texto += "<br> Ancho interno: " + window.innerWidth;
+      texto += "<br> Alto interno: " + window.innerHeight;
+
+      //scroll horizontal y vertical
+      texto += "<br> Horizontal: " + window.pageXOffset;
+      texto += "<br> Vertical: " + window.pageYOffset;
+
+      //distancia de la esquina superior izquierda
+
+      texto += "<br> dist desde la izquierda: " + window.screenX;
+      texto += "<br> dist desde arriba: " + window.screenY;
+
+      document.write(texto);
+      document.write("<br>");
+
+      //PROPIEDADES CON IFRAMES
+      //- FRAMES: devuelve todos los elementos iframe de la ventana.
+      //- frameElement: devuelve el frame en el que la ventana esta insertada.
+      // - length: devuelve el número de frames que tiene la ventana.
+
+      //PROPIEDADES CON OTRAS VETANAS
+      //-closed: devuelve un booleano si la ventana estaá cerrada.
+      //-opener: devuelve una referencia con la ventana que creó la ventana actual.
+      //parent: devuelve la ventana padre de la ventana actual.
+      //self: devuelve la ventana actual.
+      /*
+        window.document
+        window.navigator
+        window.location
+        window.history
+        window.screen
+        */
+
+      //MÉTODS DE WINDOWS MAS IMPORTANTES
+      var miVentana; //crear fuera de las funciones para poder acceder a ella.
+
+      function crearVentana() {
+        miVentana = window.open("", "", "width=500,height=200");
+        //miVentana = window.open("https://google.com");
+      }
+
+      function cerrarVentana() {
+        miVentana = window.close();
+      }
+
+      function redimensionarVentana(){
+        miVentana.resizeBy(10,10);
+      }
+      //resizeTo : redimensiona una ventana al número de píxeles indicado.
+
+      function moverVentana(){
+        miVentana.moveBy(10,10);
+      }
+
+      //moveTo: mueve una ventana a una posición en concreto.
+      //scrollBy: mueve las barras de scroll un número de píxeles desde la posición actual.
+      //scrollTo: mueve las barras de scroll un a una posición determinada.
+      //focus: pone el foco en la ventana indicada.
+      function foco(){
+        miVentana.focus();
+      }
+
+      //print
+      function imprimir(){
+        miVentana.print();
+      }
+
+      //stop: detener la carga e una página.
+    </script>
+    <button onclick="crearVentana()">Crear ventana</button>
+    <button onclick="cerrarVentana()">Cerrar ventana</button>
+    <button onclick="redimensionarVentana()">Redimensionar ventana</button>
+    <button onclick="moverVentana()">Mover ventana</button>
+    <button onclick="foco()">foco ventana</button>
+    <button onclick="imprimir()">imprimir ventana</button>
+  </body>
+</html>
