@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Taquilla</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+let sistemaSolar=["La Tierra","Saturno","Marte","Jupiter","Venus","Neptuno","Mercurio","Urano"];
+
+
+
+sistemaSolar.forEach(function (item,index,arr){
+	demo.innerHTML+="El planeta numero "+index+" es "+item+"<br>";
+	//item="Ninguno";
+	arr[index]="Ninguno"
+
+} );
+
+demo.innerHTML+=sistemaSolar;
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora</title>
+</head>
+<body>
+   <script>
+     num=0;
+     var operacion="";
+     function addExpr(cad) {
+       var str;
+       str=document.getElementById("textOperacion").value.toString();
+       if (str=="0") {
+           document.getElementById("textOperacion").value=cad;
+           operacion=cad;
+       } else {
+           document.getElementById("textOperacion").value+=cad;
+           operacion+=cad;
+       }
+           
+     } 
+     function resolver() {
+            var res=eval(operacion);
+            document.getElementById("textOperacion").value=res;
+     }
+     function borrar() {
+            document.getElementById("textOperacion").value=0;
+            operacion="";
+     }
+   </script>
+     <p id="demo">hola</p>
+   <input type="text" name="textOperacion" id="textOperacion" style="font-size:26px;height:30px"size="11px" value="0">
+   <table style="width:300px">
+   <tr>
+     <td><button name="num0" style="font-size:26px;width:80px" onclick="addExpr('0')">0</button></td>
+     <td><button name="num1" style="font-size:26px;width:80px" onclick="addExpr('1')">1</button></td>
+     <td><button name="num2" style="font-size:26px;width:80px" onclick="addExpr('2')">2</button></td>
+   </tr>
+   <tr>
+     <td><button name="num3" style="font-size:26px;width:80px" onclick="addExpr('3')">3</button></td>
+     <td><button name="num4" style="font-size:26px;width:80px" onclick="addExpr('4')">4</button></td>
+     <td><button name="num5" style="font-size:26px;width:80px" onclick="addExpr('5')">5</button></td>
+   </tr>
+   <tr>
+     <td><button name="num6" style="font-size:26px;width:80px" onclick="addExpr('6')">6</button></td>
+     <td><button name="num7" style="font-size:26px;width:80px" onclick="addExpr('7')">7</button></td>
+     <td><button name="num8" style="font-size:26px;width:80px" onclick="addExpr('8')">8</button></td>
+   </tr>
+   <tr>
+     <td><button name="num9" style="font-size:26px;width:80px" onclick="addExpr('9')">9</button></td>
+     <td><button name="op+" style="font-size:26px;width:80px" onclick="addExpr('+')">+</button></td>
+     <td><button name="op-" style="font-size:26px;width:80px" onclick="addExpr('-')">-</button></td>
+   </tr>
+   <tr>
+     <td><button name="op*" style="font-size:26px;width:80px" onclick="addExpr('*')">*</button></td>
+     <td><button name="op/" style="font-size:26px;width:80px" onclick="addExpr('/')">/</button></td>
+     <td><button name="opIgual" style="font-size:26px;width:80px" onclick="resolver()">=</button></td>
+   </tr>
+   </table>
+   <table style="width:300px">
+   <tr>
+     <td><button name="ce" style="font-size:26px;width:280px" onclick="borrar()">CE</button></td>
+   </tr>
+   </table>
+
+<script>
+
+</script>
+</body> 
+</html>

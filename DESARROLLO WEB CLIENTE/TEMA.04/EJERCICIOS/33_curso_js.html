@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //Array
+      //CARACTERISTICAS
+      //-Almacena en una misma variable múltiples valores: valores primitivos, objetos, etc.
+      //-Se referencian con un índice numérico.
+      //-¡ojo! Un objeto se referencia con un nombre.
+      //-Puede almacenar diferentes tipos de datos
+
+      //OPERACIONES BÁSICAS CON UN ARRAY
+      //Crear un array:
+      var animales = ["perro", "gato", "hamster"];
+      //Con constructor
+      var animales2 = new Array("Perro", "Gato", "Hamster");
+      //Acceso a elmentos de un array:
+      var miAnimal = animales[0];
+      //Mostrar todo el array
+      alert(animales);
+      document.write(animales);
+      //PROPIEDADES
+      //LENGTH
+      document.write("<br>La longitud del array es: " + animales.length);
+      //Mostrar los valores del array uno a uno:
+      document.write("<br> Todos los elementos: ");
+      for (let i = 0; i < animales.length; i++) {
+        document.write("<br>" + animales[i]);
+      }
+      //METODOS
+      //Array.isArray();
+      document.write("<br>Es un arraya?: " + Array.isArray(animales));
+      //instanceof
+      document.write("<br><br>Seguro?? "+ (animales instanceof Array));
+    </script>
+  </body>
+</html>

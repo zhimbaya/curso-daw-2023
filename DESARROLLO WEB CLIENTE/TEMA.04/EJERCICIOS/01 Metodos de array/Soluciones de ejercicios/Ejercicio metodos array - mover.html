@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Animal</title>
+  </head>
+  <body>
+    <label for="animal">Animal: </label><input type="text" id="animal" /><br />
+    <input type="button" id="derecha" value="Derecha" onclick="derecha2SG()" />
+    <input
+      type="button"
+      id="paraDerecha"
+      value="Parar Derecha"
+      onclick="pararDerecha2SG()"
+    />
+    <input type="button" id="izquierda" value="Izquierda" onclick="izda2SG()" />
+    <input
+      type="button"
+      id="paraIzda"
+      value="Parar Izquierda"
+      onclick="pararIzda2SG()"
+    />
+    <input type="button" id="invertir" value="Invertir" onclick="invertir()" />
+    <input type="button" id="buscar" value="Buscar" onclick="buscar()" />
+
+    <p id="array"></p>
+    <p id="info"></p>
+    <script>
+      let arrayAnim = [
+        "león",
+        "lobo",
+        "zorro",
+        "pantera",
+        "leopardo",
+        "tiburon",
+        "águila",
+        "buho",
+        "cocodrilo",
+      ];
+
+      let hDcha, hIzda;
+
+      array.innerHTML = arrayAnim.toString();
+
+      function derecha() {
+        // pop() elimina el ultimo elemento del array y unshift para añadir al comienzo
+        let elem = arrayAnim.pop();
+
+        arrayAnim.unshift(elem);
+
+        info.innerHTML = arrayAnim.toString();
+      }
+
+      function derecha2SG() {
+        hDcha = setInterval(derecha, 2000);
+      }
+
+      function pararDerecha2SG() {
+        clearInterval(hDcha);
+      }
+
+      function izquierda() {
+        // shift() elimina el primer elemento del array y push para añadir al final
+
+        let elem = arrayAnim.shift();
+
+        arrayAnim.push(elem);
+
+        info.innerHTML = arrayAnim.toString();
+      }
+
+      function izda2SG() {
+        hIzda = setInterval(izquierda, 2000);
+      }
+
+      function pararIzda2SG() {
+        clearInterval(hIzda);
+      }
+
+      function invertir() {
+        arrayAnim.reverse();
+        info.innerHTML = arrayAnim;
+      }
+
+      function buscar() {
+        info.innerHTML = arrayAnim.includes(animal.value)
+          ? "El animal se encuentra en el array"
+          : "El animal no se encuentra en el array";
+      }
+    </script>
+  </body>
+</html>

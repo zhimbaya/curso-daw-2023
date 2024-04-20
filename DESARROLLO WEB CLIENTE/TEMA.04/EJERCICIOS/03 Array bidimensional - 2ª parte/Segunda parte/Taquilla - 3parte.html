@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Taquilla</title>
+</head>
+<body>
+
+<p id="demo"></p>
+<input type="button" name="calculataquillaslibres" value="Calcula Taquillas Libres" onclick="calculaTaquillasLibres();"><br><br>
+<input type="button" name="pontaquillasvacias" value="Pon taquillas vacias" onclick="ponTaquillasVacias();"><br><br>
+<script>
+
+
+var taquillas=[];  // new Array();
+var numTaquillasLibres=0;
+
+function getNameAleat(){
+	let nombre="";
+
+    let nombres=["Luis","Ana","Belen","Ismael","Pedro","Juan","Rodrigo","Javier","Jose","Jesus","Pilar","Laura","Rosa"];
+    let apellidos=["Perez","Martin","Sanz","Saez","Ruiz","Martinez","Lopez","de Francisco","Mohamed","Madrid","Gomez","Muñoz"];
+
+    let posNombreAleat=Math.floor(Math.random()*nombres.length);  //devuelve entero 0..11
+    let posApellAleat=Math.floor(Math.random()*apellidos.length);  //devuelve entero 0..11
+
+    nombre=nombres[posNombreAleat]+" "+apellidos[posApellAleat];
+    return nombre;
+}
+
+function nombreExiste(nombre){
+   for (let altura=0;altura<taquillas.length;altura++){
+    	   if (taquillas[altura].includes(nombre)) {
+    	   	return true;
+    	   }
+    }
+    return false;
+}
+
+
+function ocupaTaqAleat(numTaquillas){
+     let altAleat=0;
+     let posTaqAleat=0;
+     let nombre="";
+
+     for (let i=0;i<numTaquillas;i++){
+
+     	altAleat=Math.floor(Math.random()*10);
+     	posTaqAleat=Math.floor(Math.random()*4);
+          
+    		if (taquillas[altAleat][posTaqAleat]==""){ //si no tiene dueño
+    			nombre=getNameAleat();    			
+    			while (nombreExiste(nombre)){
+    				console.log("El nombre "+nombre+" ya existe")
+                      nombre=getNameAleat();
+    			}
+    			taquillas[altAleat][posTaqAleat]=nombre;
+    		} else {   //si tiene dueño hay que repetir la busqueda de otra taquilla, la iteracion
+    			console.log("taquilla["+altAleat+"]["+posTaqAleat+"] ocupada con",taquillas[altAleat][posTaqAleat])
+    			i--;
+    		}
+     }
+}
+
+for (let altura=0;altura<10;altura++){
+	taquillas[altura]=new Array(4);
+	for (let posTaquilla=0;posTaquilla<4;posTaquilla++){
+		taquillas[altura][posTaquilla]="";
+	}
+}
+
+ocupaTaqAleat(15);
+
+function calculaTaquillasLibres(){
+	numTaquillasLibres=0;
+	taquillas.forEach(function (altura){
+     	altura.forEach(function (taquilla){
+     		if (taquilla=="") numTaquillasLibres++
+     	})
+	})
+     demo.innerHTML="Hay "+numTaquillasLibres+" libres<br>";
+}
+
+function ponTaquillasVacias(){
+	taquillas.forEach(function (altura){
+     	altura.forEach(function (taquilla,pos,array){
+     		array[pos]="";
+     	})
+	})
+}
+
+</script>
+</body>
+</html>

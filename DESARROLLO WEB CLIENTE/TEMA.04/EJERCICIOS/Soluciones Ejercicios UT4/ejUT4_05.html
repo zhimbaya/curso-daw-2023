@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+
+<!--
+Crea una página HTML que pida una operación al usuario y le indique si
+el resultado de la
+operación es un número finito o no utilizando el método isFinite().
+Prueba a realizar la operación 3/0, y 3/2.
+-->
+
+<fieldset>
+    <legend>Calculator v2</legend>
+    <input type="number" required id="num1" placeholder="Escribe primer numero" step="1" min="0">
+    <input type="number" required id="num2" placeholder="Escribe segundo numero" step="1" min="0">
+    <select id="sel">
+        <option value="/">Division</option>
+        <option value="+">Adicion</option>
+        <option value="-">Sustraccion</option>
+        <option value="*">Multiplicacion</option>
+    </select>
+    <button onclick="calc();">Calcula</button>
+</fieldset>
+
+<p id="h"></p>
+
+<script>
+    function calc() {
+        var n1 = parseInt(document.getElementById("num1").value);
+        var n2 = parseInt(document.getElementById("num2").value);
+        var op = (document.getElementById("sel").value);
+
+        var res = "";
+        switch (op) {
+            case "/" :
+                res = n1 / n2;
+                break;
+            case "+" :
+                res = n1 + n2;
+                break;
+            case "-" :
+                res = n1 - n2;
+                break;
+            case "*" :
+                res = n1 * n2;
+                break;
+        }
+
+        document.getElementById("h").innerText = "Resultado : " +   res   +  "\n";
+        document.getElementById("h").innerText += "es un numero finito : "  +   isFinite(res);
+    }
+</script>
+
+</body>
+</html>

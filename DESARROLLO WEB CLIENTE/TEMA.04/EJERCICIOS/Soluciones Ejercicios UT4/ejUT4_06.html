@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+Crea una página HTML que pida un número al usuario
+y le indique si es un número o no
+utilizando el método isNaN().
+Prueba a introducir un número y una cadena
+-->
+
+<fieldset>
+    <legend>Es Numero ?</legend>
+    <input id="userInput">
+    <button onclick="checkISNAN();">Es numero Prueba</button>
+</fieldset>
+
+<p id="h"></p>
+
+<script>
+    function checkISNAN() {
+        var n1 = document.getElementById("userInput").value;
+        document.getElementById("h").innerText = n1     +   " is NaN ? "  +   isNaN(n1);
+    }
+</script>
+
+</body>
+</html>

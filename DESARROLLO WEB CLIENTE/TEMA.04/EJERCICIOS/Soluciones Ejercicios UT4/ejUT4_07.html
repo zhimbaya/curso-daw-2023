@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+Crea una página HTML que pida un número al usuario
+y le indique si es un número o no,
+utilizando el método Number(). Prueba a introducir un número y una cadena.
+-->
+
+<fieldset>
+    <legend>Es un Numero ?</legend>
+
+    <input id="userInput">
+    <button onclick="check();">Prueba : Es un numero ?</button>
+</fieldset>
+
+<p id="h"></p>
+
+
+<script>
+    function check() {
+        var n1 = document.getElementById("userInput").value;
+        alert("typeof n1 = "+typeof n1);
+        alert("typeof Number(n1) = "+typeof Number(n1));
+    }
+</script>
+
+
+</body>
+</html>

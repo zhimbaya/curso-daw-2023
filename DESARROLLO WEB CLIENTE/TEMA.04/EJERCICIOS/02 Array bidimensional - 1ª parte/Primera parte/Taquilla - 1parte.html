@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Taquilla</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+var taquillas=[];  // new Array();
+var numTaquillasLibres=0;
+
+for (let altura=0;altura<10;altura++){
+	taquillas[altura]=new Array(4);
+	for (let posTaquilla=0;posTaquilla<4;posTaquilla++){
+		taquillas[altura][posTaquilla]="";
+	}
+}
+
+
+taquillas[0][3]="Juan Perez";
+taquillas[1][2]="Luisa Olmo";
+taquillas[6][0]="Juan Castro";
+
+
+for (let altura=0;altura<10;altura++){
+
+	//accediendo a una altura de las taquillas
+	for (let posTaquilla=0;posTaquilla<4;posTaquilla++){
+		  // accediendo a cada taquilla de la altura en la que estamos
+		  if (taquillas[altura][posTaquilla]==""){
+               numTaquillasLibres++;  //incrementamos si taquilla no tiene dueño
+		  }
+	}
+}
+
+demo.innerHTML="Hay "+numTaquillasLibres+" libres<br>";
+</script>
+</body>
+</html>
