@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" />
-<title>Taquilla</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Taquilla</title>
+  </head>
+  <body>
+    <p id="demo"></p>
 
-<p id="demo"></p>
+    <script>
+      var taquillas = []; // new Array();
+      var numTaquillasLibres = 0;
 
-<script>
+      function ocupaTaqAleat(numTaquillas) {
+        let altAleat = 0;
+        let posTaqAleat = 0;
 
+        for (let i = 0; i < numTaquillas; i++) {
+          altAleat = Math.floor(Math.random() * 10);
+          posTaqAleat = Math.floor(Math.random() * 4);
 
-var taquillas=[];  // new Array();
-var numTaquillasLibres=0;
+          taquillas[altAleat][posTaqAleat] = "usu" + (i + 1);
+        }
+      }
 
-function ocupaTaqAleat(numTaquillas){
-     let altAleat=0;
-     let posTaqAleat=0;
+      for (let altura = 0; altura < 10; altura++) {
+        taquillas[altura] = new Array(4);
+        for (let posTaquilla = 0; posTaquilla < 4; posTaquilla++) {
+          taquillas[altura][posTaquilla] = "";
+        }
+      }
 
-     for (let i=0;i<numTaquillas;i++){
+      ocupaTaqAleat(10);
 
-     	altAleat=Math.floor(Math.random()*10);
-     	posTaqAleat=Math.floor(Math.random()*4);
-          
-    		taquillas[altAleat][posTaqAleat]="usu"+(i+1);
-     }
-}
+      for (let altura = 0; altura < 10; altura++) {
+        //accediendo a una altura de las taquillas
+        for (let posTaquilla = 0; posTaquilla < 4; posTaquilla++) {
+          // accediendo a cada taquilla de la altura en la que estamos
+          if (taquillas[altura][posTaquilla] == "") {
+            numTaquillasLibres++; //incrementamos si taquilla no tiene dueño
+          }
+        }
+      }
 
-for (let altura=0;altura<10;altura++){
-	taquillas[altura]=new Array(4);
-	for (let posTaquilla=0;posTaquilla<4;posTaquilla++){
-		taquillas[altura][posTaquilla]="";
-	}
-}
-
-ocupaTaqAleat(10);
-
-for (let altura=0;altura<10;altura++){
-
-	//accediendo a una altura de las taquillas
-	for (let posTaquilla=0;posTaquilla<4;posTaquilla++){
-		  // accediendo a cada taquilla de la altura en la que estamos
-		  if (taquillas[altura][posTaquilla]==""){
-               numTaquillasLibres++;  //incrementamos si taquilla no tiene dueño
-		  }
-	}
-}
-
-demo.innerHTML="Hay "+numTaquillasLibres+" libres<br>";
-</script>
-</body>
+      demo.innerHTML = "Hay " + numTaquillasLibres + " libres<br>";
+    </script>
+  </body>
 </html>

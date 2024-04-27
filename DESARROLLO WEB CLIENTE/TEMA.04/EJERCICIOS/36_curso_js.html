@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //OBJETOS
+      //1. Definir y crear un objeto simple utilizando un literal.
+      var personal = {
+        nombre: "ada",
+        apellido: "lovelace",
+        anio: 1815,
+      };
+      //2. definir y crear un objeto simple utilizando la palabra new.
+      var persona2 = new Object();
+      persona2.nombre = "charles";
+      persona2.apellido = "Baggge";
+      persona2.anio = 1798;
+
+      //3. Definir un constructor de un objeto, y crear objetos del tipo construido.
+      function Persona(nombre, apellido, anio) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.anio = anio;
+      }
+      var ada = new Persona("Ada", "lovelace", 1815);
+      var babbge = new Persona("Charles", "babbge", 1791);
+
+      //this: (palabra reservada)
+      //-hace referencia al propietario de la función que está invocandose.
+      //-hace referencia al objeto donde la función es un método.
+
+      /*
+      Sintaxis de acceso a las propiedades de un objeto:
+      -objeto.propiedad;
+      -objeto["propiedad"];
+      -objeto[expresión];
+      */
+      var persona1 = { nombre: "diego", apellido: "simbaña", anio: 1985 };
+      alert(persona1.nombre);
+      alert(persona1["apellido"]);
+      var expre = "anio";
+      alert(persona1[expre]);
+
+      //Recorrer las propiedades de un objeto.
+      for (x in persona1) {
+        alert(persona1[x]);
+      }
+      //Añadir una nueva propiedad a un objeto.
+      var nac = (persona1.nacionalidad = "Inglaterra");
+      alert(nac);
+      //Borrar una propiedad de un objeto.
+      delete persona1.anio;
+      for (x in persona1) {
+        alert(persona1[x]);
+      }
+    </script>
+  </body>
+</html>

@@ -16,16 +16,13 @@
 <label for="pos1">Posicion 1: </label><input type="number" id="pos1">
 <label for="pos2">Posicion 2: </label><input type="number" id="pos2">
 <br>
-
 <input type="button" id="mostrar" value="Mostrar" onclick="mostrar()">
-
 <input type="button" id="extraer" value="Extraer desde pos1 a pos2" onclick="extraer()">
 <input type="button" id="insertar" value="Insertar en la pos1" onclick="insertar()">
 <br>
 <label for="numElem">Numero de elementos: </label><input type="number" id="numElem">
 <br>
 <input type="button" id="eliminar" value="Eliminar desde la pos1" onclick="eliminar()">
-
 <input type="button" id="sobreescribir" value="Sobreescribir desde la pos1" onclick="sobreescribir()">
 
 <p id="array"></p>
@@ -33,19 +30,14 @@
 <script>
 
 let arrayAnim=["león", "lobo", "zorro", "pantera", "leopardo", "tiburon", "águila", "buho",  "cocodrilo"]
-
 let hDcha,hIzda;
-
 array.innerHTML=arrayAnim.toString()
 
 function derecha(){
 	// pop() elimina el ultimo elemento del array y unshift para añadir al comienzo
 	let elem=arrayAnim.pop()
-
 	arrayAnim.unshift(elem)
-    
     info.innerHTML=arrayAnim.toString()
-
 }
 
 function derecha2SG(){
@@ -57,15 +49,10 @@ function pararDerecha2SG(){
 }
 
 function izquierda(){
-
 	// shift() elimina el primer elemento del array y push para añadir al final
-
 	let elem=arrayAnim.shift()
-
 	arrayAnim.push(elem)
-    
     info.innerHTML=arrayAnim.toString()
-
 }
 
 function izda2SG(){
@@ -88,11 +75,9 @@ function buscar(){
 function extraer(){
 	let posicion1=parseInt(pos1.value)
 	let posicion2=parseInt(pos2.value)
-
 	let subArray=arrayAnim.slice(posicion1,posicion2)
 	info.innerHTML=subArray
 }
-
 
 function mostrar (){
 	array.innerHTML=arrayAnim.toString()
@@ -100,7 +85,6 @@ function mostrar (){
 
 function insertar (){
 	let posicion1=parseInt(pos1.value)
-
 	arrayAnim.splice(posicion1,0,animal.value)
 	info.innerHTML=arrayAnim.toString()
 }
@@ -108,7 +92,6 @@ function insertar (){
 function eliminar (){
 	let posicion1=parseInt(pos1.value)
 	let numElementos=parseInt(numElem.value)
-
     arrayAnim.splice(posicion1,numElementos)
     info.innerHTML=arrayAnim.toString()
 }
@@ -116,13 +99,9 @@ function eliminar (){
 function sobreescribir(){
 	let posicion1=parseInt(pos1.value)
 	let numElementos=parseInt(numElem.value)
-
     arrayAnim.splice(posicion1,numElementos,animal.value)
-    
     info.innerHTML=arrayAnim.toString()
-
 }
 </script>
-
 </body>
 </html>

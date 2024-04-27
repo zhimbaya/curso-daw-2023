@@ -7,19 +7,9 @@
   <body>
     <label for="animal">Animal: </label><input type="text" id="animal" /><br />
     <input type="button" id="derecha" value="Derecha" onclick="derecha2SG()" />
-    <input
-      type="button"
-      id="paraDerecha"
-      value="Parar Derecha"
-      onclick="pararDerecha2SG()"
-    />
+    <input type="button" id="paraDerecha" value="Parar Derecha" onclick="pararDerecha2SG()"/>
     <input type="button" id="izquierda" value="Izquierda" onclick="izda2SG()" />
-    <input
-      type="button"
-      id="paraIzda"
-      value="Parar Izquierda"
-      onclick="pararIzda2SG()"
-    />
+    <input type="button" id="paraIzda" value="Parar Izquierda" onclick="pararIzda2SG()"/>
     <input type="button" id="invertir" value="Invertir" onclick="invertir()" />
     <input type="button" id="buscar" value="Buscar" onclick="buscar()" />
 
@@ -39,15 +29,12 @@
       ];
 
       let hDcha, hIzda;
-
       array.innerHTML = arrayAnim.toString();
 
       function derecha() {
         // pop() elimina el ultimo elemento del array y unshift para añadir al comienzo
         let elem = arrayAnim.pop();
-
         arrayAnim.unshift(elem);
-
         info.innerHTML = arrayAnim.toString();
       }
 
@@ -61,11 +48,8 @@
 
       function izquierda() {
         // shift() elimina el primer elemento del array y push para añadir al final
-
         let elem = arrayAnim.shift();
-
         arrayAnim.push(elem);
-
         info.innerHTML = arrayAnim.toString();
       }
 
@@ -79,7 +63,7 @@
 
       function invertir() {
         arrayAnim.reverse();
-        info.innerHTML = arrayAnim;
+        info.innerHTML = arrayAnim; //no hace falta el toString()
       }
 
       function buscar() {
