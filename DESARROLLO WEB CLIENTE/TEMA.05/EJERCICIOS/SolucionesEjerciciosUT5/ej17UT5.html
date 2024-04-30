@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo"></p>
+ <form id="formulario">
+   <label for="caja">Introduce un texto con al menos 1 número y una letra mayúscula: </label>
+   <input type="text" id="caja" name="caja"><br>
+   <input type="button" id="boton" value="Validar"><br>
+
+</form>
+
+<script>
+
+boton.addEventListener("click",validar);
+
+function validar() {
+    var patron1=/\d/;
+    var patron2=/[A-ZÑ]/;
+    if (patron1.test(caja.value) && patron2.test(caja.value)) alert("El texto es correcto");
+    else alert("El texto es incorrecto");
+}
+
+
+</script>
+
+</body> 
+</html>

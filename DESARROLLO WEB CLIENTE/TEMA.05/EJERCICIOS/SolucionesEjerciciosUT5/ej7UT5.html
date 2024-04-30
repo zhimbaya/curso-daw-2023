@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo"></p>
+   <form name="datos_salud" id="datos_salud">
+       <label for="fruta">¿Comes fruta 2 veces al día o más?</label>
+       <input type="checkbox" id="fruta" name="fruta" value="fruta"><br>
+
+       <label for="verdura">¿Comes verdura 2 veces al día o más?</label>
+       <input type="checkbox" id="verdura" name="verdura" value="verdura"><br>
+
+       <label for="legumbres">¿Comes legumbres 3 veces a la semana o más?</label>
+       <input type="checkbox" id="legumbres" name="legumbres" value="legumbres"><br>
+
+       <label for="deporte">¿Hacer deporte 3 veces a la semana o más?</label>
+       <input type="checkbox" id="deporte" name="deporte" value="deporte"><br><br>
+
+       <label for="sana">Vida sana</label>
+       <input type="radio" id="sana" name="salud" value="sana"><br>
+
+       <label for="pocosana">Vida poco sana</label>
+       <input type="radio" id="pocosana" name="salud" value="pocosana"><br>
+
+       <label for="insana">Vida insana</label>
+       <input type="radio" id="insana" name="salud" value="insana"><br>
+
+       <input type="button" id="b_vida" value="Consultar tipo vida"><br>
+   </form>
+<script>
+    b_vida.addEventListener("click",tipoVida);
+    function tipoVida () {
+       var cont=0;
+       var elementosFormulario=datos_salud.elements;
+       var numElementos=datos_salud.length;
+
+       for (var i=0;i<numElementos;i++) {
+                 if (elementosFormulario[i].type=="checkbox" && elementosFormulario[i].checked==true) cont++;
+       }
+       if (cont<=1) {
+		datos_salud.insana.checked=true;
+       } else if (cont==2) {
+		datos_salud.pocosana.checked=true;
+       } else {
+		datos_salud.sana.checked=true;
+       }
+
+    }
+</script>
+
+</body> 
+</html>

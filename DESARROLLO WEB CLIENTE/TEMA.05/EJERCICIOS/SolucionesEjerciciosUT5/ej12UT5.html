@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo"></p>
+   <form name="coche" id="coche">
+       <label for="matricula">Introduce un numero de matricula</label>
+       <input type="text" id="matricula" name="matricula" size="40" placeholder="NNNN(-)XXX (Guión opcional)"><br>
+       <input type="button" id="comprobar" name="comprobar" value="Comprobar">
+   </form>
+<script>
+   comprobar.addEventListener("click",validar);
+   function validar () {
+      var patron=/^\d{4}-?[A-Z]{3}$/;
+      var patronVocales=/[^AEIOU]{3}$/;
+         if (patron.test(matricula.value) && patronVocales.test(matricula.value)) {
+                      alert ("El dato introducido es correto");
+         } else {
+                      alert ("El dato introducido no es correto");
+         }
+   }
+</script>
+
+</body> 
+</html>

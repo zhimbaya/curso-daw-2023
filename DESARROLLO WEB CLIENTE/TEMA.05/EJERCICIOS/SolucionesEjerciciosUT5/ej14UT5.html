@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo"></p>
+   <form name="datos_salud" id="datos_salud">
+       <label for="ssn">Introduce un numero de seguridad social americano</label>
+       <input type="text" id="ssn" name="ssn" size="40" placeholder="NNN(-)NN(-)NNN (Guiones opcionales)"><br>
+       <input type="button" id="comprobar" name="comprobar" value="Comprobar">
+   </form>
+<script>
+   comprobar.addEventListener("click",validar);
+   ssn.addEventListener("click",borrar);
+   function validar () {
+      var patron=/\d{3}-?\d{2}-?\d{3}/;
+      var res=patron.exec(ssn.value);
+         if (res!="") {
+                      alert ("El dato introducido es correto "+res);
+         } else {
+                      alert ("El dato introducido no es correto "+res);
+                      ssn.focus();
+         }
+   }
+</script>
+
+</body> 
+</html>

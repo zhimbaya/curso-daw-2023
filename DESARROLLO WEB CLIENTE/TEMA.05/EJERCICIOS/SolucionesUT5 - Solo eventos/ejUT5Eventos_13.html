@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo">Contador<br> </p>
+   <A href="https://www.google.es" onclick="return funcion()">Pagina para mayores de edad</a>
+<script>
+   function funcion () {
+     var edad=parseInt(prompt("Indica la edad que tienes: "));
+     demo.innerHTML=edad;
+     return (edad>=18)?true:false;
+   }
+</script>
+
+</body> 
+</html>

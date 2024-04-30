@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo"></p>
+ <form id="formulario">
+   <input type="checkbox" id="c_madrid" name="c_madrid" value="Madrid">
+   <label for="c_madrid">Madrid</label><br>
+   <input type="checkbox" id="c_sevilla" name="c_sevilla" value="Sevilla" checked>
+   <label for="c_sevilla">Sevilla</label><br>
+   <input type="checkbox" id="c_cuenca" name="c_cuenca" value="Cuenca">
+   <label for="c_cuenca">Cuenca</label><br>
+   <input type="button" onclick="valoresCheckedDefaultChecked();" value="Checked y defaultChecked"><br>
+   <input type="button" onclick="cambios();" value="Cambios"><br>
+
+</form>
+
+<script>
+
+    function valoresCheckedDefaultChecked() {
+         var numElemForm=formulario.length;
+	 var elementosFormulario=formulario.elements;
+         demo.innerHTML="El número de elementos del formulario es: " + numElemForm+"<br>";
+         for (var i=0;i<numElemForm;i++) {
+               if (elementosFormulario[i].type=="checkbox") 
+		   demo.innerHTML+=i+" checked: "+elementosFormulario[i].checked+ "   defaultChecked: "+elementosFormulario[i].defaultChecked+"<br>";
+         }
+    }
+
+    function cambios() {
+         var numElemForm=formulario.length;
+	 var elementosFormulario=formulario.elements;
+	 var cambiado=false;
+         var texto="";
+         for (var i=0;i<numElemForm;i++) {
+               if (elementosFormulario[i].type=="checkbox") {
+			if (elementosFormulario[i].checked != elementosFormulario[i].defaultChecked) {
+			   cambiado=true;	
+			   texto+="El elemento "+i+" ha cambiado : por defecto era "+elementosFormulario[i].defaultChecked+" y ahora es "+elementosFormulario[i].checked+"<br>";		}
+		}
+         }
+	 if (cambiado) {
+		demo.innerHTML+=texto;
+         } else {
+		demo.innerHTML+="No ha cambiado ningún elemento checkbox<br>";
+         }
+    }
+
+</script>
+
+</body> 
+</html>

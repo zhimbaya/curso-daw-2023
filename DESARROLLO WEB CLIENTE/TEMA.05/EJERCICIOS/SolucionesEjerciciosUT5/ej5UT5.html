@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo"></p>
+   <form name="datos_salud" id="datos_salud">
+       <label for="fruta">¿Comes fruta 2 veces al día o más?</label>
+       <input type="checkbox" id="fruta" name="fruta" value="fruta"><br>
+
+       <label for="verdura">¿Comes verdura 2 veces al día o más?</label>
+       <input type="checkbox" id="verdura" name="verdura" value="verdura"><br>
+
+       <label for="legumbres">¿Comes legumbres 3 veces a la semana o más?</label>
+       <input type="checkbox" id="legumbres" name="legumbres" value="legumbres"><br>
+
+       <label for="deporte">¿Hacer deporte 3 veces a la semana o más?</label>
+       <input type="checkbox" id="deporte" name="deporte" value="deporte"><br><br>
+
+       <input type="button" id="b_marcar" value="Vida sana"><br>
+       <input type="button" id="b_desmarcar" value="Vida insana">
+   </form>
+<script>
+    b_marcar.addEventListener("click",marcar);
+    b_desmarcar.addEventListener("click",desmarcar);
+    
+    function cambiarCheckBox (valor) {
+       var elementosFormulario=datos_salud.elements;
+       var numElementos=datos_salud.length;
+       for (var i=0;i<numElementos;i++) {
+                 if (elementosFormulario[i].type=="checkbox")
+                            elementosFormulario[i].checked=valor;
+       }
+    }
+    function marcar () {
+        cambiarCheckBox(true);
+    }
+    function desmarcar () {
+        cambiarCheckBox(false);
+    }
+</script>
+
+</body> 
+</html>
