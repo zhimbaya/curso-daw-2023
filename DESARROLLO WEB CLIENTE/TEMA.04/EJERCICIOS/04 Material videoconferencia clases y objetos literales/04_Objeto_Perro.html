@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Perros</title>
+  </head>
+  <body>
+    <p id="info"></p>
+
+    <script>
+      //SIN CLASES, NO TIENE PROTOTIPOS
+      let perro1 = {
+        nombre: "",
+        id: "",
+        tlf: "",
+        cuotas: new Array(12).fill(0),
+        pagado: new Array(12).fill(0),
+        registrarCuota: function (cuota, pagado, mes) {
+          this.cuotas[mes] = cuota;
+          this.pagado[mes] += pagado;
+        },
+        deudor: function () {
+          //devuelve true o false
+          for (let i = 0; i < this.cuotas.length; i++) {
+            if (this.cuotas[i] > this.pagado[i]) {
+              return true;
+            }
+          }
+          return false;
+        },
+      };
+      perro1.nombre = "Blas";
+      perro1.id = "1";
+      perro1.tlf = "1111";
+      perro1.registrarCuota(40, 20, 0);
+
+      info.innerHTML += "El perro " + perro1.nombre + (perro1.deudor() ? " debe cuotas" : " no debe cuotas") + "<br>";
+      console.log(perro1);
+    </script>
+  </body>
+</html>
