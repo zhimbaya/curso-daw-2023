@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+      
+<body>
+
+<div id="menulateral">
+
+<form id="id_contactar" name="contactar" action="buscar.php">
+
+<label for="c_madrid">Madrid</label>
+<input type="radio" id="c_madrid" name="ciudad" value="Madrid"><br>
+<label for="nombre">Nombre: <input type="text" id="id_nombre" name="nombre"><br>
+<label for="nombre">Password: <input type="password" id="id_clave" name="password"><br>
+
+</form>
+
+</div>
+
+<div id="info"></div>
+<button onclick="resetear()" >Reset</button>
+<button onclick="enviar()" >Enviar</button>
+
+<script>
+
+function resetear(){
+	let formulario=id_contactar;
+
+	formulario.reset();
+}
+
+function enviar(){
+	let formulario=id_contactar;
+
+	formulario.submit();
+}
+
+</script>
+</body>
+</html>
