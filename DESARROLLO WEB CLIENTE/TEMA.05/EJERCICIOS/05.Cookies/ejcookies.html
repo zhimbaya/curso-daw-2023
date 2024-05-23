@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+      
+<body>
+<form>
+  <label for="nombre">Nombre</label>
+  <input type="text" name="nombre" id="nombre"><br><br>
+  <label for="pass">Clave</label>
+  <input type="password" name="pass" id="pass"><br><br>
+  <input type="button" value="Mostrar cookies" id="bMostrarCookies"><br>
+  <input type="button" value="Eliminar cookies" id="bLimpiarCookies"><br>
+  
+</form>
+
+<div id="visitas"></div>
+<div id="info"></div>
+
+<script>
+window.addEventListener("load",iniciar);
+
+function iniciar(){
+  if (confirm("Autorizas el uso de cookies?")){
+	cargarVisitas();
+	cargarInputs();
+	nombre.addEventListener("blur",guardarNombre);	
+	pass.addEventListener("blur",guardarPass);	
+	bMostrarCookies.addEventListener("click",mostrarCookies);
+	bLimpiarCookies.addEventListener("click",limpiarCookies);
+  } else {
+  	bMostrarCookies.disabled=true;
+  	bLimpiarCookies.disabled=true;
+  }
+}
+
+function cargarInputs(){
+	var cookieNombre=leerCookie("nombre");
+	var cookiePass=leerCookie("pass");
+
+    
+	if (cookieNombre){
+		nombre.value=cookieNombre;
+	}
+	if (cookiePass){
+		pass.value=cookiePass;
+	}
+}
+function cargarVisitas(){
+	var cookieVisitas=leerCookie("visitas");
+	if (cookieVisitas){
+		cookieVisitas=parseInt(cookieVisitas)+1;
+	}
+	else {
+		cookieVisitas=1;
+	}
+	document.cookie="visitas="+cookieVisitas;
+	visitas.innerHTML+="Las visitas realizadas son "+cookieVisitas+"<br>";
+}
+function guardarNombre(){
+	// guardar en la cookie nombre el valor del input Nombre
+	document.cookie="nombre="+nombre.value;
+}
+
+function guardarPass(){
+	// guardar en la cookie nombre el valor del input Nombre
+	document.cookie="pass="+pass.value;
+	console.log(document.cookie);
+}
+
+function mostrarCookies(){
+	var cookieNombre=leerCookie("nombre");
+	var cookiePass=leerCookie("pass");
+	var cookieVisitas=leerCookie("visitas");
+
+    if (cookieNombre){
+        info.innerHTML+="El valor de la cookie nombre es "+cookieNombre+"<br>";	
+    } else {
+    	info.innerHTML+="La cookie nombre no existe.<br>";
+    }
+    if (cookiePass){
+        info.innerHTML+="El valor de la cookie pass es "+cookiePass+"<br>";	
+    } else {
+    	info.innerHTML+="La cookie pass no existe.<br>";
+    }
+    if (cookieVisitas){
+        info.innerHTML+="El valor de la cookie visitas es "+cookieVisitas+"<br>";	
+    } else {
+    	info.innerHTML+="La cookie visitas no existe.<br>";
+    }
+			
+} 
+
+function leerCookie(nombreCookie){
+	var cookies=document.cookie;
+	var arrayCookies=cookies.split(";");
+     
+	for (var i=0;i<arrayCookies.length;i++){
+		var cookieCompleta=arrayCookies[i].trim();
+	
+		let arrayDatosCookie=cookieCompleta.split("=");
+		let nomCookie=arrayDatosCookie[0];
+		let valCookie=arrayDatosCookie[1];
+		if (nomCookie==nombreCookie){
+			return valCookie;
+		}
+	}
+
+    return false;
+}
+
+function limpiarCookies(){
+	var cookies=document.cookie;
+	var arrayCookies=cookies.split(";");
+    var fechaAntigua=new Date(0).toUTCString();
+
+    for (var i=0;i<arrayCookies.length;i++){
+		var cookieCompleta=arrayCookies[i].trim();
+		console.log(cookieCompleta);
+		let arrayDatosCookie=cookieCompleta.split("=");
+		let nomCookie=arrayDatosCookie[0];
+        console.log(nomCookie);		
+		document.cookie=nomCookie+"=;expires="+fechaAntigua;
+	}
+}
+
+
+
+</script>
+
+</body>
+</html>

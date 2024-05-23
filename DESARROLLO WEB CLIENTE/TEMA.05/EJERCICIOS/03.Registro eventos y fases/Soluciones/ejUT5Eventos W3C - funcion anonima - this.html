@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="info">Si me haces click cambio de color</p>
+
+<script>
+   window.addEventListener("load",iniciar)
+   function iniciar(){
+      info.addEventListener("click",function (){
+         
+         this.style.backgroundColor="cyan"
+
+      })
+   }
+</script>
+
+</body> 
+</html>

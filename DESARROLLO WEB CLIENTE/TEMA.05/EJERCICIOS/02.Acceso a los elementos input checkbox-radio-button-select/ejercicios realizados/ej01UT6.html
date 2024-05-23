@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+
+<body>
+<form id="formulario" action="noexiste.php">
+<input type="checkbox" id="c_madrid" name="c_madrid" value="Madrid">
+<label for="c_madrid">Madrid</label><br>
+<input type="checkbox" id="c_sevilla" name="c_sevilla" value="Sevilla" checked>
+<label for="c_sevilla">Sevilla</label><br>
+<input type="checkbox" id="c_cuenca" name="c_cuenca" value="Cuenca">
+<label for="c_cuenca">Cuenca</label><br>
+<input type="submit" value="Enviar datos">
+</form>
+
+<button onclick="datos()">Mostrar datos</button>
+
+<p id="info"></p>
+
+<script>
+    function datos() {
+        info.innerHTML="El numero de elementos del formulario es: "+formulario.elements.length+"<br>"
+
+        Array.from(formulario.elements).forEach(elem=>{
+            if (elem.type=="checkbox")
+            info.innerHTML+="El checkbox "+ elem.value+" tiene checked "+elem.checked+" y defaultChecked "+elem.defaultChecked+"<br>"
+        })
+    }    
+</script>
+</body> 
+
+
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+
+<body>
+<form id="formulario" action="noexiste.php">
+<label for="prov">Elige una provincia: </label>
+<select id="prov" name="prov">
+   <option value="B">Badajoz</option>
+   <option value="C">Caceres</option>
+<br><br>
+<input type="submit" value="Enviar datos">
+</form>
+
+<button onclick="datos()">Mostrar datos</button>
+<p id="info"></p>
+
+<script>
+
+function datos(){
+   info.innerHTML="La provincia seleccionada es: "+prov.options[prov.options.selectedIndex].innerHTML+"<br>";
+}
+</script>
+
+</body> 
+</html>

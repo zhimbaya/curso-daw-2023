@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo">Contador<br> </p>
+   <A href="https://www.google.es" id="enlace">Pagina pesada</a>
+
+<script>
+   enlace.addEventListener("click",saludar)
+   enlace.addEventListener("click",avisar)
+   function saludar(){
+      alert ("hola")
+   }
+   function avisar() {
+      alert("Alerta: esta pagina es pesada: "+this.href)
+
+   }
+</script>
+
+</body> 
+</html>

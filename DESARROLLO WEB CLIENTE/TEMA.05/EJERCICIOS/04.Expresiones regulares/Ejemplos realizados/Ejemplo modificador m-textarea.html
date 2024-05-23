@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<form>
+    <label for="area">Introduce cualquier texto: </label>
+    <textarea id="area"></textarea>
+</form>
+<button id="boton">Buscar</button>
+
+<p id="info"></p>
+
+<script>
+
+    boton.onclick=function (){
+        let expr=/^la/mgi;
+
+        info.innerHTML+=area.value.match(expr)+"<br>"
+    }
+
+</script>
+
+</body>
+</html>
