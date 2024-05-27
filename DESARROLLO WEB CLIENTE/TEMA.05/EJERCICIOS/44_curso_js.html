@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <h1 id="eventos">Obtener información de un evento.</h1>
+    <h2 id="parrafo1">Párrafo 1</h2>
+    <h2 id="parrafo2">Párrafo 2</h2>
+    <script>
+      document.getElementById("eventos").addEventListener("mouseover",manejador);
+      document.getElementById("eventos").addEventListener("mouseout",manejador);
+      document.getElementById("parrafo1").addEventListener("click",saludo);
+      document.getElementById("parrafo2").addEventListener("click",saludo);
+
+      function manejador(e){
+        //navegador de microsoft
+        if(!e) e = window.event;
+        switch(e.type){
+          case "mouseover":
+            this.style.color = "purple";
+            break;
+          case "mouseout":
+            this.style.color = "yellow";
+            break;
+        }
+      }
+      function saludo(e){
+        if(!e) e = window.event;
+        if(e.target.id == "parrafo1") alert("Has pulsado el primer párrafo");
+        else if (e.target.id == "parrafo2") alert("Has pulsado el segundo párrafo");
+        alert("Has pulsado el "+ e.target.id);
+      }
+    </script>
+  </body>
+</html>

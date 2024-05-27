@@ -6,8 +6,7 @@
     <title>Curso JavaScript</title>
     <h1>Curso de JavaScript Ada LoveCode</h1>
   </head>
-  <body>
-
+  <body onload="alert('La página se ha cargado correctamente.')">
     <script>
       // EVENTOS
       /*
@@ -15,10 +14,51 @@
       Mecanismo que se acciona cuando el usuario realiza un cambio sobre la página web.
       Capturar un evento es programar una acción para que se realice una tarea.
       El encargado de gestionar los eventos es el DOM (Document Object Model).
-      Manajador:
+      Manejador:
       Acción que se va a manejar. Ej: en el evento click (hacer click con el ratón) el manejador es onClick
       */
     </script>
-
+    <h1>Modelo de registro de eventos en línea</h1>
+    <!-- Cada elemento XHTML tiene sus posibles eventos como propiedades
+    : puede tener un evento de cada tipo.
+  El nombre del evento es "on" seguido del nombre de la acción. -->
+    <!-- Manejadores como atributo de una etiqueta XHTML -->
+    <h3
+      id="cab1"
+      onclick="this.innerHTML='Javascript en XHTML'"
+      onmouseover="this.style.background='red'"
+      onmouseout="this.style.background='white'"
+    >
+      Pulsa aquí.
+    </h3>
+    <!-- Manejadores como funciones externas -->
+    <h3 onclick="cambiar(this)">Pulsa aquí para ver que se ejecuta.</h3>
+    <script>
+      function cambiar(elem) {
+        elem.innerHTML = "JavaScript en XHTML y función externa";
+      }
+    </script>
+    <!-- Hay acciones que desencadenan varios eventos.
+    Ej: submit
+    desencadena onmousedown, onclick, onmouseup, onsubmit.
+    Para evitar que el navegador ejecute la acción por defecto
+    necesitamos añadir "return false; "
+     -->
+     <a href="http://www.google.com" onclick="alerta(); return false;">Pulsa aquí</a>
+     <script>
+      function alerta(){
+        alert("Vamos a Google");
+      }
+     </script>
+     <br>
+     <a href="http://www.google.com" onclick="return preguntar();">Pulsa aquí para ir a google</a>
+     <script>
+      function preguntar(){
+        return confirm("¿Deseas ir a google?");
+      }
+     </script>
+     <!-- Carga de página con evento onload -->
+     <!-- Escribimos: onload en el body -->
+     <!-- No es recomendable en línea -->
   </body>
 </html>
