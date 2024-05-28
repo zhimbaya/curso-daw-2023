@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+<form>
+<p id="demo"></p>
+<input type="text" id="apellidos" name="apellidos" placeholder="apellido1 apellido2"/><br>
+<input type="button" onclick="imprime()" value="imprime atributos del input apellidos"><br>
+<input type="button" onclick="cambiarNumber()" value="cambio el tipo del input de text a number "><br>
+<input type="button" onclick="cambiarSize()" value="pone el tamaño del input a 100"><br>
+<input type="button" onclick="cambiarPlaceHolder()" value="pone placeholder a juan"><br>
+<input type="button" onclick="cambiarValue()" value="pone value a cambiar valor"><br>
+<input type="button" onclick="eliminarSize()" value="Eliminar atributo size"><br>
+</form>
+
+<script>
+function imprime() {
+
+demo.innerHTML+="<br/>El elemento <b>apellidos</b> contiene los pares atributo -> valor: <br/>";
+
+var listaAtributos=document.getElementById("apellidos").attributes;
+for( var x = 0; x < listaAtributos.length; x++ ) {
+
+     var atributo = listaAtributos[x];
+
+     demo.innerHTML+=atributo.nodeName+ " -> "+atributo.nodeValue+"<br/>";
+
+}
+}
+
+function cambiarNumber() {
+   apellidos.setAttribute("type","number");
+
+}
+
+function cambiarSize() {
+   apellidos.setAttribute("size","100");
+}
+function cambiarPlaceHolder() {
+   apellidos.setAttribute("placeholder","juan");
+}
+function cambiarValue() {
+   apellidos.setAttribute("value","cambiar valor");
+}
+function eliminarSize() {
+apellidos.removeAttribute("size");
+}
+</script>
+
+</body> 
+</html>

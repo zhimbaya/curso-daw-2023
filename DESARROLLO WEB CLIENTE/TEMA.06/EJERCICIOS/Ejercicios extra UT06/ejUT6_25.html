@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+   <p id="demo"></p>
+   <button id="boton" name="boton">Boton</button><br>
+   <A id="enlace" href="https://www.alcobendas.org/es/portal.IDM?do=27&NM=1">Pagina </a>
+
+
+<script>
+
+window.addEventListener("load",ver);
+boton.addEventListener("click",ver);
+enlace.addEventListener("click",ver);
+
+function ver (e){
+	var txt;
+
+	if (e.cancelable) {
+		txt="Se ha producido un evento en "+this+" que es cancelable";
+	}else {
+		txt="SE ha producido un evento en "+this+" que no es cancelable";
+	}
+	demo.innerHTML+=txt+"<br>";
+	e.preventDefault();
+}
+
+</script>
+
+</body> 
+</html>

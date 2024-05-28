@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorage - TextArea - Estilos</title>
+</head>
+<body>
+
+  <form>
+    <label for="textarea">Escribe el texto deseado: </label>
+    <textarea id="textArea"></textarea><br>
+    <br>
+    <label for="fuenteLetra">Escoge tipo de fuente: </label>
+    <select id="fuenteLetra">
+      <option value="Courier New">Courier New</option>
+      <option value="Times" selected>Times New Roman</option>
+      <option value="Arial">Arial</option>
+      <option value="Verdana">Verdana</option>
+    </select><br>
+    <label for="colorLetra">Escoge color de letra: </label>
+    <input type="color" id="colorLetra"><br>
+  </form>
+
+<p id="info"></p>
+
+<script>
+
+  if (typeof(Storage)!=="undefined"){
+    window.addEventListener("load",iniciar)
+  } else {
+      info.innerHTML="El navegador no soporta localStorage<br>"
+  }
+
+  function iniciar(){
+      
+      var letraJSONString=localStorage.getItem("letraJSON")
+      var letraJSON
+
+      if (letraJSONString==null){
+           letraJSON={
+            color: colorLetra.value,
+            fuente: fuenteLetra.value
+           }
+
+           localStorage.setItem("letraJSON",JSON.stringify(letraJSON))
+
+           textArea.style.fontFamily=fuenteLetra.value
+           textArea.style.color=colorLetra.value
+      } else {
+
+        letraJSON=JSON.parse(letraJSONString)
+
+        textArea.style.fontFamily=letraJSON.fuente
+        textArea.style.color=letraJSON.color
+
+        colorLetra.value=letraJSON.color
+        fuenteLetra.value=letraJSON.fuente
+      }
+
+      colorLetra.addEventListener("change",gestionarColor)
+      fuenteLetra.addEventListener("change",gestionarFuente)
+
+  }
+
+  function gestionarColor(){
+
+    textArea.style.color=colorLetra.value
+
+    var letraJSONString=localStorage.getItem("letraJSON")
+
+    var letraJSON=JSON.parse(letraJSONString)
+
+    letraJSON.color=colorLetra.value
+
+    localStorage.setItem("letraJSON",JSON.stringify(letraJSON))
+
+  }
+
+  function gestionarFuente(){
+
+    textArea.style.fontFamily=fuenteLetra.value
+
+    var letraJSONString=localStorage.getItem("letraJSON")
+
+    var letraJSON=JSON.parse(letraJSONString)
+
+    letraJSON.fuente=fuenteLetra.value
+
+    localStorage.setItem("letraJSON",JSON.stringify(letraJSON))
+
+  }
+</script>
+</body>
+</html>

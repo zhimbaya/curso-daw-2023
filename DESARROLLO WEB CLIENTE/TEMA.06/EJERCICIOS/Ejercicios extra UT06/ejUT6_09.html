@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="author" content="Marvin Wenzel">
+</head>
+<body>
+<!--
+9. Crea una aplicación web con:
+1. Un input de tipo number llamado “columnas”.
+2. Un input de tipo number llamado “filas”.
+3. Un botón llamado “Crear tabla” que cree una tabla con el número de filas y el número de
+columnas indicados en los inputs anteriores
+-->
+
+<h1>Tarea 9</h1>
+
+<input type="number" name="columnas">
+<br/>
+<input type="number" name="filas">
+<br/>
+<button onclick="t9();">Crear Resultado</button>
+<br/>
+<div id="divi"></div>
+
+
+
+<script>
+
+    function t9() {
+
+        document.getElementById("divi").innerHTML = "";
+
+        var columnas = parseInt(document.getElementsByName("columnas")[0].value);
+        var filas = parseInt(document.getElementsByName("filas")[0].value);
+
+        var t = document.createElement("table");
+
+
+        for(var i = 0; i < filas; i++) {
+                var l = document.createElement("tr");
+                for(var d = 0; d < columnas; d++) {
+                    var e = document.createElement("td");
+                    e.style.backgroundColor = "green";
+                    var p = document.createTextNode("Me llamo (Z/c)elda");
+                    e.append(p);
+                    l.appendChild(e);
+                }
+                t.appendChild(l);
+            }
+
+
+        
+
+
+
+        document.getElementById("divi").appendChild(t);
+
+
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+<p title="Texto de un párrafo">Esto es un ejemplo de <b>texto HTML<br />
+que puedes tener</b> en tu documento</p>
+<input type="button" onclick="cambiar1()" value="Añade HOLA a en tu documento"<br>
+<input type="button" onclick="cambiar2()" value="Añade HOLA a que puedes tener"<br>
+<script>
+
+
+function cambiar1() {
+   document.getElementsByTagName("p")[0].childNodes[2].nodeValue+=" HOLA";  
+}
+function cambiar2() {
+   document.getElementsByTagName("p")[0].childNodes[1].childNodes[2].nodeValue+=" HOLA";  
+}
+
+</script>
+</body> 
+</html>

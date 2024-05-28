@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+
+<p id="demo"></p>
+<button onclick="caloriasComidas()">Calorias de Comidas del Menú</button>
+<script>
+
+function caloriasComidas() {
+
+var xhr = new XMLHttpRequest();
+
+xhr.addEventListener("readystatechange",mostrar);
+xhr.open("GET","ej3UT7.xml",true);
+xhr.send();
+
+}
+
+function mostrar () {
+var datos;
+var comida="";
+var calorias="";
+
+if (this.readyState  == 4 && this.status==200) {
+    datos=this.responseXML.getElementsByTagName("comida");
+    for (var i=0;i<datos.length;i++) {
+        for (var j=0;j<datos[i].childNodes.length;j++) {
+            if (datos[i].childNodes[j].nodeName=="nombre") {
+                  comida=datos[i].childNodes[j].childNodes[0].nodeValue;
+            } else if ( datos[i].childNodes[j].nodeName=="calorias")  {
+                  calorias=datos[i].childNodes[j].childNodes[0].nodeValue;
+            }
+        }
+        demo.innerHTML+="<br>La comida "+comida+" tiene "+calorias+" calorias.";
+    }
+}
+
+}
+
+</script>
+
+</body> 
+</html>

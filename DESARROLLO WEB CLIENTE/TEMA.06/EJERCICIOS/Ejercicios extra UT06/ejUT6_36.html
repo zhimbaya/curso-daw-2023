@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplo</title>
+</head>
+<body>
+
+
+<p id="demo">Esto es una prueba</p>
+<p id="info"></p>
+<script>
+demo.addEventListener("mouseover",mostrar);
+demo.addEventListener("mouseout",mostrar);
+
+function mostrar(e){
+   info.innerHTML+="<br>relatedTarget es: "+e.relatedTarget.nodeName;
+}
+</script>
+</body>
+</html>

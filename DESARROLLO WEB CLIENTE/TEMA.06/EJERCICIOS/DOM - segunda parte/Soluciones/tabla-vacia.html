@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Tabla-childNodes</title>
+</head>
+
+<body>
+   <table style="width:300px">
+   <tbody>
+   <tr>
+     <td id="celda1"><button style="font-size:26px;width:80px" id="b1">1</button></td>
+     <td id="celda2"><button style="font-size:26px;width:80px" id="b2">2</button></td>
+     <td id="celda3"><button style="font-size:26px;width:80px" id="b3">3</button></td>
+   </tr>
+   <tr>
+     <td id="celda4"><button style="font-size:26px;width:80px" id="b4">4</button></td>
+     <td id="celda5"><button style="font-size:26px;width:80px" id="b5">5</button></td>
+     <td id="celda6"><button style="font-size:26px;width:80px" id="b6">6</button></td>
+   </tr>
+   <tr>
+     <td id="celda7"><button style="font-size:26px;width:80px" id="b7">7</button></td>
+     <td id="celda8"><button style="font-size:26px;width:80px" id="b8">8</button></td>
+     <td id="celda9"><button style="font-size:26px;width:80px" id="b9">9</button></td>
+   </tr>
+   
+</tbody>
+   </table>
+<br>
+<input type="button" value="subir" onclick="subir()">
+<input type="button" value="bajar" onclick="bajar()">
+<input type="button" value="izda" onclick="izda()">
+<input type="button" value="dcha" onclick="dcha()">
+<input type="button" value="aleatorio" onclick="aleatorio()">
+<input type="button" value="reiniciar" onclick="reiniciar()">
+
+<script>
+
+  function subir(){
+    let padre=document.getElementsByTagName("tbody")[0]
+    let primeraFila=padre.firstElementChild
+    padre.appendChild(primeraFila)
+  }
+
+  function bajar(){
+    let padre=document.getElementsByTagName("tbody")[0]
+    let primeraFila=padre.firstElementChild
+    let ultimaFila=padre.lastElementChild
+     
+     padre.insertBefore(ultimaFila,primeraFila)
+  }
+
+  function izda(){
+    //Para cada tr:
+    //Su primera celda se va a desplazar al final de la fila anterior,
+    //EXCEPTO en el caso de la primera fila, que como no tiene fila anterior,
+      // su primera celda se va a desplazar al final de la última fila
+      // Se va a aplicar el método appendChild para resolver esta funcion
+      // nodoPadre.appendChild(nuevoNodoHijo)
+
+    let trs=document.getElementsByTagName("tr")
+
+    let ultimaFila=trs[trs.length-1]
+    let primeraFila=trs[0]
+    for (let i=0;i<trs.length;i++){
+         if (i==0){
+              ultimaFila.appendChild(primeraFila.firstElementChild)
+         } else {
+              trs[i-1].appendChild(trs[i].firstElementChild)
+         }
+    }
+
+  }
+
+  function dcha(){
+    // Para cada tr:
+    // La última celda se va a desplazar delante de la primera celda de la fila siguiente
+    // EXCEPTO en el caso de la ultima fila, que como no tiene fila siguiente,
+    // su ultima celda se va a desplazar delante de la primera celda de la primera fila
+    // se va a aplicar el método insertBefore:
+    // nodoPadre.insertBefore(nuevoNodoHijo,refHijo)
+
+    let trs=document.getElementsByTagName("tr")
+
+    let primeraFila=trs[0]
+    let ultimaFila=trs[trs.length-1]
+    for (let i=0;i<trs.length;i++){
+        if (i===trs.length-1){
+          primeraFila.insertBefore(trs[i].lastElementChild,primeraFila.firstElementChild)
+        } else {
+          trs[i+1].insertBefore(trs[i].lastElementChild,trs[i+1].firstElementChild)
+        }
+    }
+
+  }
+
+  function aleatorio1 (){
+    let posiciones=calcularPosiciones()
+    console.log(posiciones)
+    let celdas=document.getElementsByTagName("td")
+    for (let i=0;i<4;i++){
+
+       let nodo1=celdas[posiciones[i*2]-1]
+       let nodo2=celdas[posiciones[(i*2)+1]-1]
+       console.log("intercambiamos "+posiciones[i*2]+" por "+posiciones[(i*2)+1])
+
+       let clonNodo1=nodo1.cloneNode(true)    
+       let clonNodo2=nodo2.cloneNode(true)    
+
+       let padreNodo1=nodo1.parentNode
+       let padreNodo2=nodo2.parentNode
+
+       padreNodo1.insertBefore(clonNodo2,nodo1)
+       padreNodo2.insertBefore(clonNodo1,nodo2)
+       padreNodo1.removeChild(nodo1)
+       padreNodo2.removeChild(nodo2)
+    }
+
+  }
+
+  function aleatorio(){
+    aleatorio1()
+    aleatorio1()
+  }
+  function calcularPosiciones(){
+    let arrayPos=[]
+    let pos1, pos2
+    
+    for (let i=0;i<4;i++){
+      pos1=-1
+      pos2=-1
+      
+      while (arrayPos.includes(pos1)||pos1==-1){
+        pos1=Math.floor(Math.random()*9)+1
+      }
+      
+      
+      while (arrayPos.includes(pos2)||pos2==-1){
+        pos2=Math.floor(Math.random()*9)+1
+      }
+      
+      while (pos1===pos2 ){
+        pos2=Math.floor(Math.random()*9)+1
+        while (arrayPos.includes(pos2)){
+            pos2=Math.floor(Math.random()*9)+1
+      }
+      
+      }
+    
+      arrayPos.push(pos1)
+      arrayPos.push(pos2)
+    }
+
+    return arrayPos
+  }
+  
+  function reiniciar(){
+    let tbody=document.getElementsByTagName("tbody")[0]
+    let botones=tbody.getElementsByTagName("button")
+
+    Array.from(botones).forEach(boton=>{
+      let valor=parseInt(boton.innerHTML)
+      let tdPadre=tbody.getElementsByTagName("td")[valor-1]
+      tdPadre.appendChild(boton)
+    })
+  }
+
+</script>
+</body> 
+</html>

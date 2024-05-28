@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+<input type="radio" name="deportes" id="rugby" value="rugby"><label for="rugby">Rugby</label><br>
+<input type="radio" name="deportes" id="natacion" value="natacion"><label for="natacion">Natacion</label><br>
+<input type="radio" name="deportes" id="alpinismo" value="alpinismo"><label for="alpinismo">Alpinismo</label>
+<br>
+<input type="button" id="boton" value="Mostrar">
+<p id="info"></p>
+<script type="text/javascript">
+	
+	let rDeportes=document.getElementsByName("deportes")
+	rDeportes[rDeportes.length-1].checked=true
+
+	window.addEventListener("load",iniciar)
+
+	function iniciar (){
+		boton.addEventListener("click",mostrarChequeado)
+	}
+	function mostrarChequeado(){
+		rDeportes.forEach(deporte=>{
+			if (deporte.checked==true){
+				info.innerHTML+="El radio-button "+deporte.value+" esta chequeado<br>"
+			}
+		})
+	}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+<br>Esto es una prueba de <b>Ajax</b><br>Espero que funcione<br>Vamos allá
+

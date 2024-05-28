@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+	<label for="name">Nombre: </label><input type="text" id="nombre"><br>
+	<input type="button" id="bMostrar" value="Mostrar atributos">
+	<input type="button" id="bAgregar" value="Agregar atributo size">
+	<input type="button" id="bEliminar" value="Eliminar atributo size">
+<script type="text/javascript">
+	
+	window.addEventListener("load",iniciar)
+	
+	function iniciar(){
+		bMostrar.addEventListener("click",mostrar)
+		bAgregar.addEventListener("click",agregar)
+		bEliminar.addEventListener("click",eliminar)
+	}
+
+	function mostrar(){ //muestra todos los atributos del input nombre
+	   let atributos=document.getElementById("nombre").attributes
+
+	   Array.from(atributos).forEach(atributo=>{
+	   	     console.log("Atributo "+atributo.nodeName+" vale "+atributo.nodeValue)
+	   })
+	}
+
+	function agregar(){
+		nombre.setAttribute("size","100")
+	}
+
+	function eliminar(){
+		nombre.removeAttribute("size")
+	}
+
+</script>
+
+</body>
+</html>

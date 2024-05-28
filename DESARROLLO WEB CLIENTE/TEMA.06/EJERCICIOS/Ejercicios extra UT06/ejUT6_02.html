@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>1.3 Unidad 6</title>
+</head>
+<body>
+	<label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" value=""><br>
+	<label for="apellidos">Apellidos: </label>
+	<input type="text" name="apellidos" value=""><br>
+	<label for="edad">Edad: </label>
+	<input type="number" name="edad" value=""><br>
+	<button name="Enviar" onclick="enviar()">Enviar</button>
+
+	<p id="demo"></p>
+
+<script>
+	function enviar(){
+	
+		var elementos = document.getElementsByTagName('input');
+		for (var j=0; j<elementos.length; j++) {
+ 		        document.getElementById("demo").innerHTML += elementos[j].value+"<br>";
+		}
+	}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejemplo</title>
+</head>
+<body>
+
+<p id="demo"></p>
+<button onclick="ajaxMostrar()">Mostrar temperaturas y sensaciones térmicas de los últimos dias</button>
+<script>
+
+function ajaxMostrar() {
+var urlWeather =  "https://api.openweathermap.org/data/2.5/forecast?q=Madrid,es&lang=es&units=metric&mode=xml&appid=479092b77bcf850403cb2aeb1a302425";
+
+var xhr = new XMLHttpRequest();
+
+xhr.addEventListener("readystatechange",mostrar);
+xhr.open("GET",urlWeather,true);
+xhr.send();
+
+}
+
+
+function mostrar () {
+var tiempos;
+var fecha="";
+var horaFrom="";
+var horaTo="";
+var temp, sens;
+
+if (this.readyState  == 4 && this.status==200) {
+    tiempos=this.responseXML.getElementsByTagName("time");
+     for (var i=0;i<tiempos.length;i++) {
+        fecha=tiempos[i].getAttribute("from").substr(0,10);
+        horaFrom=tiempos[i].getAttribute("from").substr(11,5);
+        horaTo=tiempos[i].getAttribute("to").substr(11,5);
+        temp=tiempos[i].getElementsByTagName("temperature")[0].getAttribute("value");
+        sens=tiempos[i].getElementsByTagName("feels_like")[0].getAttribute("value");
+        demo.innerHTML+="Dia "+fecha+ " desde las "+ horaFrom+" hasta las "+horaTo+" : Temperatura -> "+temp+" Sensacion térmica -> "+sens+"<br>";
+    }
+}
+
+}
+/*
+function hacerTablaCabecera() {
+var tabla,titulo, textoTitulo,cabecera,c1,c2,c3,c4,c5,tc1,tc2,tc3,tc4,tc5;
+
+tabla= document.createElement("table");
+tabla.border=”1px”;
+
+titulo=document.createElement("caption");
+textoTitulo=document.createTextNode("Haga click en cualquier tecla para activar/desactivar el Pincel.");
+titulo.appendChild(textoTitulo);
+tabla.appendChild(titulo);
+demo.appendChild(tabla);
+}
+*/
+</script>
+
+</body> 
+</html>

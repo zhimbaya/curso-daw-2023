@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form name="formulario" id="formulario">
+    <label>Nombre:</label>
+    <input type="text" id="nombre" name="nombre" />
+    <label>Apellidos:</label>
+    <input type="text" id="apellidos" name="apellidos" />
+    <label>Provincia:</label>
+    <input type="text" id="provincia" name="provincia" />
+    <input type="button" id="enviar" value="Enviar" />
+</form>
+
+<script>
+
+    function changeFocus(evento) {
+        var neighbour = evento.currentTarget.previousElementSibling;
+        while (neighbour.nodeName != "INPUT") {
+            neighbour = neighbour.previousElementSibling;
+            if(neighbour == null) {
+                neighbour = evento.currentTarget.parentNode.lastElementChild;
+            }
+        }
+
+        if(evento.key = "Enter") {
+            neighbour.focus();
+        }
+    }
+
+    var arrayInputs = document.getElementsByTagName("input");
+
+    for(let i = 0; i < arrayInputs.length; i++) {
+        arrayInputs[i].addEventListener("keypress", changeFocus, false);
+    }
+
+</script>
+
+<!--
+30. Igual que el anterior pero el avance del foco es hacia atrás. Cuando llegue al primer input
+debe pasar el foco al botón.
+-->
+
+</body>
+</html>

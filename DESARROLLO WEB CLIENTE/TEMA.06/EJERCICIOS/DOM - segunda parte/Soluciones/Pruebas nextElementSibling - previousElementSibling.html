@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div>
+		<p>Primera línea</p>
+		<p>Segunda línea</p>
+		<p>Tercera línea</p>
+	</div>
+
+	<p id="info"></p>
+
+<script type="text/javascript">
+
+let elemDiv=document.getElementsByTagName("div")[0]
+
+console.log("primer hijo: primer párrafo")
+console.log(elemDiv.firstElementChild)
+console.log("hermano siguiente al primer hijo: segundo párrafo")
+console.log(elemDiv.firstElementChild.nextElementSibling)
+console.log("hermano siguiente al hermano siguiente del primer hijo: tercer párrafo")
+console.log(elemDiv.firstElementChild.nextElementSibling.nextElementSibling)
+console.log("hermano siguiente al hermano siguiente del hermano siguiente del primer hijo: null, porque no existe")
+
+console.log(elemDiv.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling)
+
+console.log("hermano anterior al primer hijo: null, porque no existe")
+console.log(elemDiv.firstElementChild.previousElementSibling)
+console.log("hermano anterior al ultimo hijo: segundo párrafo")
+console.log(elemDiv.lastElementChild.previousElementSibling)
+console.log("hermano anterior al hermano anterior al ultimo hijo: primer párrafo")
+console.log(elemDiv.lastElementChild.previousElementSibling.previousElementSibling)
+
+
+</script>
+
+</body>
+</html>
