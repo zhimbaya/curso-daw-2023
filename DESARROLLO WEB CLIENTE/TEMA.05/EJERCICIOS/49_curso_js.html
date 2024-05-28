@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+   
+  </head>
+  <body>
+    <!-- 
+      ¿Qué son las cookies?
+      - Datos almacenados en nuestro ordenador en pequeños archivos de texto.
+      - Recuerdan la información de un usuario aunque se cierre el navegador o se desconecte del servidor.
+      - Podemos guardar el nombre de un visitante de la página, el número de veces que ha entrado, etc.
+      - Se guardan en forma de pares "nombre=valor": usuario = Ada
+
+     -->
+     <script>
+      //Crear una cookie: nombre; fecha de expiración -UTC-; edad máxima en segundos; ruta; dominio.
+      //document.cookie = "usuario = Ada; expires=Thu, 16 Nov 2017 12:00:00 UTC; path=/;";
+      document.cookie = "usuario = Ada;";
+      document.cookie = "sexo = mujer;";
+
+      //Leer una cookie
+      var miCookie = document.cookie;
+      alert(miCookie);
+
+      //Modificar una cookie
+      document.cookie = "sexo = hombre;";
+      alert(document.cookie);
+
+      //Borrar una cookie
+      document.cookie = "usuario=; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+      document.cookie = "sexo=; expires=Thu, 01 Jan 1970 00:00:01 GMT";
+      alert(document.cookie);
+     </script>
+  </body>
+</html>
