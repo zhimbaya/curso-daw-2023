@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <style>
+      .miClase{
+        color:red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main">
+      <p id="parrafo1">Este es el primer párrafo</p>
+      <p id="parrafo2">Este es el segundo párrafo</p>
+      <p id="parrafo3" class="miClase">Este es el tercer párrafo</p>
+    </div>
+    <br>
+    <button id="cambiarTextos">Cambiar texto de párrafos</button>
+    <button id="cambiarClases">Cambiar clase de párrafos</button>
+    <button id="quitarClases">Quitar clase de todos los párrafos</button>
+    
+    <script>
+      window.addEventListener("load",inicio);
+      function inicio(){
+        document.getElementById("cambiarTextos").addEventListener("click",cambiarTextos);
+        document.getElementById("cambiarClases").addEventListener("click",cambiarClases);
+        document.getElementById("quitarClases").addEventListener("click",quitarClases);
+      }
+      function cambiarTextos(){
+        //Seleccionar un único elemento según su id.
+        document.getElementById("parrafo1").innerHTML = "Primer párrafo cambiado";
+        //Seleccionar todos los elementos según su etiqueta.
+        document.getElementsByTagName("p")[1].innerHTML = "Segundo párrafo cambiado";
+        //Seleccionar todos los elememtos según su clase.
+        document.getElementsByClassName("miClase")[0].innerHTML = "Tercer párrafo cambiado";
+        //Seleccionar según su nombre.
+        //Seleccionar un elemento dentro de otro
+        var principal = document.getElementById("main");
+        var parrafo1 = principal.getElementById("parrafo1");
+        //seleccionar el primer elemento con un selector css
+        //document.querySelector("p.miClase");
+        //document.querySelector("p.miClase")[0];
+      }
+      function cambiarClases(){
+        document.getElementById("parrafo1").setAttribute("class","miClase");
+        document.getElementById("parrafo2").className= "miClase";
+      }
+      function quitarClases(){
+        //document.getElementById("parrafo1").setAttribute("class","");
+        //document.getElementById("parrafo2").className = "";
+        //document.getElementById("parrafo3").className = "";
+
+        for (let i = 0; i < document.getElementsByTagName("p").length; i++) {
+          document.getElementsByTagName("p")[i].className = "";
+        }
+      }
+    </script>
+  </body>
+</html>
