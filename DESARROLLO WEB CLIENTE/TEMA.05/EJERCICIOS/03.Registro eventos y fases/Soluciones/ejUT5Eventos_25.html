@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-  
-<a id="enlace" href="https://www.google.es">Google</a>
-<form action="https://www.google.es">
-   <button id="boton">Boton</button>
-</form>
-<p id="info"></p>
-<script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <a id="enlace" href="https://www.google.es">Google</a>
+    <form action="https://www.google.es">
+      <button id="boton">Boton</button>
+    </form>
+    <p id="info"></p>
+    <script>
+      window.addEventListener("load", esCancelable);
+      enlace.addEventListener("click", esCancelable);
+      boton.addEventListener("click", esCancelable);
 
-window.addEventListener("load",esCancelable)
-enlace.addEventListener("click",esCancelable)
-boton.addEventListener("click",esCancelable)
-
-function esCancelable(e){
-   info.innerHTML+="Elemento: "+this+((e.cancelable)?" SI ":" NO ")+"<br>"
-   e.preventDefault()
-}  
-
-</script>
-
-</body> 
+      function esCancelable(e) {
+        info.innerHTML +=
+          "Elemento: " + this + (e.cancelable ? " SI " : " NO ") + "<br>";
+        e.preventDefault();
+      }
+    </script>
+  </body>
 </html>

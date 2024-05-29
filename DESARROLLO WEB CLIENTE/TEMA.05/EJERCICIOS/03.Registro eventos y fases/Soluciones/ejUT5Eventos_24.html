@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
- 
- <form>  
-   <label for="dosomasveces">Comes fruta 2 o mas veces</label><input type="checkbox" id="dosomasveces" name="dosomas veces" value="2 o mas veces">
- </form>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <form>
+      <label for="dosomasveces">Comes fruta 2 o mas veces</label>
+      <input
+        type="checkbox"
+        id="dosomasveces"
+        name="dosomasveces"
+        value="2 o mas veces"
+      />
+    </form>
 
-<div id="info"></div>
-<script>
-   let size=80
-   dosomasveces.addEventListener("click",anular)
-   function anular(e){
-      e.preventDefault()
-      info.innerHTML="NO me lo creo"
-      size+=20
-      info.style.fontSize=size+"%"
-   }
-</script>
-
-</body> 
+    <div id="info"></div>
+    <script>
+      let size = 80;
+      dosomasveces.addEventListener("click", anular);
+      function anular(e) {
+        e.preventDefault();
+        info.innerHTML = "NO me lo creo";
+        size += 20;
+        info.style.fontSize = size + "%";
+      }
+    </script>
+  </body>
 </html>

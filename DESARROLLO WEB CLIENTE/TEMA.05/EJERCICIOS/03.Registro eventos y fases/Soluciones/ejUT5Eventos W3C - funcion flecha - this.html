@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="info">Si me haces click cambio de color</p>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="info">Si me haces click cambio de color</p>
 
-<script>
-   window.addEventListener("load",iniciar)
-   function iniciar(){
-      info.addEventListener("click",()=>{
-         console.log(this) //-> this es window, no info
-         //this.style.backgroundColor="cyan" -> NO FUNCIONA
-
-      })
-   }
-</script>
-
-</body> 
+    <script>
+      window.addEventListener("load", iniciar);
+      function iniciar() {
+        info.addEventListener("click", () => {
+          //utilizado la función flecha NO funciona THIS
+          console.log(this); //-> this es window, no info
+          this.style.backgroundColor = "cyan"; //-> NO FUNCIONA
+        });
+      }
+    </script>
+  </body>
 </html>

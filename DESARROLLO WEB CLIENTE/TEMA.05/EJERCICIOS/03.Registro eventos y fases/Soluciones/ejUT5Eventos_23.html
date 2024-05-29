@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-<script>
-   window.addEventListener("load",iniciar)
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <script>
+      window.addEventListener("load", iniciar);
 
-   function iniciar(){
-        demo.addEventListener("mouseover",escribir)
-        demo.addEventListener("click",borrar)
-        boton.addEventListener("click",borrar)
-   }
-   
-   function escribir(){
-          demo2.innerHTML+="Eres el/la mejor"
-   }
-   
-   function borrar (){
-       demo.removeEventListener("mouseover",escribir)
-       demo2.innerHTML=""
-   }
-</script>
-   <p id="demo">Si pasas por encima de mi con el ratón(sin hacer click) se escribirá más abajo Eres el/la mejor. Si haces click sobre mí dejará de ocurrir esto.<br> </p>
-   
-   <p id="demo2"></p>
-   <button id="boton">Eliminar escritura</button>
+      function iniciar() {
+        demo.addEventListener("mouseover", escribir);
+        demo.addEventListener("click", borrar);
+        boton.addEventListener("click", borrar);
+      }
 
-</body> 
+      function escribir() {
+        demo2.innerHTML += "Eres el/la mejor";
+      }
+
+      function borrar() {
+        demo.removeEventListener("mouseover", escribir);
+        demo2.innerHTML = "";
+      }
+    </script>
+    <p id="demo">
+      Si pasas por encima de mi con el ratón(sin hacer click) se escribirá más
+      abajo Eres el/la mejor. Si haces click sobre mí dejará de ocurrir esto.<br />
+    </p>
+
+    <p id="demo2"></p>
+    <button id="boton">Eliminar escritura</button>
+  </body>
 </html>

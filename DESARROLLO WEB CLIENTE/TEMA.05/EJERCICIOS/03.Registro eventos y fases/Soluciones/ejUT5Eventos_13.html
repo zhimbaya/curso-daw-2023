@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo">Contador<br> </p>
-   <A href="https://www.google.es" onclick="return chequearEdad()">Pagina pesada</a>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo">Contador<br /></p>
+    <a href="https://www.google.es" onclick="return chequearEdad()">Pagina pesada</a>
 
-<script>
-   function chequearEdad() {
-      let edad=parseInt(prompt("Indica tu edad: "))
-      if (edad <18){
-         alert("No puedes utilizar esta página")
-         return false
-      } 
-      return true
-   }
-   
-</script>
-
-</body> 
+    <script>
+      function chequearEdad() {
+        let edad = parseInt(prompt("Indica tu edad: "));
+        if (edad < 18) {
+          alert("No puedes utilizar esta página");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
 </html>

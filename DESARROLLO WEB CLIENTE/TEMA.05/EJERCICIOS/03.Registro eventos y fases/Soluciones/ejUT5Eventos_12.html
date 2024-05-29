@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo">Contador<br> </p>
-   <A href="https://www.google.es" onclick="return confirmar()">Pagina pesada</a>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo">Contador<br /></p>
+    <a href="https://www.google.es" onclick="return confirmar()">Página pesada</a>
 
-<script>
-   function confirmar() {
-      return confirm("¿Estás seguro de que deseas abrir la página?")
-   }
-</script>
-
-</body> 
+    <script>
+      function confirmar() {
+        //return confirm("¿Estás seguro de que deseas abrir la página?");
+        alert("Solo el alert!!");
+        return false;
+      }
+    </script>
+  </body>
 </html>
