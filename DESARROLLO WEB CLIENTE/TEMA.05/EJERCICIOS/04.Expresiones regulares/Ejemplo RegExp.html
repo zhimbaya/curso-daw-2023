@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-	<label for="area">Introduce el texto: </label><textarea id="area"></textarea><br>
-	<label for="patron">Introduce el patrón a buscar: </label><input type="text" id="patron"><br>
-	<input type="button" id="bBuscar" value="Buscar">
-    <br>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <label for="area">Introduce el texto: </label>
+	<textarea id="area"></textarea><br />
+    <label for="patron">Introduce el patrón a buscar: </label>
+	<input type="text" id="patron" /><br />
+    <input type="button" id="bBuscar" value="Buscar" />
+    <br />
     <p id="info"></p>
 
-<script>
+    <script>
+      bBuscar.addEventListener("click", function () {
+        let patronExpr = patron.value;
+        let expr = new RegExp(patronExpr, "gi");
+        //let expr="/"+patron.value+"/gi"; -> NO SE PUEDE HACER
 
-	bBuscar.addEventListener("click",function (){
-		let patronExpr=patron.value;
-		let expr=new RegExp(patronExpr,"gi")
-		//let expr="/"+patron.value+"/gi"; -> NO SE PUEDE HACER
-
-		info.innerHTML=area.value.match(expr)
-		console.log(expr)
-		console.log(typeof expr)
-	})
-  
-</script>
-
-</body> 
+        info.innerHTML = area.value.match(expr);
+        console.log(expr);
+        console.log(typeof expr);
+      });
+    </script>
+  </body>
 </html>
