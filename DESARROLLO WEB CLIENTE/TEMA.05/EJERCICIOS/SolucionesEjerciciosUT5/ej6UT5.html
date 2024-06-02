@@ -1,42 +1,58 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title>DWEC05 - Trabajando con objetos input de tipo radio</title>
-<script type="text/javascript">
+  <head>
+    <meta charset="utf-8" />
+    <title>DWEC05 - Trabajando con objetos input de tipo radio</title>
+    <script type="text/javascript">
+      function mostrarDatos() {
+        demo.innerHTML =
+          "El numero de elementos radio es: " + formulario.actores.length;
+        for (var i = 0; i < formulario.actores.length; i++) {
+          if (formulario.actores[i].checked) alert(formulario.actores[i].value);
+        }
+        // Otra forma más breve: alert(formulario.actores.value);
+      }
+    </script>
+  </head>
+  <body>
+    <h1 id="demo">Trabajando con objetos input de tipo radio</h1>
 
-function mostrarDatos() {
-    demo.innerHTML="El numero de elementos radio es: "+formulario.actores.length;
-    for (var i=0;i<formulario.actores.length; i++) {
-         if (formulario.actores[i].checked)
-                 alert(formulario.actores[i].value);
-    }
-    // Otra forma más breve: alert(formulario.actores.value);
+    <form name="formulario" action="stooges.php">
+      <fieldset>
+        <legend>Selecciona tu actor favorito:</legend>
 
-}
-</script>
+        <input
+          type="radio"
+          name="actores"
+          id="actor-1"
+          value="Walter Bruce Willis - 19 de Marzo de 1955"
+          checked
+        />
+        <label for="actor-1">Willis</label>
 
-</head>
+        <input
+          type="radio"
+          name="actores"
+          id="actor-2"
+          value="James Eugene Jim Carrey - 17 de Enero de 1962"
+        />
+        <label for="actor-2">Carrey</label>
 
-<body>
-<h1 id="demo">Trabajando con objetos input de tipo radio</h1>
-
-<form name="formulario" action="stooges.php">
-
-<fieldset><legend>Selecciona tu actor favorito:</legend>
-
-<input type="radio" name="actores" id="actor-1" value="Walter Bruce Willis - 19 de Marzo de 1955" checked>
-<label for="actor-1">Willis</label>
-
-<input type="radio" name="actores" id="actor-2" value="James Eugene Jim Carrey - 17 de Enero de 1962">
-<label for="actor-2">Carrey</label>
-
-<input type="radio" name="actores" id="actor-3" value="Luis Tosar - 13 de Octubre de 1971">
-<label for="actor-3">Tosar</label>
-
-</fieldset>
-<input type="button" id="consultar" name="consultar" value="Consultar Más Datos" onclick="mostrarDatos()">
-</form>
-
-</body>
+        <input
+          type="radio"
+          name="actores"
+          id="actor-3"
+          value="Luis Tosar - 13 de Octubre de 1971"
+        />
+        <label for="actor-3">Tosar</label>
+      </fieldset>
+      <input
+        type="button"
+        id="consultar"
+        name="consultar"
+        value="Consultar Más Datos"
+        onclick="mostrarDatos()"
+      />
+    </form>
+  </body>
 </html>

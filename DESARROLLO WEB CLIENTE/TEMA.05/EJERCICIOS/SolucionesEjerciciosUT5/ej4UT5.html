@@ -1,55 +1,51 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo"></p>
-   <form name="datos_alumno" id="datos_alumno">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <form name="datos_alumno" id="datos_alumno">
+      <label for="nombre">Nombre: </label>
+      <input type="text" id="nombre" name="nombre" /><br />
 
-       <label for="nombre">Nombre: </label>
-       <input type="text" id="nombre" name="nombre"><br>
+      <label for="apellidos">Apellidos: </label>
+      <input type="text" id="apellidos" name="apellidos" /><br />
 
-       <label for="apellidos">Apellidos: </label>
-       <input type="text" id="apellidos" name="apellidos"><br>
+      <label for="dni">DNI: </label>
+      <input type="text" id="dni" name="dni" /><br />
 
-       <label for="dni">DNI: </label>
-       <input type="text" id="dni" name="dni"><br>
+      <label for="hombre">Hombre</label><br />
+      <input type="radio" id="hombre" name="sexo" value="Hombre" />
 
-       <label for="hombre">Hombre</label><br>
-       <input type="radio" id="hombre" name="sexo" value="Hombre">
+      <label for="mujer">Mujer</label><br />
+      <input type="radio" id="mujer" name="sexo" value="Mujer" /><br />
 
-       <label for="mujer">Mujer</label><br>
-       <input type="radio" id="mujer" name="sexo" value="Mujer"><br>
+      <input type="date" id="nacimiento" name="nacimiento" /><br /><br />
 
-       <input type="date" id="nacimiento" name="nacimiento" ><br><br>
-
-       <input type="button" onclick="resetearCadaElemJS();" value="Boton 1: Resetear cada elemento con JS"><br>
-
-       <input type="button" onclick="resetearTodoJS();" value="Boton 3: Resetear todo con reset() formulario"><br>
-
-       <input type="reset" value="Boton 2: Resetear todo con HTML"><br>
-
-   </form>
-<script>
-
-    function resetearCadaElemJS() {
-         var numElemForm=datos_alumno.length;
-	 var elementosFormulario=datos_alumno.elements;
-         document.getElementById("demo").innerHTML="El número de elementos del formulario es: " + numElemForm;
-         for (var i=0;i<numElemForm;i++) {
-               if (elementosFormulario[i].type=="text" || elementosFormulario[i].type=="date")
-                        elementosFormulario[i].value=""
-               if (elementosFormulario[i].type=="radio")
-                        elementosFormulario[i].checked=false;
-         }
-    }
-    function resetearTodoJS() {
-         datos_alumno.reset();
-    }
-
-</script>
-
-</body> 
+      <input type="button" onclick="resetearCadaElemJS();" value="Boton 1: Resetear cada elemento con JS"/><br />
+      <input type="button" onclick="resetearTodoJS();"value="Boton 3: Resetear todo con reset() formulario"/><br />
+      <input type="reset" value="Boton 2: Resetear todo con HTML" /><br />
+    </form>
+    <script>
+      function resetearCadaElemJS() {
+        var numElemForm = datos_alumno.length;
+        var elementosFormulario = datos_alumno.elements;
+        document.getElementById("demo").innerHTML = "El número de elementos del formulario es: " + numElemForm;
+        for (var i = 0; i < numElemForm; i++) {
+          if (
+            elementosFormulario[i].type == "text" ||
+            elementosFormulario[i].type == "date"
+          )
+            elementosFormulario[i].value = "";
+          if (elementosFormulario[i].type == "radio")
+            elementosFormulario[i].checked = false;
+        }
+      }
+      function resetearTodoJS() {
+        datos_alumno.reset();
+      }
+    </script>
+  </body>
 </html>

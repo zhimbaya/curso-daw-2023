@@ -1,55 +1,48 @@
-<!DOCTYPE  html>
+<!DOCTYPE html>
 
 <html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-<head>
+    <title>DWEC05 - Trabajando con un objeto Select</title>
+  </head>
 
-<meta  http-equiv="content-type"  content="text/html;charset=utf-8">
+  <body>
+    <h1 id="demo">Trabajando con un objeto Select</h1>
 
-<title>DWEC05 - Trabajando con un objeto Select</title>
+    <form id="formulario" action="pagina.php">
+      <p>
+        <label for="provincias">Seleccione provincia: </label>
 
+        <select name="provincias" id="provincias">
+          <option value="C">La Coruña</option>
+          <option value="LU">Lugo</option>
+          <option value="OU">Ourense</option>
+          <option value="PO">Pontevedra</option>
+        </select>
+      </p>
 
-</head>
+      Selecciona una opción y pulsa el botón.
 
-<body>
+      <input
+        type="button"
+        id="b_consultar"
+        name="boton"
+        value="Consultar información de la opción"
+      />
+    </form>
 
-<h1 id="demo">Trabajando con un objeto Select</h1>
+    <script type="text/javascript">
+      window.addEventListener("load", iniciar);
 
-<form id="formulario" action="pagina.php">
-
-<p><label for="provincias">Seleccione provincia: </label>
-
-<select name="provincias" id="provincias">
-
-<option value="C">La Coruña</option>
-<option value="LU">Lugo</option>
-<option value="OU">Ourense</option>
-<option value="PO">Pontevedra</option>
-
-</select></p>
-
-Selecciona una opción y pulsa el botón.
-
-<input type="button" id="b_consultar" name="boton" value="Consultar información de la opción"/>
-
-</form>
-
-<script  type="text/javascript">
-
-window.addEventListener("load",iniciar);
-
-function iniciar () {
-    b_consultar.addEventListener("click",consultar);
-}
-function consultar() {
-     
-     demo.innerHTML="La provincia seleccionada es: " + provincias.options[provincias.selectedIndex].text;
-
-}
-
-</script>
-
-</body>
-
+      function iniciar() {
+        b_consultar.addEventListener("click", consultar);
+      }
+      function consultar() {
+        demo.innerHTML =
+          "La provincia seleccionada es: " +
+          provincias.options[provincias.selectedIndex].text;
+      }
+    </script>
+  </body>
 </html>
-

@@ -1,35 +1,37 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo"></p>
-<form id="formulario">
-       <input type="radio" id="c_madrid" name="ciudad" value="Madrid">
-       <label for="c_madrid">Madrid</label><br>
-       <input type="radio" id="c_sevilla" name="ciudad" value="Sevilla" checked>
-       <label for="c_sevilla">Sevilla</label><br>
-       <input type="radio" id="c_cuenca" name="ciudad" value="Cuenca">
-       <label for="c_cuenca">Cuenca</label><br>
-   <input type="button" onclick="valores();" value="valores"><br>
-
-</form>
-
-<script>
-
-    function valores() {
-         var radios=formulario.ciudad;
-         demo.innerHTML="El número de elementos radio button es: " + radios.length+"<br>";
-         demo.innerHTML+="El radio seleccionado es "+radios.value+"<br>";
-	 for (var i=0;i<radios.length;i++) {
-		demo.innerHTML+="El radio button numero "+i+": checked vale "+radios[i].checked+" y defaultChecked vale "+radios[i].defaultChecked+"<br>";
-         }
-       }
-
-
-</script>
-
-</body> 
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <form id="formulario">
+      <input type="radio" id="c_madrid" name="ciudad" value="Madrid" />
+      <label for="c_madrid">Madrid</label><br />
+      <input type="radio" id="c_sevilla" name="ciudad" value="Sevilla" checked />
+      <label for="c_sevilla">Sevilla</label><br />
+      <input type="radio" id="c_cuenca" name="ciudad" value="Cuenca" />
+      <label for="c_cuenca">Cuenca</label><br />
+      <input type="button" onclick="valores();" value="valores" /><br />
+    </form>
+    <p id="demo"></p>
+    <script>
+      function valores() {
+        var radios = formulario.ciudad;
+        demo.innerHTML =
+          "El número de elementos radio button es: " + radios.length + "<br>";
+        demo.innerHTML += "El radio seleccionado es " + radios.value + "<br>";
+        for (var i = 0; i < radios.length; i++) {
+          demo.innerHTML +=
+            "El radio button numero " +
+            i +
+            ": checked vale = " +
+            radios[i].checked +
+            " y defaultChecked vale = " +
+            radios[i].defaultChecked +
+            "<br>";
+        }
+      }
+    </script>
+  </body>
 </html>
