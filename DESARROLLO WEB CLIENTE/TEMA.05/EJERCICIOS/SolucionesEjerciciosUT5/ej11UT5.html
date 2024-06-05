@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo"></p>
-   <form name="datos_salud" id="datos_salud">
-       <label for="dni">Introduce un DNI</label>
-       <input type="text" id="dni" name="dni" size="60" placeholder="NNNNNNNN-(X) (8 números, guión opcional y letra mayúscula)"><br>
-       <input type="button" id="comprobar" name="comprobar" value="Comprobar">
-   </form>
-<script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <form name="datos_salud" id="datos_salud">
+      <label for="dni">Introduce un DNI</label>
+      <input
+        type="text"
+        id="dni"
+        name="dni"
+        size="60"
+        placeholder="NNNNNNNN-(X) (8 números, guión opcional y letra mayúscula)"
+      /><br />
+      <input type="button" id="comprobar" name="comprobar" value="Comprobar" />
+    </form>
+    <script>
+      comprobar.addEventListener("click", validar);
 
-   comprobar.addEventListener("click",validar);
+      function validar() {
+        var patron = /^\d{8}-?[A-Z]{1}$/;
+        var letras = [
+          "T",
+          "R",
+          "W",
+          "A",
+          "G",
+          "M",
+          "Y",
+          "F",
+          "P",
+          "D",
+          "X",
+          "B",
+          "N",
+          "J",
+          "Z",
+          "S",
+          "Q",
+          "V",
+          "H",
+          "L",
+          "C",
+          "K",
+          "E",
+        ];
+        var numeroDNI;
+        var resto;
+        var letraDNI;
 
-   function validar () {
-      var patron=/^\d{8}-?[A-Z]{1}$/;
-      var letras=["T","R","W","A","G","M","Y","F","P","D","X","B","N","J","Z","S","Q","V","H","L","C","K","E"];
-      var numeroDNI;
-      var resto;
-      var letraDNI; 
-  
-         numeroDNI=parseInt(dni.value.substr(0,8));
+        letraDNI = dni.value.substr(dni.value.length - 1);
+        numeroDNI = parseInt(dni.value.substr(0, 8));
+        resto = numeroDNI % 23;
 
-         resto=numeroDNI%23;
-
-
-         letraDNI=dni.value.substr(dni.value.length-1);
-
-         if (patron.test(dni.value) && letraDNI==letras[resto]) {
-                      alert ("El dato introducido es correto");
-         } else {
-                      alert ("El dato introducido no es correto");
-         }
-   }
-
-</script>
-
-</body> 
+        if (patron.test(dni.value) && letraDNI == letras[resto]) {
+          alert("El dato introducido es correto");
+        } else {
+          alert("El dato introducido no es correto");
+        }
+      }
+    </script>
+  </body>
 </html>

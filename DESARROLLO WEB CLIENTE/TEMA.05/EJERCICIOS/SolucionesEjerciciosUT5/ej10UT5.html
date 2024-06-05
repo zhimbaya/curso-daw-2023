@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo"></p>
-   <form name="datos_salud" id="datos_salud">
-       <label for="ssn">Introduce un numero de seguridad social americano</label>
-       <input type="text" id="ssn" name="ssn" size="40" placeholder="NNN(-)NN(-)NNN (Guiones opcionales)"><br>
-       <input type="button" id="comprobar" name="comprobar" value="Comprobar">
-   </form>
-<script>
-   comprobar.addEventListener("click",validar);
-   ssn.addEventListener("click",borrar);
-   function validar () {
-      var patron=/^\d{3}[\s-]?\d{2}[\s-]?\d{3}$/;
-         if (patron.test(ssn.value)) {
-                      alert ("El dato introducido es correto");
-         } else {
-                      alert ("El dato introducido no es correto");
-                      ssn.focus();
-         }
-   }
-   function borrar () {
-//         ssn.value="";
-   }
-</script>
-
-</body> 
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <form name="datos_salud" id="datos_salud">
+      <label for="ssn">Introduce un numero de seguridad social americano</label>
+      <input
+        type="text"
+        id="ssn"
+        name="ssn"
+        size="40"
+        placeholder="NNN(-)NN(-)NNN (Guiones opcionales)"
+      /><br />
+      <input type="button" id="comprobar" name="comprobar" value="Comprobar" />
+    </form>
+    <script>
+      comprobar.addEventListener("click", validar);
+      ssn.addEventListener("click", borrar);
+      function validar() {
+        var patron = /^\d{3}[\s-]?\d{2}[\s-]?\d{3}$/;
+        if (patron.test(ssn.value)) {
+          alert("El dato introducido es correto");
+        } else {
+          alert("El dato introducido no es correto");
+          ssn.focus();
+        }
+      }
+      function borrar() {
+        //         ssn.value="";
+      }
+    </script>
+  </body>
 </html>

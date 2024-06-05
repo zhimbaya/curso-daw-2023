@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UT5 - Ejercicio 8b</title>
-</head>
-<body>
-  <form id="formulario">
-    <label for="provincias">Provincias Castilla La Mancha</label>
-    <select name="provincias" id="provincias" multiple>
-      <option value="guadalajara">Guadalajara</option>
-      <option value="cuenca">Cuenca</option>
-      <option value="albacete">Albacete</option>
-      <option value="ciudad_real">Ciudad Real</option>
-      <option value="toledo">Toledo</option>
-    </select>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UT5 - Ejercicio 8b</title>
+  </head>
+  <body>
+    <form id="formulario">
+      <label for="provincias">Provincias Castilla La Mancha</label>
+      <select name="provincias" id="provincias" multiple>
+        <option value="guadalajara">Guadalajara</option>
+        <option value="cuenca">Cuenca</option>
+        <option value="albacete">Albacete</option>
+        <option value="ciudad_real">Ciudad Real</option>
+        <option value="toledo">Toledo</option>
+      </select>
 
-    <input id="consultarProvincia" type="button" value="Provincia">
-  </form>
+      <input id="consultarProvincia" type="button" value="Provincia" />
+    </form>
 
-  <h2 id="demo1"></h2>
-  <h2 id="demo2"></h2>
+    <h2 id="demo1"></h2>
+    <h2 id="demo2"></h2>
 
-<script>
-  document.getElementById("consultarProvincia").addEventListener("click", function() {
-    document.getElementById("demo1").innerHTML = "";
-    document.getElementById("demo2").innerHTML = "";
+    <script>
+      document
+        .getElementById("consultarProvincia")
+        .addEventListener("click", function () {
+          document.getElementById("demo1").innerHTML = "";
+          document.getElementById("demo2").innerHTML = "";
 
-    let selectProvincias = document.getElementById("provincias");
+          let selectProvincias = document.getElementById("provincias");
 
-    let opcionesSeleccionadas = selectProvincias.selectedOptions;
+          let opcionesSeleccionadas = selectProvincias.selectedOptions;
 
-    for (let i = 0; i < opcionesSeleccionadas.length; i++) {
-      document.getElementById("demo1").innerHTML += opcionesSeleccionadas[i].text + "<br>";
-    }
+          for (let i = 0; i < opcionesSeleccionadas.length; i++) {
+            document.getElementById("demo1").innerHTML +=
+              opcionesSeleccionadas[i].text + "<br>";
+          }
 
-    let selectProvinciasArray = selectProvincias.options;
+          let selectProvinciasArray = selectProvincias.options;
 
-    for (let i = 0; i < selectProvinciasArray.length; i++) {
-      if (selectProvinciasArray[i].selected) {
-        document.getElementById("demo2").innerHTML += selectProvinciasArray[i].value + "<br>";
-      }
-      
-    }
-  });
-</script>
-</body>
+          for (let i = 0; i < selectProvinciasArray.length; i++) {
+            if (selectProvinciasArray[i].selected) {
+              document.getElementById("demo2").innerHTML +=
+                selectProvinciasArray[i].value + "<br>";
+            }
+          }
+        });
+    </script>
+  </body>
 </html>
