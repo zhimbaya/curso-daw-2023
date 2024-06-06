@@ -1,30 +1,25 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo"></p>
- <form id="formulario">
-   <label for="caja">Introduce 8 caracteres: </label>
-   <input type="text" id="caja" name="caja"><br>
-   <input type="button" id="boton" value="Validar"><br>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <form id="formulario">
+      <label for="caja">Introduce 8 caracteres: </label>
+      <input type="text" id="caja" name="caja" maxlength="8"/><br />
+      <input type="button" id="boton" value="Validar" /><br />
+    </form>
 
-</form>
+    <script>
+      boton.addEventListener("click", validar);
 
-<script>
-
-boton.addEventListener("click",validar);
-
-function validar() {
-    var patron=/^[^\s]{8}$/;
-    if (patron.test(caja.value)) alert("El texto es correcto");
-    else alert("El texto es incorrecto");
-}
-
-
-</script>
-
-</body> 
+      function validar() {
+        var patron = /^[^\s]{8}$/;
+        if (patron.test(caja.value)) alert("El texto es correcto");
+        else alert("El texto es incorrecto");
+      }
+    </script>
+  </body>
 </html>

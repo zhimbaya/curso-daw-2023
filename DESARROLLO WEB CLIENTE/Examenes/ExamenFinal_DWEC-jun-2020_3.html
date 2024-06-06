@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Contraseña</title>
+    <script>
+        function comprobarPassword() {
+            const passwordInput = document.getElementById('password');
+            const password = passwordInput.value;
+            const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4}$/;
+
+            if (regex.test(password)) {
+                alert("Password válido");
+            } else {
+                alert("Password No válido");
+                passwordInput.focus();
+            }
+        }
+
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.getElementById('togglePassword');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleButton.textContent = "Ocultar password";
+            } else {
+                passwordInput.type = "password";
+                toggleButton.textContent = "Ver password";
+            }
+        }
+
+        function guardarNombre() {
+            const nombreInput = document.getElementById('nombre');
+            sessionStorage.setItem('nombre', nombreInput.value);
+        }
+
+        function recuperarNombre() {
+            const nombre = sessionStorage.getItem('nombre');
+            if (nombre) {
+                document.getElementById('nombre').value = nombre;
+            } else {
+                alert("No hay nombre guardado");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return false;">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre">
+        <br><br>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" maxlength="4">
+        <br><br>
+        <button type="button" onclick="comprobarPassword()">Comprobar password</button>
+        <button type="button" id="togglePassword" onclick="togglePasswordVisibility()">Ver password</button>
+        <br><br>
+        <button type="button" onclick="guardarNombre()">Guardar Nombre</button>
+        <button type="button" onclick="recuperarNombre()">Recuperar Nombre</button>
+    </form>
+</body>
+</html>

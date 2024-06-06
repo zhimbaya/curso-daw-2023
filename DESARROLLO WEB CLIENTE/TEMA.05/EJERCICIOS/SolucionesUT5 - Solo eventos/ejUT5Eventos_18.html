@@ -1,77 +1,48 @@
-<!DOCTYPE  html>
-
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>Uso de la palabra reservada this</title>
+  </head>
+  <body>
+    <h1>Trabajando con this</h1>
+    <form id="formulario" action="pagina.php">
+      <p>
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre" value="Constantino" />
+        <label for="apellidos">Apellidos: </label>
+        <input type="text" name="apellidos" id="apellidos" value="Veiga Perez"/>
+        <label for="edad">Edad: </label>
+        <input type="password" name="edad" id="edad" value="55" />
+        <label for="pais">Pais: </label>
+        España <input type="radio" name="pais" id="pais1" value="ES" /> 
+        Francia <input type="radio" name="pais" id="pais2" value="FR" />
+      </p>
+      Haga clic en cada uno de los campos para ver más información.
+    </form>
+    <script type="text/javascript">
+      nombre.onclick = identificar;
+      apellidos.onclick = identificar;
+      edad.onclick = identificar;
+      pais1.onclick = identificar;
+      pais2.onclick = identificar;
 
-<head>
-
-<meta  http-equiv="content-type"  content="text/html;charset=utf-8">
-
-<title>Uso de la palabra reservada this</title>
-
-
-</head>
-
-<body>
-
-<h1>Trabajando con this</h1>
-
-<form id="formulario" action="pagina.php">
-
-<p>
-
-<label for="nombre">Nombre: </label>
-
-<input type="text" name="nombre" id="nombre" value="Constantino"/>
-
-<label for="apellidos">Apellidos: </label>
-
-<input type="text" name="apellidos" id="apellidos" value="Veiga Perez"/>
-
-<label for="edad">Edad: </label>
-
-<input type="password" name="edad" id="edad" value="55"/>
-
-<label for="pais">Pais: </label>
-
-España <input type="radio" name="pais" id="pais1" value="ES"/>
-
-Francia <input type="radio" name="pais" id="pais2" value="FR"/>
-
-</p>
-
-Haga clic en cada uno de los campos para ver más información.
-
-</form>
-
-<script  type="text/javascript">
-
-nombre.onclick=identificar;
-apellidos.onclick=identificar;
-edad.onclick=identificar;
-pais1.onclick=identificar;
-pais2.onclick=identificar;
-
-function identificar()
-
-{
-
-     var atrName=this.name;
-
-     var atrId=this.id;
-
-     var atrValue=this.value;
-
-     var atrType=this.type;
-
-     
-
-     alert("Datos del campo pulsado:\n\nName: "+atrName+"\nID: "+atrId+"\nValue: "+atrValue+"\nType: "+atrType);
-
-}
-
-</script>
-
-</body>
-
+      function identificar() {
+        var atrName = this.name;
+        var atrId = this.id;
+        var atrValue = this.value;
+        var atrType = this.type;
+        alert(
+          "Datos del campo pulsado:\n\nName: " +
+            atrName +
+            "\nID: " +
+            atrId +
+            "\nValue: " +
+            atrValue +
+            "\nType: " +
+            atrType
+        );
+      }
+    </script>
+  </body>
 </html>
-

@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo"></p>
-   <form name="datos" id="datos">
-       <label for="fecha">Introduce una fecha</label>
-       <input type="text" id="fecha" name="fecha" size="60" placeholder="dd-mm-aaaa"><br>
-       <input type="button" id="comprobar" name="comprobar" value="Comprobar">
-   </form>
-<script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <form name="datos" id="datos">
+      <label for="fecha">Introduce una fecha</label>
+      <input
+        type="text"
+        id="fecha"
+        name="fecha"
+        size="60"
+        placeholder="dd-mm-aaaa"
+      /><br />
+      <input type="button" id="comprobar" name="comprobar" value="Comprobar" />
+    </form>
+    <script>
+      comprobar.addEventListener("click", validar);
 
-   comprobar.addEventListener("click",validar);
+      function validar() {
+        var patron = /^\d{2}-\d{2}-\d{4}$/;
+        var dia, mes, anio;
 
-   function validar () {
-      var patron=/^\d{2}-\d{2}-\d{4}$/;
-      var dia, mes, anio;
-
-         if (patron.test(fecha.value)) {
-                      dia=parseInt(fecha.value.substr(0,2));
-                      mes=parseInt(fecha.value.substr(3,5));
-                      anio=parseInt(fecha.value.substr(6,10));
-                      alert(dia);
-                      alert(mes);
-                      alert(anio);
-                      if (dia<32 && dia>0 && mes<13 && mes>0 && anio>0) {
-                                             alert ("El dato introducido es correcto");
-                      }
-         } else {
-                      alert ("El dato introducido no es correto");
-         }
-   }
-
-</script>
-
-</body> 
+        if (patron.test(fecha.value)) {
+          dia = parseInt(fecha.value.substr(0, 2));
+          mes = parseInt(fecha.value.substr(3, 5));
+          anio = parseInt(fecha.value.substr(6, 10));
+          alert(dia);
+          alert(mes);
+          alert(anio);
+          if (dia < 32 && dia > 0 && mes < 13 && mes > 0 && anio > 0) {
+            alert("El dato introducido es correcto");
+          }
+        } else {
+          alert("El dato introducido no es correto");
+        }
+      }
+    </script>
+  </body>
 </html>

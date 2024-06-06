@@ -1,30 +1,18 @@
 <!DOCTYPE  html>
-
 <html>
-
 <head>
-
 <meta  http-equiv="content-type"  content="text/html;charset=utf-8">
-
 <title>Uso de la palabra reservada this</title>
-
 </head>
-
 <body>
-
 <p id="demo">Si pasas por encima de mi se escribirá más abajo Eres el/la mejor. Si haces click sobre mí dejará de ocurrir esto.</p>
 <p id="demo2"></p>
-
-
 </form>
-
 <button name="demo3" id="demo3">Para</button>
-
 <script  type="text/javascript">
 demo.addEventListener("mouseover",funcion,false);
 demo.addEventListener("click",eliminar,false);
 demo3.addEventListener("click",eliminar,false);
-
 function funcion(){
      demo2.innerHTML+="Eres el/la mejor ";
 }
@@ -32,10 +20,7 @@ function eliminar(){
      demo.removeEventListener("mouseover",funcion,false);
      demo2.innerHTML="";
 }
-
-
 </script>
 </body>
-
 </html>
 

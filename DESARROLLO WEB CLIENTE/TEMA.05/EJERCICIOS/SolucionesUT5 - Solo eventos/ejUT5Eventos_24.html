@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo"></p>
-   <form name="datos_salud" id="datos_salud">
-       <label for="fruta">¿Comes fruta 2 veces al día o más?</label>
-       <input type="checkbox" id="fruta" name="fruta" value="fruta" ><br>
-
-   </form>
-<script>
-
-fruta.addEventListener("click",informa);
-var tamaño=80;
-function informa (e) { 
-	demo.innerHTML="NO me lo creo";
-	tamaño+=20;
-	demo.style.fontSize=tamaño+"%";
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <form name="datos_salud" id="datos_salud">
+      <label for="fruta">¿Comes fruta 2 veces al día o más?</label>
+      <input type="checkbox" id="fruta" name="fruta" value="fruta" /><br />
+    </form>
+    <script>
+      fruta.addEventListener("click", informa);
+      var tamaño = 80;
+      function informa(e) {
+        demo.innerHTML = "NO me lo creo";
+        tamaño += 20;
+        demo.style.fontSize = tamaño + "%";
         e.preventDefault();
-}
-
-</script>
-
-</body> 
-</html>>
+      }
+    </script>
+  </body>
+</html>

@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
-   <p id="demo"></p>
-   <form name="datos" id="datos">
-       <label for="fecha">Introduce una fecha</label>
-       <input type="text" id="fecha" name="fecha" size="60" placeholder="dd-mm-aaaa"><br>
-       <input type="button" id="comprobar" name="comprobar" value="Comprobar">
-   </form>
-<script>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+    <form name="datos" id="datos">
+      <label for="fecha">Introduce una fecha</label>
+      <input
+        type="text"
+        id="fecha"
+        name="fecha"
+        size="60"
+        placeholder="dd-mm-aaaa"
+      /><br />
+      <input type="button" id="comprobar" name="comprobar" value="Comprobar" />
+    </form>
+    <script>
+      comprobar.addEventListener("click", validar);
 
-   comprobar.addEventListener("click",validar);
+      function validar() {
+        var patron = /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-[\d]{4}$/;
 
-   function validar () {
-      var patron=/^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-[\d]{4}$/;
-
-         if (patron.test(fecha.value)) {
-                      alert ("El dato introducido es correcto");
-         } else {
-                      alert ("El dato introducido no es correto");
-         }
-   }
-
-</script>
-
-</body> 
+        if (patron.test(fecha.value)) {
+          alert("El dato introducido es correcto");
+        } else {
+          alert("El dato introducido no es correto");
+        }
+      }
+    </script>
+  </body>
 </html>
