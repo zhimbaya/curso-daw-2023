@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+<p id="demo"></p>
+<script>
+    var d=new Date();
+    const diasSemana=["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"];
+    const meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+    document.getElementById("demo").innerHTML+=
+      "Fecha actual  - toDateString :  "  + d.toDateString() + "<br><br>" + 
+      "Fecha y hora actual con formato estandard ISO - toISOString :  " + d.toISOString() + "<br><br>" +
+      "Fecha y hora actual Greenwich - toUTCString (devuelve lo mismo que lo anterior pero sin formato ISO):  " + d.toUTCString() + "<br><br>" +
+      "Hora en milisegundos :  " +d.getTime() + "<br><br>" 
+      + "Año completo :  " +d.getFullYear() + "<br><br>" 
+      + "Mes :  " +meses[d.getMonth()] + "<br><br>" 
+      + "Dia del mes :  " +d.getDate() + "<br><br>" 
+      + "Dia de la semana :  " +diasSemana[d.getDay()] + "<br><br>" 
+      + "Hora :  " +d.getHours() + "<br><br>" 
+      + "Minutos :" +d.getMinutes() + "<br><br>" 
+      + "Segundos :" +d.getSeconds() + "<br>" 
+
+</script>
+</body> 
+</html>

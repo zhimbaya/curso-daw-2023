@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unidad 3 : Tarea 15</title>
+</head>
+<body>
+<p id="demo"></p>
+<script>
+    /*
+    15. Saca en la página HTML cuál de las dos fechas es mayor.
+     */
+
+    var d1 = new Date();
+    var d2 = new Date();
+    d2.setDate(d2.getDate()+5);
+
+    demo.innerHTML+="d1 vale "+d1.toString()+"<br>";
+    demo.innerHTML+="d2 vale "+d2.toString()+"<br><br>";
+    if(d1 > d2) {
+        demo.innerHTML+="d1 es mayor "+d1.toString()+"<br>";
+    } else {  // comparing by miliseconds to 1970
+	        demo.innerHTML+="d2 es mayor "+d2.toString()+"<br>";
+    }  
+
+</script>
+
+
+</body>
+</html>
