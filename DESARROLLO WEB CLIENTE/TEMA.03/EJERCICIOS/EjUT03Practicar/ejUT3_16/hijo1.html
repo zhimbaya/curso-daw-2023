@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <title>Hijo1</title>
+</head>
+<body>
+    <input name="texto2" id="texto2" type="text" placeholder="Inserta texto" /><br/><br/>
+    <input type="button" name="mh1p" value="Mandar a Padre" onclick="mandarAPadre();"><br/><br/>
+    <input type="button" name="mh1h2" value="Mandar a Hermano" onclick="mandarAHermano();"><br/><br/>
+
+    <script>
+        function mandarAPadre() {
+            opener.document.getElementById("texto1").value = document.getElementById("texto2").value;
+        }
+        function mandarAHermano() {
+            opener.h2.document.getElementById("texto3").value = document.getElementById("texto2").value;
+        }
+     </script>
+</body>
+</html>

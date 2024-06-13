@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <title>Padre</title>
+</head>
+<body>
+    <input name="texto1" id="texto1" type="text" placeholder="Inserta texto" /><br/><br/>
+    <input type="button" name="crv1" value="Crear ventana 1" onclick="crearVentana1();"><br/><br/>
+    <input type="button" name="cev1" value="Cerrar ventana 1" onclick="cerrarVentana1();"><br/><br/>
+    <input type="button" name="crv2" value="Crear ventana 2" onclick="crearVentana2();"><br/><br/>
+    <input type="button" name="cev2" value="Cerrar ventana 2" onclick="cerrarVentana2();"><br/><br/>
+    <input type="button" name="mph1" value="Mandar a Hijo 1" onclick="mandarAHijo1();"><br/><br/>
+    <input type="button" name="mph2" value="Mandar a Hijo 2" onclick="mandarAHijo2();"><br/><br/>
+
+    <script>
+        var h1;   //Ventana del hijo 1
+        var h2;   //Ventana del hijo 2
+
+        function crearVentana1() {
+            h1 = window.open("hijo1.html");
+        }
+        function cerrarVentana1() {
+            h1.close();
+        }
+
+        function crearVentana2() {
+            h2 = window.open("hijo2.html");
+        }
+        function cerrarVentana2() {
+            h2.close();
+        }
+        function mandarAHijo1() {
+            h1.document.getElementById("texto2").value = document.getElementById("texto1").value;
+        }
+        function mandarAHijo2() {
+            h2.document.getElementById("texto3").value = document.getElementById("texto1").value;
+        }
+    </script>
+</body>
+</html>

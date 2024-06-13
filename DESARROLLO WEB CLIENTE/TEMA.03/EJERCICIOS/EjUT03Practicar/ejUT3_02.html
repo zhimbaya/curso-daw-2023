@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplo</title>
+  </head>
+  <body>
     <button onclick="crear()">Crear</button>
     <button onclick="mover()">Mover</button>
     <button onclick="parar()">Parar</button>
     <div id="demo"></div>
-    
-<script>
-    var stop;
-    function crear () {
-      v1 = window.open("","nueva","height=300,width=600");
-    }
-    function mover () {
-      v1.focus();
-      stop = setInterval("v1.moveBy(5,5)",100);
-    }
-    function parar () {
-      clearInterval(stop);
-      v1.focus();
-    }
-</script>
-</body> 
+
+    <script>
+      var stop;
+      function crear() {
+        v1 = window.open("", "nueva", "height=300,width=600");
+      }
+      function mover() {
+        v1.focus();
+        stop = setInterval("v1.moveBy(5,5)", 100);
+      }
+      function parar() {
+        clearInterval(stop);
+        v1.focus();
+      }
+    </script>
+  </body>
 </html>

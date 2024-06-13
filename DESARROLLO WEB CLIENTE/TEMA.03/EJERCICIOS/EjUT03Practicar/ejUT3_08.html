@@ -1,73 +1,107 @@
 <!DOCTYPE html>
 <html lang="es-ES">
-<head>
-<meta charset="UTF-8">
-<title>ej 8 y 9</title>
-</head>
-<body>
-	
-	<input type="button" value="Posición de primera &quot;o&quot; " onclick="posicionIndexOf()" >
-	<input type="button" value="Posición de última &quot;o&quot; " onclick="posicionLastIndexOf()" >
-	<input type="button" value="Posición  &quot;o&quot; desde la tercera posición" onclick="posicionIndexOf3()" >
-	<input type="button" value="Posición de primera &quot;o&quot con search" onclick="posicionSearch()" >
-	<input type="button" value="Posición de primera &quot;o&quot con search desde tercera" onclick="posicionSearch3()" >
-	<input type="button" value="Texto entre 5-9" onclick="posicionSlice()" >
-	<input type="button" value="Texto entre 5-6 contando desde el final	" onclick="posicionSliceFinal()" >
-	<input type="button" value="Texto entre 5-6 con substring	" onclick="textoSubstring()" >
-	<input type="button" value="Cambia 19	" onclick="sustituye19()" >
-	<input type="button" value="Cambia Hola	" onclick="sustituyeHola()" >
-	<input type="button" value="Cambia a MAYÚSCULAS	" onclick="sustituyeMayusc()" >
-	<input type="button" value="Cambia a minúsculas	" onclick="sustituyeMinusc()" >
-	<input type="button" value="Array por palabras	" onclick="gestionArray()" >
-	
-    <script>
-	var texto = "Hola tengo 19 años";
-	var arr;
+  <head>
+    <meta charset="UTF-8" />
+    <title>ej 8 y 9</title>
+  </head>
+  <body>
+    <input
+      type="button"
+      value='Posición de primera "o" '
+      onclick="posicionIndexOf()"
+    />
+    <input
+      type="button"
+      value='Posición de última "o" '
+      onclick="posicionLastIndexOf()"
+    />
+    <input
+      type="button"
+      value='Posición  "o" desde la tercera posición'
+      onclick="posicionIndexOf3()"
+    />
+    <input
+      type="button"
+      value='Posición de primera "o&quot con search'
+      onclick="posicionSearch()"
+    />
+    <input
+      type="button"
+      value='Posición de primera "o&quot con search desde tercera'
+      onclick="posicionSearch3()"
+    />
+    <input type="button" value="Texto entre 5-9" onclick="posicionSlice()" />
+    <input
+      type="button"
+      value="Texto entre 5-6 contando desde el final	"
+      onclick="posicionSliceFinal()"
+    />
+    <input
+      type="button"
+      value="Texto entre 5-6 con substring	"
+      onclick="textoSubstring()"
+    />
+    <input type="button" value="Cambia 19	" onclick="sustituye19()" />
+    <input type="button" value="Cambia Hola	" onclick="sustituyeHola()" />
+    <input
+      type="button"
+      value="Cambia a MAYÚSCULAS	"
+      onclick="sustituyeMayusc()"
+    />
+    <input
+      type="button"
+      value="Cambia a minúsculas	"
+      onclick="sustituyeMinusc()"
+    />
+    <input type="button" value="Array por palabras	" onclick="gestionArray()" />
 
-	function posicionIndexOf(){
-		alert(texto.indexOf('o'));
-	}
-	function posicionLastIndexOf(){
-		alert(texto.lastIndexOf('o'));
-	}
-	function posicionIndexOf3(){
-		alert(texto.indexOf('o',3));
-	}
-	function posicionSearch(){
-		alert(texto.search("o"));	
-	}
-	function posicionSearch3(){
-		alert(texto.search("o"));	//no permite empezar desde una posición
-	}
-	function posicionSlice(){
-		alert(texto.slice(5,9));
-	}
-	function posicionSliceFinal(){
-		alert(texto.slice(-6,-5));
-	}
-	function textoSubstring(){
-		alert(texto.substring(-5,-6)); //no funciona con números negativos (con texto.length-5,	texto.length-6 si)
-	}
-	function sustituye19(){
-		alert(texto.replace("19","diecinueve"));
-	}
-	function sustituyeHola(){
-		alert(texto.replace(/hola/gi,"Buenos días"));
-	}
-	function sustituyeMayusc(){
-		alert(texto.toUpperCase());
-	}
-	function sustituyeMinusc(){
-		alert(texto.toLowerCase());
-	}
-	function gestionArray(){
-		arr = texto.split(' ');
-		//alert(arr);
-		for(var i=0;i<arr.length;i++)
-		{
-			alert(arr[i]);	
-		}
-	}
+    <script>
+      var texto = "Hola tengo 19 años";
+      var arr;
+
+      function posicionIndexOf() {
+        alert(texto.indexOf("o"));
+      }
+      function posicionLastIndexOf() {
+        alert(texto.lastIndexOf("o"));
+      }
+      function posicionIndexOf3() {
+        alert(texto.indexOf("o", 3));
+      }
+      function posicionSearch() {
+        alert(texto.search("o"));
+      }
+      function posicionSearch3() {
+        alert(texto.search("o")); //no permite empezar desde una posición
+      }
+      function posicionSlice() {
+        alert(texto.slice(5, 9));
+      }
+      function posicionSliceFinal() {
+        alert(texto.slice(-6, -5));
+      }
+      function textoSubstring() {
+        alert(texto.substring(-5, -6)); //no funciona con números negativos (con texto.length-5,	texto.length-6 si)
+      }
+      function sustituye19() {
+        alert(texto.replace("19", "diecinueve"));
+      }
+      function sustituyeHola() {
+        alert(texto.replace(/hola/gi, "Buenos días"));
+      }
+      function sustituyeMayusc() {
+        alert(texto.toUpperCase());
+      }
+      function sustituyeMinusc() {
+        alert(texto.toLowerCase());
+      }
+      function gestionArray() {
+        arr = texto.split(" ");
+        //alert(arr);
+        for (var i = 0; i < arr.length; i++) {
+          alert(arr[i]);
+        }
+      }
     </script>
-</body>
+  </body>
 </html>
