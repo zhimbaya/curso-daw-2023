@@ -1,37 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UT2 Más ejercicios - Números 10</title>
-</head>
-<body>
-  <p id="demo1">Positivos</p>
-  <p id="demo2">Negativos</p>
-<script>
-  // 
-  var num = 0;
-  var contadorPos = 0;
-  var contadorNeg = 0;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UT2 Más ejercicios - Números 10</title>
+  </head>
+  <body>
+    <p id="demo1">Positivos</p>
+    <p id="demo2">Negativos</p>
+    <script>
+      //
+      var num = 0;
+      var contadorPos = 0;
+      var contadorNeg = 0;
 
-  do {
-    num = parseFloat(prompt("Introduzca un número\n\n(Número CERO para finalizar)"));
-    if (num > 0) {
-      contadorPos++;
-    }else if(num < 0){
-      contadorNeg++;
-    }
-  }while (num != 0);
+      do {
+        num = parseFloat(
+          prompt("Introduzca un número\n\n(Número CERO para finalizar)")
+        );
+        if (num > 0) {
+          contadorPos++;
+        } else if (num < 0) {
+          contadorNeg++;
+        }
+      } while (num != 0);
 
-  function histograma(num){
-    let histograma = "";
-    for (let i = 0; i < num; i++) {
-      histograma += "*"; 
-    }
-    return histograma;
-  }
-  document.getElementById("demo1").innerHTML = histograma(contadorPos) + " : " + contadorPos + " números positivos.";
-  document.getElementById("demo2").innerHTML = histograma(contadorNeg) + " : " + contadorNeg + " números negativos.";
-</script>
-</body>
+      function histograma(num) {
+        let histograma = "";
+        for (let i = 0; i < num; i++) {
+          histograma += "*";
+        }
+        return histograma;
+      }
+      document.getElementById("demo1").innerHTML =
+        histograma(contadorPos) + " : " + contadorPos + " números positivos.";
+      document.getElementById("demo2").innerHTML =
+        histograma(contadorNeg) + " : " + contadorNeg + " números negativos.";
+    </script>
+  </body>
 </html>

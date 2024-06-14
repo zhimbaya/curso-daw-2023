@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UT2 Más ejercicios - Números 3</title>
-</head>
-<body>
-  <h1>Datos</h1>
-  <label>
-    Número 1
-    <input type="text" name="num1" id="num1" value="8">
-  </label>
-  <br>
-  <button onclick="main()">Púlsame</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UT2 Más ejercicios - Números 3</title>
+  </head>
+  <body>
+    <h1>Datos</h1>
+    <label>
+      Número 1
+      <input type="text" name="num1" id="num1" value="8" />
+    </label>
+    <br />
+    <button onclick="main()">Púlsame</button>
 
-  <p id="demo">Holis</p>
+    <p id="demo">Result</p>
 
-<script>
-  function main() {
-    var num1 = parseFloat(document.getElementById("num1").value);
-    var resultado = "";
-    for(let i = 2; i <= 8; i += 2){
-      if(i != 6){
-        var division = num1 / i;
-        resultado += division + " , ";
+    <script>
+      function main() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var resultado = "";
+        for (let i = 2; i <= 8; i += 2) {
+          if (i != 6) {
+            var division = num1 / i;
+            resultado += division + " , ";
+          }
+          document.getElementById("demo").innerHTML = resultado;
+        }
       }
-      document.getElementById("demo").innerHTML = resultado;
-    }
-  }
-</script>
-</body>
+    </script>
+  </body>
 </html>

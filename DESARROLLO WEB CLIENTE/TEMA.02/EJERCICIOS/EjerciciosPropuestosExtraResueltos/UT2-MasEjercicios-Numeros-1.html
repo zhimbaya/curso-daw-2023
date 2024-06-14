@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UT2 Más ejercicios - Números 1</title>
-</head>
-<body>
-  <h1>Datos</h1>
-  <label>
-    Número 1
-    <input type="text" name="num1" id="num1" value="1">
-  </label>
-  <label>
-    Número 2
-    <input type="text" name="num2" id="num2" value="2">
-  </label>
-  <br>
-  <button onclick="main()">Púlsame</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UT2 Más ejercicios - Números 1</title>
+  </head>
+  <body>
+    <h1>Datos</h1>
+    <label>
+      Número 1
+      <input type="text" name="num1" id="num1" value="1" />
+    </label>
+    <label>
+      Número 2
+      <input type="text" name="num2" id="num2" value="2" />
+    </label>
+    <br />
+    <button onclick="main()">Púlsame</button>
 
-  <p id="demo">Holis</p>
+    <p id="demo">Resultado</p>
 
-<script>
-  function main() {
-    var num1 = parseFloat(document.getElementById("num1").value);
-    var num2 = parseFloat(document.getElementById("num2").value);
+    <script>
+      function main() {
+        var num1 = parseFloat(document.getElementById("num1").value);
+        var num2 = parseFloat(document.getElementById("num2").value);
 
-    var suma = num1 + num2;
+        var suma = num1 + num2;
 
-    document.getElementById("demo").innerHTML = suma;
-  }
-</script>
-</body>
+        document.getElementById("demo").innerHTML = suma;
+      }
+    </script>
+  </body>
 </html>
