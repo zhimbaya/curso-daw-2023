@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Unidad 4 : Tarea 3</title>
-    <meta name="author" content="Marvin Wenzel">
-</head>
-<body>
+    <meta name="author" content="Marvin Wenzel" />
+  </head>
+  <body>
     <h1>Comparar Numeros</h1>
     <fieldset>
-        <legend>NumComparador</legend>
-        <br/>
-        <label for="num1">Numero 1 </label>
-        <input id="num1" name="num1" type="number" step="1" required>
-        <br/><br/>
-        <label for="num2">Numero 2 </label>
-        <input id="num2" name="num2" type="number" step="1" required>
-        <br/><br/>
-        <button onclick="main();">Comparar Numeros</button>
+      <legend>NumComparador</legend>
+      <br />
+      <label for="num1">Numero 1 </label>
+      <input id="num1" name="num1" type="number" step="1" required />
+      <br /><br />
+      <label for="num2">Numero 2 </label>
+      <input id="num2" name="num2" type="number" step="1" required />
+      <br /><br />
+      <button onclick="main();">Comparar Numeros</button>
     </fieldset>
     <p id="resultado"></p>
 
-<script>
+    <script>
     /*
-  3. Crea una página HTML que pida dos números al usuario,
-  y que le indique cuál de esos dos números es menor.
-  Utiliza una función con dos argumentos.
-     */
+    3. Crea una página HTML que pida dos números al usuario,
+    y que le indique cuál de esos dos números es menor.
+    Utiliza una función con dos argumentos.
+    */
 
-    function compareNumbers(num1, num2) {
+      function compareNumbers(num1, num2) {
         var result;
 
         if (num1 > num2) {
-            result = "Num1 es mas grande : " + num1 + " \> " + num2;
-        }else if(num2 > num1) {
-            result = "Num2 es mas grande : " + num2 + " \> " + num1;
+          result = "Num1 es mas grande : " + num1 + " \> " + num2;
+        } else if (num2 > num1) {
+          result = "Num2 es mas grande : " + num2 + " \> " + num1;
         } else {
-            result = "los dos son iguales";
+          result = "los dos son iguales";
         }
         return result;
-    }
+      }
 
-    function main() {
+      function main() {
         var num1Input = document.getElementById("num1").value;
         var num2Input = document.getElementById("num2").value;
-        if(num1Input === "" || num2Input === "" ) {
-            document.getElementById("resultado").innerText = "No es un numero";
+        if (num1Input === "" || num2Input === "") {
+          document.getElementById("resultado").innerText = "No es un numero";
         } else {
-            document.getElementById("resultado").innerText = (compareNumbers(parseInt(num1Input), parseInt(num2Input)));
+          document.getElementById("resultado").innerText = compareNumbers(
+            parseInt(num1Input),
+            parseInt(num2Input)
+          );
         }
-     }
-</script>
-</body>
+      }
+    </script>
+  </body>
 </html>

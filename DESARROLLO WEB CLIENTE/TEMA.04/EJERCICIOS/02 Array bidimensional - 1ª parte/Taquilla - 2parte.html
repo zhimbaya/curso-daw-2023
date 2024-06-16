@@ -6,10 +6,16 @@
   </head>
   <body>
     <p id="demo"></p>
-
     <script>
       var taquillas = []; // new Array();
       var numTaquillasLibres = 0;
+      
+      for (let altura = 0; altura < 10; altura++) {
+        taquillas[altura] = new Array(4);
+        for (let posTaquilla = 0; posTaquilla < 4; posTaquilla++) {
+          taquillas[altura][posTaquilla] = "";
+        }
+      }
 
       function ocupaTaqAleat(numTaquillas) {
         let altAleat = 0;
@@ -18,15 +24,7 @@
         for (let i = 0; i < numTaquillas; i++) {
           altAleat = Math.floor(Math.random() * 10);
           posTaqAleat = Math.floor(Math.random() * 4);
-
           taquillas[altAleat][posTaqAleat] = "usu" + (i + 1);
-        }
-      }
-
-      for (let altura = 0; altura < 10; altura++) {
-        taquillas[altura] = new Array(4);
-        for (let posTaquilla = 0; posTaquilla < 4; posTaquilla++) {
-          taquillas[altura][posTaquilla] = "";
         }
       }
 
@@ -41,7 +39,6 @@
           }
         }
       }
-
       demo.innerHTML = "Hay " + numTaquillasLibres + " libres<br>";
     </script>
   </body>

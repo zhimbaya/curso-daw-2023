@@ -10,13 +10,13 @@
     <script>
       console.log(grupoSH);
       info.innerHTML +=
-        "El nombre del grupo de superheroes es: " + grupoSH["formed"] + "<br>";
+        "El año del grupo de superheroes es: " + grupoSH["formed"] + "<br>";
       info.innerHTML +=
         "El numero de miembros del grupo de superheroes es: " +
         grupoSH.members.length +
         "<br>";
 
-      grupoSH.members.forEach((item) => {
+      grupoSH.members.forEach(function (item) {
         if (item.name == "Eternal Flame") {
           info.innerHTML +=
             "La edad del superheroe Eternal Flame es: " + item.age + "<br>";
@@ -31,7 +31,8 @@
      	})
      })*/
       grupoSH.members.forEach((miembro) => {
-        if (miembro.powers.indexOf("Radiation blast") != -1) {
+        //if (miembro.powers.indexOf("Radiation blast") != -1) {
+        if (miembro.powers.includes("Radiation blast")) {
           info.innerHTML +=
             "El nombre del superheroe que tiene el poder Radiation Blast es: " +
             miembro.name +

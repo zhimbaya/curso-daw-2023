@@ -1,26 +1,31 @@
-	<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" />
-<title>Taquilla</title>
-</head>
-<body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Taquilla</title>
+  </head>
+  <body>
+    <p id="demo"></p>
 
-<p id="demo"></p>
+    <script>
+      let sistemaSolar = [
+        "La Tierra",
+        "Saturno",
+        "Marte",
+        "Jupiter",
+        "Venus",
+        "Neptuno",
+        "Mercurio",
+        "Urano",
+      ];
 
-<script>
-let sistemaSolar=["La Tierra","Saturno","Marte","Jupiter","Venus","Neptuno","Mercurio","Urano"];
+      sistemaSolar.forEach(function (item, index, arr) {
+        demo.innerHTML += "El planeta numero " + index + " es " + item + "<br>";
+        //item="Ninguno";
+        arr[index] = "Ninguno";
+      });
 
-
-
-sistemaSolar.forEach(function (item,index,arr){
-	demo.innerHTML+="El planeta numero "+index+" es "+item+"<br>";
-	//item="Ninguno";
-	arr[index]="Ninguno"
-
-} );
-
-demo.innerHTML+=sistemaSolar;
-</script>
-</body>
+      demo.innerHTML += sistemaSolar;
+    </script>
+  </body>
 </html>

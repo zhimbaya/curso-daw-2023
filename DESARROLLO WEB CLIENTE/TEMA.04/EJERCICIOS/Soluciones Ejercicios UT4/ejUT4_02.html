@@ -14,13 +14,10 @@
         var alumnos=[24,17,28,26];
         var text = "";
 
-        for (var i =0; i<profesores.length;i++)
-        {
-            if (sexoProfesores[i]=="M")
-            {
+        for (var i =0; i<profesores.length;i++){
+            if (sexoProfesores[i]=="M"){
                 text += "\nLa profesora "+profesores[i]+" imparte el modulo de '"+asignaturas[i]+ "' que tiene "+ alumnos[i]+ " alumnos.";
-            }else
-            {
+            }else{
                 text += "\nEl profesor "+profesores[i]+" imparte el modulo de '"+asignaturas[i]+ "' que tiene "+ alumnos[i]+ " alumnos.";
             }
         }
