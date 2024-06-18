@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript Ada Lovelace</title>
+  </head>
+  <body>
+    <p><b>Escribe un nombre en el cuadro inferior:</b></p>
+    <form action="">
+      <label for="nombre">
+        <input type="text" name="nombre" id="nombre">
+      </label>
+    </form>
+    <p>Sugerencias: <span id="sugerencias"></span></p>
+    <script>
+      window.addEventListener("load",inicio);
+      function inicio(){
+        document.getElementoById("nombre").addEventListener("keyup",mostrarNombre);
+      }
+      function mostrarNombre(e){
+        var cadena = e.target.value;
+        //var cadena = docuement.getElementById("nombre").value;
+        if(cadena.length == 0){
+          document.getElementById("sugerencia").innerHTML = "";
+          return;
+        }else{
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function(){
+            if(this.status == 200 && this.readyState == 4){
+              document.getElementById("sugerencia").innerHTML = this.responseText;
+            }
+          };
+          xhr.open("GET","arraynombres.php?nombre="+cadena,true);
+          xhr.send();
+        }
+      }
+    </script>
+    
+  </body>
+</html>
