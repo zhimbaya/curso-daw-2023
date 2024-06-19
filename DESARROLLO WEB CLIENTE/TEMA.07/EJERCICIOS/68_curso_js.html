@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript Ada Lovelace</title>
+  </head>
+  <body>
+    <button id="mostrar">Mostrar</button>
+    <p id="parrafo"></p>
+    <script>
+      window.addEventListener("load", inicio);
+      function inicio(){
+        document.getElementById("mostrar").addEventListener("click",mostrar);
+      }
+      function mostrar() {
+          var xhr = new XMLHttpRequest();
+          xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+              //Al hacer pase nos devuelve un objeto
+              var alumnos = JSON.parse(this.responseText);
+              //Mostrar los datos
+              for(var i=0;i<alumnos.length;i++){
+                document.getElementById("parrafo").innerHTML += alumnos[i]+"<br>";
+              }
+              //Si queremos convertir un objeto javascript en una cadena
+              var cadena = JSON.stringify(alumnos);
+              document.getElementById("parrafo").innerHTML += "El objeto "+alumnos+" en modo cadena es "+cadena;
+            }
+          };
+        xhr.open("GET","arrays.php",true);
+        xhr.send();
+      }
+    </script>
+  </body>
+</html>

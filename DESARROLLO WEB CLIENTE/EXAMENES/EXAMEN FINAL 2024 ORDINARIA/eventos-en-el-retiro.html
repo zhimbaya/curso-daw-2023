@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>ejercicio 2 - consumir</title>
+</head>
+
+<body>
+    <div id="info"></div>
+    <button id="mostrar2">muestra info</button>
+</body>
+
+<script>
+    window.onload = () => {
+        document.getElementById("mostrar2").addEventListener("click", mostrar);
+        function mostrar() {
+            //Llamar eventos.xml
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = processOutput;
+            xhttp.open("GET", "http://localhost/eventos.xml");
+            xhttp.send();
+        }
+    }
+
+    function processOutput() {
+        const xmlDoc = this.responseXML;
+        const contenidosArray = xmlDoc.getElementsByTagName("contenido");
+
+        const list = document.createElement("ul");
+
+        for (let i = 0; i < contenidosArray.length; i++) {
+            //const element = contenidosArray[i].children[1].children;
+            const atributosArray = contenidosArray[i].getElementsByTagName("atributo");
+
+            var titulo;
+            var distrito;
+
+            for (let j = 0; j < atributosArray.length; j++) {
+                if (atributosArray[j].getAttribute("nombre") == "TITULO") {
+                    //titulo = atributosArray[j].innerHTML;
+                    titulo = atributosArray[j].firstChild.nodeValue;
+                }
+                if (atributosArray[j].getAttribute("nombre") == "DISTRITO") {
+                    distrito = atributosArray[j].firstChild.nodeValue;
+                }
+            }
+            if (distrito == "RETIRO") {
+                const node = document.createElement("li");
+                node.innerText = titulo;
+                list.appendChild(node);
+            }
+        }
+        document.getElementById("info").appendChild(list);
+    }
+</script>
+
+</html>

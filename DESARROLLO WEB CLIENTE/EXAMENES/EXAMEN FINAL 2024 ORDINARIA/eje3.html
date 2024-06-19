@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>ejercicio 3 - indexeddb</title>
+</head>
+<body>
+    <label for="modulos">Módulos:</label>
+    <input type="text" id="modulos"><br><br>
+    <label for="notas">Notas:</label>
+    <input type="text" id="notas"><br><br>
+    <input type="submit" id="cargarbd" value="Cargar BD"><br><br>
+    <button id="notassuspensas">Notas suspensas</button><br><br>
+    <div id="info"></div>
+</body>
+<script>
+    let bd = null;
+    window.onload = () => {
+
+        document.getElementById("cargarbd").addEventListener("click", crearBD);
+
+        document.getElementById("notassuspensas").addEventListener("click", notassuspensas);
+
+        function crearBD(e) {
+            //console.log(document.getElementById("modulos").value);
+            var mod = document.getElementById("modulos").value;
+            const regexMod = /^([A-Z]{3,4})(,[A-Z]{3,4})*$/;
+
+            if (regexMod.test(mod)) {
+                // prevenir que se recargue pantalla:
+                e.preventDefault();
+
+                //Obtengo datos:
+                let modulos = document.getElementById("modulos").value;
+                let notas = document.getElementById("notas").value
+
+                // creamos la peticion para abrir la base de datos
+                let peticion = indexedDB.open('Ex8', 1); // el 1 es la version de la bbdd
+
+                //Si no existe se produce primero este evento para crear la bbdd
+                peticion.addEventListener("upgradeneeded", function (e) {
+                    // operaciones con la referencia bd
+                    bd = e.target.result;
+                    // ¡¡¡ En esta función manejadora del evento "upgradeneed” es en la que se pueden
+                    // hacer cambios de estructura de la BD, crear/borrar almacenes de objetos, etc.!!!
+                    if (!bd.objectStoreNames.contains("notas")) {
+                        let almacen = bd.createObjectStore("notas", { autoIncrement: true });
+
+                        almacen.transaction.addEventListener("complete", () => {
+                            console.log("Almacen creado");
+                        });
+                        almacen.transaction.addEventListener("error", () => {
+                            console.log("Error en la creación del almacén")
+                        });
+                    }
+                });
+
+                //Se ha abierto con éxito. Este evento también facilitará un referencia a la BD.
+                peticion.addEventListener("success", function (e) {
+                    // operaciones con la referencia bd
+                    bd = e.target.result;
+
+                    //Creo una transaccion para leer y escribir en el almacen:
+                    let transac = bd.transaction("notas", "readwrite");
+                    let almacenNotasModulos = transac.objectStore("notas");
+                    transac.addEventListener("complete", () => console.log("transacción ok"));
+                    transac.addEventListener("error", () => console.log("transacción nok"));
+
+                    var arrayModulos = modulos.split(",");
+                    var arrayNotas = notas.split(",");
+
+                    for (let i = 0; i < arrayModulos.length; i++) {
+                        const mod = arrayModulos[i];
+                        const nota = arrayNotas[i];
+                        var registro = { "modulo": mod, "nota": nota };
+                        let peticAdd = almacenNotasModulos.add(registro);
+                        peticAdd.addEventListener("success", () => console.log("Inserción ok"));
+                        peticAdd.addEventListener("error", () => console.log("Inserción nok"));
+                    }
+                });
+
+                // si hay error en la peticion de bbdd
+                peticion.addEventListener("error", function (e) {
+                    console.error('Ha habido un error', e);
+                });
+            } else {
+                document.getElementById("info").innerHTML = "Debe introducir al menos un modulo correcto con la siguiente estructura: use mayúsculas, 4 letras (DWEC) o 3 letras (DIW) y si va a introducir varios modulos, debe separarlos por comas sin espacios: DWEC,DIW <br><br> No es correcto: (DWEC,DIW,) no se deje la ultima coma.";
+            }
+            document.getElementById("modulos").value = "";
+            document.getElementById("notas").value = "";
+        }
+
+        function notassuspensas(e) {
+            // prevenir que se recargue pantalla:
+            e.preventDefault();
+
+            // creamos la peticion para abrir la base de datos
+            let peticion = indexedDB.open('Ex8', 1); // el 1 es la version de la bbdd
+
+            //Si no existe se produce primero este evento para crear la bbdd
+            peticion.addEventListener("upgradeneeded", function (e) {
+                document.getElementById("info").innerHTML += "No existe bbdd, introduzca modulos y notas primero para luego consultar. <br><br>";
+
+                if (!bd.objectStoreNames.contains("notas")) {
+                    let almacen = bd.createObjectStore("notas", { autoIncrement: true });
+
+                    almacen.transaction.addEventListener("complete", () => {
+                        console.log("Almacen creado");
+                    });
+                    almacen.transaction.addEventListener("error", () => {
+                        console.log("Error en la creación del almacén")
+                    });
+                }
+            });
+
+            //Se ha abierto con éxito. Este evento también facilitará un referencia a la BD.
+            peticion.addEventListener("success", function (e) {
+                // operaciones con la referencia bd
+                bd = e.target.result;
+                if (bd) {
+                    //Creo una transaccion para leer en el almacen:
+                    let transac = bd.transaction("notas", "readonly");
+                    let almacenNotasModulos = transac.objectStore("notas");
+                    transac.addEventListener("complete", () => console.log("transacción ok"));
+                    transac.addEventListener("error", () => console.log("transacción nok"));
+
+                    let petCursor = almacenNotasModulos.openCursor();
+                    petCursor.addEventListener("error", () => console.log("OpenCursor NOK"))
+
+                    petCursor.addEventListener("success", (e) => {
+                        let cursor = e.target.result;
+                        if (cursor) {
+                            var obj = cursor.value;
+                            if (obj.nota < 5) {
+                                document.getElementById("info").innerHTML += `${cursor.key}: nota= ${obj.nota} modulo= ${obj.modulo} <br><br>`;
+                            }
+                            cursor.continue();
+                        }
+                    });
+
+                    /* CON GETALL ==> NO ME TRAE LAS KEY QUE QUIERE LA PROFE:
+                    var allMod = almacenNotasModulos.getAll();
+                    allMod.addEventListener("success", (e) => {
+                        let valores = e.target.result;
+                        if (valores.length != 0) {
+                            valores.forEach((element, key) => {
+                                if (element.nota < 5) {
+                                    document.getElementById("info").innerHTML += `${key}: nota: ${element.nota} modulo: ${element.modulo} <br><br>`;
+                                }
+                            });
+                        }
+                    });
+                    allMod.addEventListener("error", () => console.log("GetAll NOK"));
+                    */
+                }
+            });
+        }
+    }
+</script>
+</html>

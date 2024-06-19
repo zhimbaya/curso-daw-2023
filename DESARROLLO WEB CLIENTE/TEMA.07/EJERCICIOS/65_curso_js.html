@@ -31,8 +31,9 @@
               document.getElementById("sugerencia").innerHTML = this.responseText;
             }
           };
-          xhr.open("GET","arraynombres.php?nombre="+cadena,true);
-          xhr.send();
+          xhr.open("POST","arraynombres.php",true);
+          xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+          xhr.send("nombre="+cadena);
         }
       }
     </script>
