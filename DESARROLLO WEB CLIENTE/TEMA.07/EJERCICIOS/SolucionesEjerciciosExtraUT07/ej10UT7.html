@@ -57,9 +57,7 @@
     let apellidosValor = document.getElementById("apellidos").value;
     let comunidadAutonomaValor = document.getElementById("comunidad_autonoma").value;
     let provinciaValor = document.getElementById("provincia").value;
-
     let texto = `Nombre: ${nombreValor}<br>Apellidos: ${apellidosValor}<br>Comunidad autónoma: ${comunidadAutonomaValor}<br>Provincia: ${provinciaValor}`;
-
     document.getElementById("demo2").innerHTML = texto;
   });
 
@@ -68,40 +66,32 @@
 
   function actualizarProvincias() {
     let comunidadAutonomaValor = document.getElementById("comunidad_autonoma").value;
-
     let url = `ej10UT7.php?comunidad_autonoma=${comunidadAutonomaValor}`;
-
     let xhr = new XMLHttpRequest();
 
-    xhr.open("GET", url, false);
-
+    xhr.open("GET", url, true);
     xhr.addEventListener("readystatechange", function() {
       if (this.readyState == 4 && this.status == 200) {
         procesarRespuesta(this.responseText);
       }
     });
-
     xhr.send();
   }
 
   function procesarRespuesta(responseText) {
     let respuestaArray = responseText.split(",");
-
     console.log(respuestaArray);
-
     let provincias = document.getElementById("provincia");
     provincias.innerHTML = "";
 
     if (respuestaArray.length > 0) {
       provincias.disabled = false;
-
       respuestaArray.forEach(provincia => {
         let provinciaOption = document.createElement("OPTION");
         let textoOption = document.createTextNode(provincia);
-
         provinciaOption.appendChild(textoOption);
-
         provincias.add(provinciaOption);
+        //provincias.appendChild(provinciaOption);
       });
     }
     else {

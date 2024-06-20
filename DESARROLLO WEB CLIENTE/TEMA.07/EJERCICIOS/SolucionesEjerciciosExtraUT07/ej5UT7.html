@@ -1,104 +1,104 @@
 <!DOCTYPE html>
 <html lang="es-ES">
+
 <head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
-<style>
-    
-    td, th{
-  text-align: center;
-  padding: 15px;
-    }
-</style>
+    <meta charset="UTF-8">
+    <title>Ejemplo</title>
+    <style>
+        td,
+        th {
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
 </head>
+
 <body>
 
-<p id="demo"></p>
-<button onclick="temperaturas()">Temperatura y sensación térmica de los últimos días por franjas
-    horarias</button>
-<script>
+    <p id="demo"></p>
+    <button onclick="temperaturas()">Temperatura y sensación térmica de los últimos días por franjas
+        horarias</button>
+    <script>
 
-function temperaturas() {
-
-var xhr = new XMLHttpRequest();
-
-xhr.addEventListener("readystatechange",mostrar);
-xhr.open("GET","https://api.openweathermap.org/data/2.5/forecast?q=Madrid,es&lang=es&units=metric&mode=xml&appid=479092b77bcf850403cb2aeb1a302425",true);
-xhr.send();
-
-}
-
-function mostrar () {
-var datos;
-var fecha="";
-var horaIni="";
-var horaFin="";
-var temperatura="";
-var sensacion="";
-
-if (this.readyState  == 4 && this.status==200) {
-    
-    var tabla = document.createElement('TABLE');
-
-    var cabecera = document.createElement('TR');
-    var diaHeader = document.createElement('TH');
-    diaHeader.innerHTML='Dia';
-    var horaInicioHeader = document.createElement('TH');
-    horaInicioHeader.innerHTML='Hora inicio';
-    var horaFinHeader = document.createElement('TH');
-    horaFinHeader.innerHTML='Hora fin';
-    var tempHeader = document.createElement('TH');
-    tempHeader.innerHTML='Temperatura';
-    var sensaHeader = document.createElement('TH');
-    sensaHeader.innerHTML='Sensacion termica';
-
-    cabecera.appendChild(diaHeader);
-    cabecera.appendChild(horaInicioHeader);
-    cabecera.appendChild(horaFinHeader);
-    cabecera.appendChild(tempHeader);
-    cabecera.appendChild(sensaHeader);
-
-    tabla.appendChild(cabecera);
-    
-    datos=this.responseXML.getElementsByTagName("time");
-    for (var i=0;i<datos.length;i++) {
-
-        var linea = document.createElement('TR');
-        var fecha = document.createElement('TD');
-        var horaIni = document.createElement('TD');
-        var horaFin = document.createElement('TD');
-
-        fecha.innerHTML=datos[i].getAttribute('from').substr(0,10);
-        horaIni.innerHTML = datos[i].getAttribute('from').substr(-8);
-        horaFin.innerHTML = datos[i].getAttribute('to').substr(-8);
-
-
-        for (var j=0;j<datos[i].childNodes.length;j++) {
-   
-            if (datos[i].childNodes[j].nodeName=="temperature") {
-                  var temperatura = document.createElement('TD');
-                  temperatura.innerHTML=datos[i].childNodes[j].getAttribute('value');;
-            } else if ( datos[i].childNodes[j].nodeName=="feels_like")  {
-                  var sensacion = document.createElement('TD');
-                  sensacion.innerHTML=datos[i].childNodes[j].getAttribute('value');;
-            }
+        function temperaturas() {
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", mostrar);
+            xhr.open("GET", "https://api.openweathermap.org/data/2.5/forecast?q=Madrid,es&lang=es&units=metric&mode=xml&appid=479092b77bcf850403cb2aeb1a302425", true);
+            xhr.send();
         }
-        
-        linea.appendChild(fecha);
-        linea.appendChild(horaIni);
-        linea.appendChild(horaFin);
-        linea.appendChild(temperatura);
-        linea.appendChild(sensacion);
 
-        tabla.appendChild(linea);
-    }
+        function mostrar() {
+            var datos;
+            var fecha = "";
+            var horaIni = "";
+            var horaFin = "";
+            var temperatura = "";
+            var sensacion = "";
 
-    demo.appendChild(tabla);
-}
+            if (this.readyState == 4 && this.status == 200) {
 
-}
+                var tabla = document.createElement('TABLE');
 
-</script>
+                var cabecera = document.createElement('TR');
+                var diaHeader = document.createElement('TH');
+                diaHeader.innerHTML = 'Dia';
+                var horaInicioHeader = document.createElement('TH');
+                horaInicioHeader.innerHTML = 'Hora inicio';
+                var horaFinHeader = document.createElement('TH');
+                horaFinHeader.innerHTML = 'Hora fin';
+                var tempHeader = document.createElement('TH');
+                tempHeader.innerHTML = 'Temperatura';
+                var sensaHeader = document.createElement('TH');
+                sensaHeader.innerHTML = 'Sensacion termica';
 
-</body> 
+                cabecera.appendChild(diaHeader);
+                cabecera.appendChild(horaInicioHeader);
+                cabecera.appendChild(horaFinHeader);
+                cabecera.appendChild(tempHeader);
+                cabecera.appendChild(sensaHeader);
+
+                tabla.appendChild(cabecera);
+
+                datos = this.responseXML.getElementsByTagName("time");
+                for (var i = 0; i < datos.length; i++) {
+
+                    var linea = document.createElement('TR');
+                    var fecha = document.createElement('TD');
+                    var horaIni = document.createElement('TD');
+                    var horaFin = document.createElement('TD');
+
+                    fecha.innerHTML = datos[i].getAttribute('from').substr(0, 10);
+                    horaIni.innerHTML = datos[i].getAttribute('from').substr(-8);
+                    horaFin.innerHTML = datos[i].getAttribute('to').substr(-8);
+
+
+                    for (var j = 0; j < datos[i].childNodes.length; j++) {
+
+                        if (datos[i].childNodes[j].nodeName == "temperature") {
+                            var temperatura = document.createElement('TD');
+                            temperatura.innerHTML = datos[i].childNodes[j].getAttribute('value');;
+                        } else if (datos[i].childNodes[j].nodeName == "feels_like") {
+                            var sensacion = document.createElement('TD');
+                            sensacion.innerHTML = datos[i].childNodes[j].getAttribute('value');;
+                        }
+                    }
+
+                    linea.appendChild(fecha);
+                    linea.appendChild(horaIni);
+                    linea.appendChild(horaFin);
+                    linea.appendChild(temperatura);
+                    linea.appendChild(sensacion);
+
+                    tabla.appendChild(linea);
+                }
+
+                demo.appendChild(tabla);
+            }
+
+        }
+
+    </script>
+
+</body>
+
 </html>

@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="es-ES">
 <head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
+    <meta charset="UTF-8">
+    <title>Ejemplo</title>
 </head>
 <body>
-
-<p id="demo"></p>
-<button onclick="funcion_ajax()">Funcion Ajax</button>
-<script>
-
-function funcion_ajax() {
-
-var xhr = new XMLHttpRequest();
-
-xhr.addEventListener("readystatechange",recibir);
-xhr.open("GET","ej1UT7.txt",true);
-xhr.send();
-
-}
-
-function recibir () {
-if (this.readyState  == 4 && this.status==200) {
-       demo.innerHTML+=this.responseText;
-}
-}
-</script>
-
-</body> 
+    <p id="demo"></p>
+    <button onclick="funcion_ajax()">Funcion Ajax</button>
+    <script>
+        function funcion_ajax() {
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", recibir);
+            xhr.open("GET", "ej1UT7.txt", true);
+            xhr.send();
+        }
+        function recibir() {
+            if (this.readyState == 4 && this.status == 200) {
+                demo.innerHTML += this.responseText;
+            }
+        }
+    </script>
+</body>
 </html>

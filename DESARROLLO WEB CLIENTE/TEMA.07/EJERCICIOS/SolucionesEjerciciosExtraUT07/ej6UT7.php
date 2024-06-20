@@ -8,23 +8,22 @@ $a[] = "miguel";
 $a[] = "natalia";
 $a[] = "maria";
 $a[] = "eva";
+$a[] = "diego";
 
 $nombre = $_REQUEST["nombre"];
-$respuesta="NOK";
+$respuesta = "NOK";
 
 if ($nombre !== "") {
-  
-$nombre = strtolower($nombre);
-  foreach($a as $name) {
+
+  $nombre = strtolower($nombre);
+  foreach ($a as $name) {
     if (!strcmp($nombre, $name)) {
-        $respuesta="OK";
-        break;
+      $respuesta = "OK";
+      break;
     } else {
-        $respuesta="NOK";       
-      }
+      $respuesta = "NOK";
+    }
   }
-
 }
-
 echo $respuesta;
 ?>

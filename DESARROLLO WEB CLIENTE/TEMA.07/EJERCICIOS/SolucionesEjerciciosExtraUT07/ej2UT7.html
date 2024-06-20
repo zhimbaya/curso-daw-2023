@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html lang="es-ES">
+
 <head>
-<meta charset="UTF-8">
-<title>Ejemplo</title>
+    <meta charset="UTF-8">
+    <title>Ejemplo</title>
 </head>
+
 <body>
+    <p id="demo"></p>
+    <button onclick="funcion_ajax()">Funcion Ajax</button>
+    <script>
+        function funcion_ajax() {
+            var xhr = new XMLHttpRequest();
+            xhr.addEventListener("readystatechange", recibir);
+            xhr.open("GET", "ej1UT7.txt", true);
+            xhr.send();
+        }
+        function recibir() {
+            if (this.readyState == 4) {
+                demo.innerHTML += this.readyState + ": Respuesta recibida<br>";
+                if (this.status == 200) {
+                    demo.innerHTML += this.readyState + ": Respuesta correcta<br>";
+                    demo.innerHTML += this.responseText;
+                } else {
+                    demo.innerHTML += this.readyState + ": " + this.statusText + "<br>";
+                    demo.innerHTML += this.responseText;
+                }
 
-<p id="demo"></p>
-<button onclick="funcion_ajax()">Funcion Ajax</button>
-<script>
+            } else if (this.readyState == 3) {
+                demo.innerHTML += this.readyState + ": Peticion procesandose<br>";
+            } else if (this.readyState == 2) {
+                demo.innerHTML += this.readyState + ": Petición recibida<br>";
+            } else if (this.readyState == 1) {
+                demo.innerHTML += this.readyState + ": Conexión establecida con el servidor<br>";
+            }
+        }
+    </script>
+</body>
 
-function funcion_ajax() {
-
-var xhr = new XMLHttpRequest();
-
-xhr.addEventListener("readystatechange",recibir);
-xhr.open("GET","ej1UT7.txt",true);
-xhr.send();
-
-}
-
-function recibir () {
-if (this.readyState  == 4) {
-       demo.innerHTML+=this.readyState+": Respuesta recibida<br>";
-       if  (this.status==200) {
-              demo.innerHTML+=this.readyState+": Respuesta correcta<br>";
-              demo.innerHTML+=this.responseText; 
-       } else {
-              demo.innerHTML+=this.readyState+": "+this.statusText+"<br>";
-              demo.innerHTML+=this.responseText;
-       }
-       
-       
-} else if (this.readyState == 3 ) {
-       demo.innerHTML+=this.readyState+": Peticion procesandose<br>";
-} else if (this.readyState == 2 ) {
-       demo.innerHTML+=this.readyState+": Petición recibida<br>";
-} else if (this.readyState == 1 ) {
-       demo.innerHTML+=this.readyState+": Conexión establecida con el servidor<br>";
-}
-
-}
-</script>
-
-</body> 
 </html>

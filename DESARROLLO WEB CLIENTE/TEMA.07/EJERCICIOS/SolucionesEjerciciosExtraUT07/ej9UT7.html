@@ -34,27 +34,21 @@
     let nombreValor = document.getElementById("nombre").value;
     let apellidosValor = document.getElementById("apellidos").value;
     let provinciaValor = document.getElementById("provincia").value;
-
     let texto = `Nombre: ${nombreValor}<br>Apellidos: ${apellidosValor}<br>Provincia: ${provinciaValor}`;
-
     document.getElementById("demo2").innerHTML = texto;
   });
 
   document.getElementById("provincia").addEventListener("keyup", function() {
     let provinciaValor = document.getElementById("provincia").value;
-
     let url = `ej9UT7.php?provincia=${provinciaValor}`;
-
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", url, true);
-
     xhr.addEventListener("readystatechange", function() {
       if (this.readyState == 4 && this.status == 200) {
         document.getElementById("demo1").innerHTML = this.responseText;
       }
     });
-
     xhr.send();
   });
 </script>

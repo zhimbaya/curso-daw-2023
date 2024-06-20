@@ -1,117 +1,107 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Ejemplo</title>
+  <title>Ejemplo</title>
 </head>
 <body>
-
-<div id="demo"></div>
-<button id="mostrardatos" onclick="ajaxMostrar()">Mostrar temperaturas y sensaciones térmicas de los últimos 7 dias</button>
-<script>
-
-function ajaxMostrar() {
-var urlWeather =  "https://api.openweathermap.org/data/2.5/forecast?q=Madrid,es&lang=es&units=metric&mode=xml&appid=479092b77bcf850403cb2aeb1a302425";
-
-var xhr = new XMLHttpRequest();
-
-xhr.addEventListener("readystatechange",mostrar);
-xhr.open("GET",urlWeather,true);
-xhr.send();
-
-}
-
-
-function mostrar () {
-var tiempos;
-var fecha="";
-var horaFrom="";
-var horaTo="";
-var temp, sens;
-var numTiempos;
-
-if (this.readyState  == 4 && this.status==200) {
-    tiempos=this.responseXML.getElementsByTagName("time");
-    numTiempos=tiempos.length;
-    crearTabla(numTiempos);     // se crea la tabla con el número de filas de datos igual a número de datos que facilita el fichero xml
-     for (var i=0;i<numTiempos;i++) {
-        fecha=tiempos[i].getAttribute("from").substr(0,10);
-        horaFrom=tiempos[i].getAttribute("from").substr(11,5);
-        horaTo=tiempos[i].getAttribute("to").substr(11,5);
-        temp=tiempos[i].getElementsByTagName("temperature")[0].getAttribute("value");
-        sens=tiempos[i].getElementsByTagName("feels_like")[0].getAttribute("value");
-        tabladatos.childNodes[i+2].childNodes[0].firstChild.nodeValue=fecha;  //i+2 para salar los elementos caption y la cabecera
-        tabladatos.childNodes[i+2].childNodes[1].firstChild.nodeValue=horaFrom; //childNodes[0],[1].... es para acceder a cada columna de datos
-        tabladatos.childNodes[i+2].childNodes[2].firstChild.nodeValue=horaTo;   //firstChild: dentro de cada columna el primer hijo es el texto.
-        tabladatos.childNodes[i+2].childNodes[3].firstChild.nodeValue=temp;
-        tabladatos.childNodes[i+2].childNodes[4].firstChild.nodeValue=sens;
+  <div id="demo"></div>
+  <button id="mostrardatos" onclick="ajaxMostrar()">Mostrar temperaturas y sensaciones térmicas de los últimos 7
+    dias</button>
+  <script>
+    function ajaxMostrar() {
+      var urlWeather = "https://api.openweathermap.org/data/2.5/forecast?q=Madrid,es&lang=es&units=metric&mode=xml&appid=479092b77bcf850403cb2aeb1a302425";
+      var xhr = new XMLHttpRequest();
+      xhr.addEventListener("readystatechange", mostrar);
+      xhr.open("GET", urlWeather, true);
+      xhr.send();
     }
-}
 
-}
+    function mostrar() {
+      var tiempos;
+      var fecha = "";
+      var horaFrom = "";
+      var horaTo = "";
+      var temp, sens;
+      var numTiempos;
 
-function crearTabla(numFilas) {
-var tabla;
-var titulo;
-var textoTitulo;
-var fila;
-var celda;
-var textoCelda;
+      if (this.readyState == 4 && this.status == 200) {
+        tiempos = this.responseXML.getElementsByTagName("time");
+        numTiempos = tiempos.length;
+        crearTabla(numTiempos);     // se crea la tabla con el número de filas de datos igual a número de datos que facilita el fichero xml
+        for (var i = 0; i < numTiempos; i++) {
+          fecha = tiempos[i].getAttribute("from").substr(0, 10);
+          horaFrom = tiempos[i].getAttribute("from").substr(11, 5);
+          horaTo = tiempos[i].getAttribute("to").substr(11, 5);
+          temp = tiempos[i].getElementsByTagName("temperature")[0].getAttribute("value");
+          sens = tiempos[i].getElementsByTagName("feels_like")[0].getAttribute("value");
+          tabladatos.childNodes[i + 2].childNodes[0].firstChild.nodeValue = fecha;  //i+2 para salar los elementos caption y la cabecera
+          tabladatos.childNodes[i + 2].childNodes[1].firstChild.nodeValue = horaFrom; //childNodes[0],[1].... es para acceder a cada columna de datos
+          tabladatos.childNodes[i + 2].childNodes[2].firstChild.nodeValue = horaTo;   //firstChild: dentro de cada columna el primer hijo es el texto.
+          tabladatos.childNodes[i + 2].childNodes[3].firstChild.nodeValue = temp;
+          tabladatos.childNodes[i + 2].childNodes[4].firstChild.nodeValue = sens;
+        }
+      }
+    }
 
-tabla= document.createElement("table");     // se crea la tabla
-tabla.border="1px";
-tabla.id="tabladatos";
+    function crearTabla(numFilas) {
+      var tabla;
+      var titulo;
+      var textoTitulo;
+      var fila;
+      var celda;
+      var textoCelda;
 
-titulo=document.createElement("caption");   // se crea el titulo de la tabla
-textoTitulo=document.createTextNode("Temperaturas y sensaciones térmicas de los últimos días");
-titulo.appendChild(textoTitulo);
-tabla.appendChild(titulo);
+      tabla = document.createElement("table");     // se crea la tabla
+      tabla.border = "1px";
+      tabla.id = "tabladatos";
 
-fila=document.createElement("tr");     // se crea la cabecera
+      titulo = document.createElement("caption");   // se crea el titulo de la tabla
+      textoTitulo = document.createTextNode("Temperaturas y sensaciones térmicas de los últimos días");
+      titulo.appendChild(textoTitulo);
+      tabla.appendChild(titulo);
 
-celda=document.createElement("th");    // se crea la primera celda de la cabecera correspondiente al dia
-textoCelda=document.createTextNode("Dia");
-celda.appendChild(textoCelda);
-fila.appendChild(celda);
+      fila = document.createElement("tr");     // se crea la cabecera
 
-celda=document.createElement("th");   // se crea la segunda celda de la cabecera correspondiente al From (horas)
-textoCelda=document.createTextNode("Desde las (horas)");
-celda.appendChild(textoCelda);
-fila.appendChild(celda);
+      celda = document.createElement("th");    // se crea la primera celda de la cabecera correspondiente al dia
+      textoCelda = document.createTextNode("Dia");
+      celda.appendChild(textoCelda);
+      fila.appendChild(celda);
 
-celda=document.createElement("th");   // se crea la tercera celda de la cabecera correspondiente al To (horas)
-textoCelda=document.createTextNode("Hasta las (horas)");
-celda.appendChild(textoCelda);
-fila.appendChild(celda);
+      celda = document.createElement("th");   // se crea la segunda celda de la cabecera correspondiente al From (horas)
+      textoCelda = document.createTextNode("Desde las (horas)");
+      celda.appendChild(textoCelda);
+      fila.appendChild(celda);
 
-celda=document.createElement("th");  // se crea la cuarta celda de la cabecera correspondiente a la temperatura
-textoCelda=document.createTextNode("Temperatura");
-celda.appendChild(textoCelda);
-fila.appendChild(celda);
+      celda = document.createElement("th");   // se crea la tercera celda de la cabecera correspondiente al To (horas)
+      textoCelda = document.createTextNode("Hasta las (horas)");
+      celda.appendChild(textoCelda);
+      fila.appendChild(celda);
 
-celda=document.createElement("th");  // se crea la quinta celda de la cabecera correspondiente a la sensación térmica
-textoCelda=document.createTextNode("Sensación térmica");
-celda.appendChild(textoCelda);
-fila.appendChild(celda);
+      celda = document.createElement("th");  // se crea la cuarta celda de la cabecera correspondiente a la temperatura
+      textoCelda = document.createTextNode("Temperatura");
+      celda.appendChild(textoCelda);
+      fila.appendChild(celda);
 
-tabla.appendChild(fila);            // se agrega la cabecera creada a la tabla
+      celda = document.createElement("th");  // se crea la quinta celda de la cabecera correspondiente a la sensación térmica
+      textoCelda = document.createTextNode("Sensación térmica");
+      celda.appendChild(textoCelda);
+      fila.appendChild(celda);
 
-for (var i=0;i<numFilas;i++) {
-       fila=document.createElement("tr");    // se crea una fila nueva
-       for (var j=0;j<5;j++) {
-            celda=document.createElement("td");    // se crean las 5 celdas que tiene cada fila de datos
-            textoCelda=document.createTextNode("");
-            celda.appendChild(textoCelda);
-            fila.appendChild(celda);
-       }    
-       tabla.appendChild(fila);              // se agrega la fila creada a la tabla
-}
-demo.appendChild(tabla);                     // se agrega la tabla al elemento div
+      tabla.appendChild(fila);            // se agrega la cabecera creada a la tabla
 
-}
-
-
-</script>
-
-</body> 
+      for (var i = 0; i < numFilas; i++) {
+        fila = document.createElement("tr");    // se crea una fila nueva
+        for (var j = 0; j < 5; j++) {
+          celda = document.createElement("td");    // se crean las 5 celdas que tiene cada fila de datos
+          textoCelda = document.createTextNode("");
+          celda.appendChild(textoCelda);
+          fila.appendChild(celda);
+        }
+        tabla.appendChild(fila);              // se agrega la fila creada a la tabla
+      }
+      demo.appendChild(tabla);                     // se agrega la tabla al elemento div
+    }
+  </script>
+</body>
 </html>

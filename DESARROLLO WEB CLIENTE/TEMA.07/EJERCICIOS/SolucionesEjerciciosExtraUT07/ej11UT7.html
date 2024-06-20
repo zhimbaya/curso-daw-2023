@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Ejemplo</title>
+  <title>Ejemplo</title>
 </head>
 <body>
+  <p id="demo"></p>
+  <label for="name">Nombre: </label>
+  <input type="text" id="nombre" name="nombre"></input><br>
+  <button onclick="comprobarNombre()">Comprobar nombre</button>
+  <script>
 
-<p id="demo"></p>
-<label for="name">Nombre: </label>
-<input type="text" id="nombre" name="nombre"></input><br>
-<button onclick="comprobarNombre()">Comprobar nombre</button>
-
-<script>
-
-function comprobarNombre() {
-
-var urlComprobar;
-var datoNombre=nombre.value;
-
-var xhr;
-
-if (datoNombre!="") {
-    var param="nombre="+datoNombre;
-
-    xhr= new XMLHttpRequest();
-    urlComprobar="ej11UT7.php";
-    
-    xhr.addEventListener("readystatechange",mostrar);
-    xhr.open("POST",urlComprobar,false);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send(param);
-} else {
-      demo.innerHTML+="Introduce un nombre de persona<br>";
-  }
-
-}
-
-
-function mostrar () {
-
-if (this.readyState  == 4 && this.status==200) {
-  console.log(this.responseText);
-    if (this.responseText=="OK") {
-      demo.innerHTML+="El nombre existe<br>";         
+    function comprobarNombre() {
+      var urlComprobar;
+      var datoNombre = nombre.value;
+      var xhr;
+      if (datoNombre != "") {
+        var param = "nombre=" + datoNombre;
+        xhr = new XMLHttpRequest();
+        urlComprobar = "ej11UT7.php";
+        xhr.addEventListener("readystatechange", mostrar);
+        xhr.open("POST", urlComprobar, true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send(param);
+      } else {
+        demo.innerHTML += "Introduce un nombre de persona<br>";
+      }
     }
-    else {
-      demo.innerHTML+="El nombre no existe<br>";         
+    function mostrar() {
+      if (this.readyState == 4 && this.status == 200) {
+        console.log(this.responseText);
+        if (this.responseText == "OK") {
+          demo.innerHTML += "El nombre existe<br>";
+        }
+        else {
+          demo.innerHTML += "El nombre no existe<br>";
+        }
+      }
     }
-}
-
-}
-</script>
-
-</body> 
+  </script>
+</body>
 </html>
