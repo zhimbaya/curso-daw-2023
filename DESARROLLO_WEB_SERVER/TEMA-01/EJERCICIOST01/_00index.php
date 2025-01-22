@@ -106,7 +106,7 @@ var_dump(min(12, 4, 26.1, 18.7)); // int(4)
 var_dump(mt_rand(1, 6)); // int(4)
 var_dump(number_format(34534556.34544, 2)); //string(13) "34,534,556.35"
 var_dump(number_format(123222343, 0, ",", ".")); // string(11) "123.222.343"
-var_dump(number_format(345345345347.789, 2, ",", ".")); // string(18) "345.345.345.347,"
+var_dump(number_format(345345345347.789, 2, ",", ".")); // string(18) "345.345.345.347,80"
 
 echo '<br>';
 echo '<br>';

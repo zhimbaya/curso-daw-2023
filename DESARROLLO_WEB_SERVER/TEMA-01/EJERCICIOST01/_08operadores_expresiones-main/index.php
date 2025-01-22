@@ -44,13 +44,13 @@
                         ?></td>
                 </tr>
                 <tr>
-                    <td><pre>$base = 2;
+                    <td><pre>$base = 64;
 $exponente = 6</pre></td>
-                    <td>$base ** $exponent / 2</td>
+                    <td>$base / 2 ** $exponent</td>
                     <td class="respuesta"><?php
-                        $base = 2;
+                        $base = 64;
                         $exponent = 6;
-                        var_dump($base ** $exponent / 2);
+                        var_dump($base / 2 ** $exponent);
                         ?></td>
                 </tr>
                 <tr>
@@ -86,6 +86,41 @@ $mascara = 3; // Binario 0011</pre></td>
                     <td>$a = ($b = 4) + 5</td>
                     <td class="respuesta"><?php
                         var_dump($a = ($b = 4) + 5);
+                        ?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>!!!true</td>
+                    <td class="respuesta"><?php
+                        var_dump(!!!true);
+                        ?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>!(null ?? false || 5 < 10)</td>
+                    <td class="respuesta"><?php
+                        var_dump(!(null ?? false || 5 < 10));
+                        ?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>$value = 3 > 2 && 5 == 4 || !true || !false</td>
+                    <td class="respuesta"><?php
+                        var_dump($value = 3 > 2 && 5 == 4 || !true || !false);
+                        ?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>$e = true || $x = 'foo'</td>
+                    <td class="respuesta"><?php
+                        var_dump($e = true || $x = 'foo');
+                        ?></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>"es " . (5 > 10 ? "verdad" : "mentira")</td>
+                    <td class="respuesta"><?php
+                        var_dump("es " . (5 > 10 ? "verdad" : "mentira"));
                         ?></td>
                 </tr>
                 <tr>
@@ -146,7 +181,7 @@ $tiene_efectivo = false</pre></td>
                 <tr>
                     <td></td>
                     <td>1/0 || true</td>
-                    <td class="respuesta"><?php // var_dump( 1 / 0 || true);    ?></td>
+                    <td class="respuesta"><?php //  var_dump(1 / 0 || true); ?></td>
                 </tr>
                 <tr>
                     <td></td>
@@ -167,22 +202,35 @@ $tiene_efectivo = false</pre></td>
                         ?></td>
                 </tr>
                 <tr>
-                    <td>$ruta1 = 'C:/';</td>
-                    <td>$ruta1 ?: '/'</td>
+                    <td>$ruta1 = '';</td>
+                    <td>$ruta1 ?: 'C:/'</td>
                     <td class="respuesta"><?php
-                        $ruta1 = 'C:/';
-                        var_dump($ruta1 ?: '/');
+                        $ruta1 = '';
+                        var_dump($ruta1 ?: 'C:/');
                         ?></td>
                 </tr>
                 <tr>
-                    <td>$ruta2 = null;</td>
-                    <td>$ruta2 ?? '/'</td>
+                    <td>$ruta2 no definida</td>
+                    <td>$ruta2 ?: 'C:/'</td>
                     <td class="respuesta"><?php
-                        $ruta2 = null;
-                        var_dump($ruta2 ?? '/');
+                        var_dump($ruta2 ?: 'C:/');
                         ?></td>
                 </tr>
-
+                <tr>
+                    <td>$ruta3 = null;</td>
+                    <td>$ruta3 ?? '/'</td>
+                    <td class="respuesta"><?php
+                        $ruta3 = null;
+                        var_dump($ruta3 ?? '/');
+                        ?></td>
+                </tr>
+                <tr>
+                    <td>$ruta4 no definida</td>
+                    <td>$ruta4 ?? '/'</td>
+                    <td class="respuesta"><?php
+                        var_dump($ruta4 ?? '/');
+                        ?></td>
+                </tr>
                 <tr>
                     <td>$dia = 'Lunes';</td>
                     <td><pre>match ($dia) {
@@ -192,7 +240,7 @@ $tiene_efectivo = false</pre></td>
     default => 'No es un día de la semana'
 };</pre></td>
                     <td class="respuesta"><?php
-                        $dia = 'Lunes';
+                        $dia = 'lunes';
                         var_dump(match ($dia) {
                             'Lunes' => 'Es el comienzo de la semana',
                             'Martes', 'Miercoles', 'Jueves', 'Viernes' => 'Es un día entre semana',
