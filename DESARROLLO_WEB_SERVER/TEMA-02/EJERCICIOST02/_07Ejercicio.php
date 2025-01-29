@@ -9,7 +9,7 @@ $mod1DAW = [
     "Formación y Orientación Laboral"];
 
 $mod1DAWAcronimo = [
-    "PR" => "Programación", 
+    "PR" => "Programación",
     "BD" => "Bases de datos",
     "LM" => "Lenguaje de Marcas",
     "ED" => "Entorno de Desarrollo",
@@ -49,3 +49,44 @@ echo '<br>';
 var_dump(implode(":", ["uno", "dos", "tres", "cuatro", "cinco", "seis"])); // string(30) "uno:dos:tres:cuatro:cinco:seis"  
 echo '<br>';
 var_dump(explode("|", "uno|dos|tres|cuatro|cinco|seis")); // array(6) { [0]=> string(3) "uno" [1]=> string(3) "dos" [2]=> string(4) "tres" [3]=> string(6) "cuatro" [4]=> string(5) "cinco" [5]=> string(4) "seis" }
+
+echo '<br>';
+$mod1DAW2 = [
+    "Programación",
+    "Bases de datos",
+    "Lenguaje de Marcas",
+    "Entorno de Desarrollo",
+    "Sistemas Informáticos",
+    "Formación y Orientación Laboral"];
+
+$mod1DAWCopia = $mod1DAW2;
+
+$mod1DAWAcronimo3 = [
+    "PR" => "Programación",
+    "BD" => "Bases de datos",
+    "LM" => "Lenguaje de Marcas",
+    "ED" => "Entorno de Desarrollo",
+    "SSII" => "Sistemas Informáticos",
+    "FOL" => "Formación y Orientación Laboral"];
+
+$numerosCadenas = [25, 'dos', 3, 160, '56', 81];
+
+sort($numerosCadenas); 
+print_r($numerosCadenas);//Array ( [0] => 3 [1] => 25 [2] => 56 [3] => 81 [4] => 119 [5] => 160 ) 
+echo '<br>';
+sort($numerosCadenas, SORT_NUMERIC); 
+print_r($numerosCadenas);//Array ( [0] => 3 [1] => 25 [2] => 56 [3] => 81 [4] => 119 [5] => 160 ) 
+echo '<br>';
+sort($numerosCadenas, SORT_STRING); 
+print_r($numerosCadenas);//Array ( [0] => 119 [1] => 160 [2] => 25 [3] => 3 [4] => 56 [5] => 81 ) 
+echo '<br>';
+rsort($mod1DAW2); 
+print_r($mod1DAW2);//Array ( [0] => Sistemas Informáticos [1] => Programación [2] => Lenguaje de Marcas [3] => For 
+$mod1DAW2 = $mod1DAWCopia; 
+echo '<br>';
+asort($mod1DAW2); 
+print_r($mod1DAW2);//Array ( [1] => Bases de datos [3] => Entorno de Desarrollo [5] => Formación y Orientación Lab 
+echo '<br>';
+ksort($mod1DAWAcronimo3); 
+print_r($mod1DAWAcronimo3);//Array ( [BD] => Bases de datos [ED] => Entorno de Desarrollo [FOL] => Formación y Orientación 
+echo '<br>';
