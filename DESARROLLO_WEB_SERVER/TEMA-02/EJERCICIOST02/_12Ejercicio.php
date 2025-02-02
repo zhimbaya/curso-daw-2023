@@ -28,6 +28,5 @@ define('NUMERO', 5);
                     <?php } ?>
                 <?php } ?>
             </table>
-            <!--<h2>El total de los factores es array_sum(array_map((function))) ?></h2>-->
     </body>
 </html>

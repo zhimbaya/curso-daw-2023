@@ -7,9 +7,9 @@ if ($a < $b) {
 } else {
     print "a es igual a b";
 }
-
-echo "$b =<br> $a";
-
+echo '<br>';
+var_dump($a);
+echo '<br>';
 
 switch ($a) {
     case 0:
@@ -21,4 +21,3 @@ switch ($a) {
     default:
         print "a no vale 0 ni 1";
 }
-

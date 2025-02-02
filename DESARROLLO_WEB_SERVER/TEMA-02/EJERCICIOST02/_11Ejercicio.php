@@ -26,6 +26,7 @@ define('NUMERO', 5);
                     <?php } ?>
                 <?php } ?>
             </table>
-            <!--<h2>El total de los factores es array_sum(array_map((function))) ?></h2>-->
+            <h2>El total de los factores es <?=  array_sum(array_map((function ($x){
+                    return $x * NUMERO;}), range(1,10))) ?></h2>
     </body>
 </html>
