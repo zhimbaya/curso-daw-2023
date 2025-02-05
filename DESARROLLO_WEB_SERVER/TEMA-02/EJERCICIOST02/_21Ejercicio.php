@@ -12,7 +12,7 @@ que hagas la página de procesar datos.-->
         <title>Formularios</title>
     </head>
     <body style="background: gainsboro">
-        <form name="formulario" action="procesa.php" method="POST">
+        <form name="formulario" action="_22Ejercicio.php" method="POST">
             <fieldset style="margin:auto">
                 <legend style="font-weight: bold">Datos</legend>
                 <div>
