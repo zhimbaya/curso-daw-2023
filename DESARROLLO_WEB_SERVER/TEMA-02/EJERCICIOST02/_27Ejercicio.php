@@ -49,7 +49,7 @@ if (filter_has_var(INPUT_POST, "enviar")) {
         <title>Formulario de Registro</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta nombre="viewport" content="width=device-width">
-        <link rel="stylesheet" href="stylesheet.css">
+        <link rel="stylesheet" href="stylesheet_1.css">
     </head>
     <body>
         <?php if (!filter_has_var(INPUT_POST, "enviar")): ?> <!-- Si se solicita el formulario -->
