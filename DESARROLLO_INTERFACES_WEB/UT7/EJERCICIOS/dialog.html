@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ejemplo de cuadro de diálogo con HTML y CSS</title>
+	<style>
+		dialog::backdrop {
+			background-color: rgba(255, 255, 0, 1.0);
+		}
+	dialog {
+		width: 400px;
+		height: 200px;
+		text-align: center; 
+	 }
+	</style>
+</head>
+<body>
+	<button onclick="document.querySelector('dialog').show()">Abrir cuadro de diálogo</button>
+	<dialog>
+		<p>Cuadro de diálogo</p>
+	</dialog>
+       <button onclick="document.querySelector('dialog').close()">Cerrar cuadro de diálogo</button>
+	<dialog>
+		<p>Cuadro de diálogo</p>
+	</dialog>
+</body>
+</html>
