@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+
+</head>
+<body>
+    <script>
+      //operador ternario
+      //condición ? resultado : falso
+      var edad = 12;
+      var puedeVotar = edad > 18 ? "puede votar" : "no puede votar";
+      alert(puedeVotar);
+
+      //operadores de tipos
+      var cadena = "Ada LoveLace";
+      var numero = 3.14;
+      var bool = true;
+      var lista = [2,3,4];
+      var registro = {nombre:"diego", apellido: "simbaña"};
+      var fecha = new Date;
+      var miFuncion = function miFun(){
+        alert("hola");
+      };
+      var sinDefinir; // devuelve undefined
+      var vacia = null; //devuelve object
+      
+      alert(typeof cadena);
+
+      //instanceof
+      var animales = ["perro","gato","hamster"];
+      alert(animales instanceof Object); //true
+      alert(animales instanceof Array); //true
+      alert(animales instanceof SVGAnimatedNumber); //false
+      
+    </script>  
+</body>
+</html>

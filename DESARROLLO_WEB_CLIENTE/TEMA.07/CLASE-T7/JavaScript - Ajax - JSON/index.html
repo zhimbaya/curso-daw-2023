@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DWEC07-Javascript-Ajax-JSON</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+    <button id="boton">Mis datos IP</button>    
+    <div id="demo"></div>
+    
+<script>
+
+/* ENUNCIADO
+
+    Mostrar los datos de mi IP.
+    Los datos van a ser recogidos en formato JSON.
+    Vamos a pedir por Ajax estos datos en formato JSON a la URL http://ip-api.com/json/
+
+FIN DE ENUNCIADO */
+
+var url = "http://ip-api.com/json/";
+
+window.addEventListener("load",iniciar);
+
+function iniciar (){
+    boton.addEventListener("click",peticionAjax);
+}
+
+function peticionAjax(){
+    var peticion = new XMLHttpRequest();
+
+    peticion.open("GET",url);
+    peticion.addEventListener("readystatechange",recibirDatos);
+    peticion.send();
+}
+
+function recibirDatos(){
+    var datos;
+    var datosJSON;
+    
+    var literales=["Estado","Pais","Codigo de pais","Codigo de region","Region","Ciudad","Codigo postal","Latitud","Longitud","Zona horaria","Proveedor","Organizacion","AS","IP"];
+
+// En lugar de crear a mano este array lo haremos mediante un bucle que recorra todas las 
+// propiedades del objeto JSON y las vaya introduciendo en el array propiedades
+//    var propiedadesMano=["status","country","countryCode","region","regionName","city","zip","lat","lon","timezone","isp","org","as","query"];
+    
+    var propiedades=[];
+    var cont=0;
+
+    if (this.readyState==4 && this.status==200){
+            datos=this.responseText;
+            datosJSON=JSON.parse(datos);
+
+            demo.innerHTML+="<br><b>Respuesta sin procesar</b><br><br>";
+            demo.innerHTML+=datos;
+            
+            demo.innerHTML+="<br><br><b>Respuesta procesada</b><br>";
+            for (var prop in datosJSON){
+                demo.innerHTML+="<br><b>"+prop+": </b>"+datosJSON[prop];
+            }
+
+            demo.innerHTML+="<br><br><b>Respuesta procesada con LITERALES</b><br>";
+            
+            for (var prop2 in datosJSON){
+                    propiedades[cont]=prop2;
+                    cont++;
+            }
+            
+            for (var i=0;i<literales.length;i++){
+                demo.innerHTML+="<br><b>"+literales[i]+": </b>"+datosJSON[propiedades[i]];
+            }
+    }
+}
+    
+
+/*Array mediante indice
+var avion = ["Boeing","474",450];
+
+demo.innerHTML+=avion[0]+" // "+avion[1]+" // "+avion[2];
+*/
+
+/* Objeto literal y array asociativo
+var avion={marca:"Boeing",modelo:"474",pasajeros:450};
+
+demo.innerHTML+=avion["marca"]+" // "+avion["modelo"]+" // "+avion["pasajeros"];
+
+demo.innerHTML+="<br>"+avion.marca+" // "+avion.modelo+" // "+avion.pasajeros;
+
+var cad="";
+for (var prop in avion){
+    cad+="<br>La propiedad "+prop+" vale "+avion[prop];
+}
+demo.innerHTML+=cad;
+*/
+
+/* Objetos con función constructora
+function Avion (){
+    this.marca="";
+    this.modelo="";
+    this.pasajeros=0;
+}
+
+var avion = new Avion ();
+
+avion.marca="Boeing";
+avion.modelo="474";
+avion.pasajeros=0;
+
+demo.innerHTML+=avion["marca"]+" // "+avion["modelo"]+" // "+avion["pasajeros"];
+
+demo.innerHTML+="<br>"+avion.marca+" // "+avion.modelo+" // "+avion.pasajeros;
+
+var cad="";
+for (var prop in avion){
+    cad+="<br>La propiedad "+prop+" vale "+avion[prop];
+}
+demo.innerHTML+=cad;
+*/
+
+/* JSON
+var avionText='{"marca":"Boeing","modelo":"474","pasajeros":450}';
+
+var avionJSON=JSON.parse(avionText);
+
+demo.innerHTML+="Despues de parsear<br>"+avionJSON["marca"]+" // "+avionJSON["modelo"]+" // "+avionJSON["pasajeros"];
+
+var cad="";
+for (var prop in avionJSON){
+    cad+="<br>La propiedad "+prop+" vale "+avionJSON[prop];
+}
+demo.innerHTML+=cad;
+
+*/
+
+</script>
+</body>
+</html>

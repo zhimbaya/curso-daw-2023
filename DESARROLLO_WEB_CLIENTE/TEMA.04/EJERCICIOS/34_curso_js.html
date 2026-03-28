@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //SINTAXIS DE LA FUNCIÓN
+      //Función sin parámetros
+      function saludo() {
+        alert("hola");
+      }
+      var resultado_saludo = saludo();
+      alert(resultado_saludo);
+
+      //sin paréntesis se puede guardar la función en una variable.
+      var resultado_saludo2 = saludo;
+      document.write(resultado_saludo2);
+
+      //función con parámetros
+      function producto(a, b) {
+        return a * b;
+      }
+      document.write("<br>Resultado: " + producto(3, 5));
+
+      //FUNCIÓN ANÓNIMA
+      //Para invocarlas se llama a la función de la variable.
+      var producto2 = function (a, b){
+        return a + b;
+      };
+      document.write("<br>Suma: "+producto2(3,6));
+
+      //CONSTRUCTOR FUNCTION
+      var miFuncion = new Function("a", "b" , "return a / b");
+      document.write("<br>División: "+miFuncion(18, 5));
+
+      //FUNCIÓN ANÓMIMAS AUTOINVOCADAS
+      (function (){
+        document.write("<br>AutoInvocada");
+      }());
+      //PARAMETROS Y ARGUMENTOS
+      //- Una función puede terner 0 mas parámetros.
+      //-Parámetros son los nombres que aprecen en la definción de una función.
+      //-Argunmentos con los valores que pasamos a una función.
+
+      //REGLAS DE LOS PARAMETROS
+      //-NO especifica el tipo de los parámetros
+      //-No se verifican los tipos de los argumentos recibidos.
+      //-No se comprueba el numero de los argumentos recibidos.
+
+      //PARAMETROS POR DEFECTO
+      //Cuando llamamos a una funcíón con menos argumentos de los declarados.
+      //los valors que faltan no están definidos.
+      function suma(a,b){
+        if(b=== undefined)
+        b = 0;
+        return a + b;
+      }
+      var resul = suma (4);
+      alert(resul);
+
+      //PARAMETROS POR EXCESO
+      //cuando llamamos a una función con más argumentos de los que ha
+      //sido declarada. Los valores que nos llegan pueden capturarse
+      //a través de un objeto incluido en la función, llamado argumentos.
+      function valores(){
+        alert ("Nº de argumentos: "+arguments.length);
+        for (let i = 0; i < arguments.length; i++) {
+          alert("argumento "+ arguments[i]);
+        }
+      }
+      valores(3,6,8,2,5,6);
+    </script>
+  </body>
+</html>

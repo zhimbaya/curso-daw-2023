@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+<body>
+
+<form name="formulario" id="formulario">
+     <label for="nombre">Nombre:</label>
+     <input type="text" id="nombre" name="nombre"/>
+     <label for="apellidos">Apellidos:</label>
+     <input type="text" id="apellidos" name="apellidos">
+     <label for="provincia">Provincia:</label>
+     <input type="text" id="provincia" name="provincia">
+
+
+     <input type="button" id="enviar" value="Enviar" />
+</form>
+<p id="demo"></p>
+<script>
+
+window.addEventListener("load",iniciar);
+
+function iniciar () {
+var inputs=formulario.getElementsByTagName("input");
+     for (i=0;i<inputs.length;i++) {
+             inputs[i].addEventListener("keypress",cambiarFoco,false);
+     }
+}
+
+function cambiarFoco (miEvento) {
+ var elemento;
+     if (miEvento.which == 13) {
+
+              elemento=this;
+	      /*En este formulario los elmentos y nodos son los siguientes:
+                    - Nodo elemento label nombre.
+                    - Nodo texto que es un enter que hay detrás del label. Los retornos de carro, espacios en blanco etc.
+                      que hayan entre elementos los considera un nodo texto.
+                    - Nodo elemento input nombre.
+                    - Nodo texto que es un enter que hay detrás del input nombre.
+                    - Nodo elemento label apellidos.
+                    - Nodo texto que es un enter que hay detrás del label.
+                    - Nodo texto que es un enter que hay detrás del input apellidos.
+                    - Nodo elemento label provincia.
+                    - Nodo texto que es un enter que hay detrás del label.
+                    - Nodo elemento input provincia.
+                    - Nodo texto que es un enter que hay detrás del input provincia.
+                    - Nodo elemento input button.
+                    - Nodo texto que es un enter que hay detrás del input button.
+
+	      /*Se trata de dar el foco al siguiente input (nodo), no a los elementos texto y label que hay entre los inputs */
+	      /*Este while avanzan entre los elementos hermanos siguientes hasta encontrar un nodo elemento que no sea label*/
+              demo.innerHTML+="Nuestro elemento es un "+elemento.nodeName+"<br>";
+              do { 
+
+		   elemento=elemento.previousSibling;   /* Se avanza hasta el siguiente nodo.*/
+                   demo.innerHTML+="El elemento previo es: "+elemento.nodeName+"<br>";
+		   if (elemento==elemento.parentNode.firstChild)        /*Si avanzando en el recorrido de elementos se encuentra con el final empieza de nuevo */
+		   {
+			demo.innerHTML+="Es el primer nodo: "+elemento.nodeName+"<br>";
+                            elemento=this.parentNode.lastChild;    /*parentNode apunta al nodo padre que es en este caso el formulario.*/
+			demo.innerHTML+="Pasamos al último nodo: "+elemento.nodeName+"<br>";
+                   }
+                   /* Si se encuentra con un nodo elemento (tipo 1) que sea tipo input interrumpe el avance porque se trata de un elemento */
+                   /* tipo input y es a este al que hay que darle el foco */
+                   if (elemento.nodeType==1 && (elemento.toString().indexOf("Input")!=-1)){  
+   		   	      demo.innerHTML+="Es un Input "+elemento.nodeName+"<br>";
+                              break;
+		   }
+		   else {
+   		   	      demo.innerHTML+="No es un Input "+elemento.nodeName+"<br>";
+		   }
+                 
+              } while (elemento);
+   	      demo.innerHTML+="Dejamos aquí el foco "+elemento.nodeName+"<br>";
+              elemento.focus();
+     }
+}
+
+</script>
+
+</body> 
+</html>

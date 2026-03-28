@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<style>
+div,p {border:1px solid red; height:80px;}
+
+</style>
+
+<title>Ejemplo</title>
+</head>
+
+<body>
+
+<b>Para ver cómo funciona offset mueve el ratón dentro de las cajas, veras que las coordenadas varian respeto a clientX, pageX</b><br><br>
+<b>Para ver la diferencia entre client y page haz más pequeña la ventana de forma que la ventana no abarque todo el documento, verás que las coordinadas de client son referentes a la ventana, y las de page respecto al documento completo aunque parte de éste no se vea</b><br><br>
+<b>Observa la diferencia de las coordenadas de screen que son diferentes a todas las demás, ya que hacen referencia a la pantalla completa de tu ordenador</b><br><br>
+<p>Prueba<br>
+Prueba<br>
+Prueba<br></p>
+<div id="coordenadas"></div>
+<p>Prueba2<br>
+Prueba2<br>
+Prueba2<br></p>
+
+<script>
+
+function mostrarCoordenadas(elEvento) {
+	     document.getElementById("coordenadas").innerHTML="client X-Y " + elEvento.clientX+" : "+elEvento.clientY+" event.target.nodeName: "+event.target.nodeName+"<br>";
+	     document.getElementById("coordenadas").innerHTML+="offset X-Y " + elEvento.offsetX+" : "+elEvento.offsetY+" event.target.nodeName: "+event.target.nodeName+"<br>";
+	     document.getElementById("coordenadas").innerHTML+="page   X-Y " + elEvento.pageX+" : "+elEvento.pageY+" event.target.nodeName: "+event.target.nodeName+"<br>";
+	     document.getElementById("coordenadas").innerHTML+="screen X-Y " + elEvento.screenX+" : "+elEvento.screenY+" event.target.nodeName: "+event.target.nodeName+"<br>";
+
+}
+
+
+document.addEventListener('mousemove',mostrarCoordenadas,false);
+
+</script>
+
+</body> 
+</html>

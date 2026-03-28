@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="crearVentana()">Crear ventana</button>
+    <button onclick="cerrarVentana()">Cerrar ventana</button>
+    <button onclick="focoVentana()">Poner foco ventana</button>
+    <button onclick="moverVentana(100,100)">Mover ventana 100x100</button>
+    <button onclick="moverVentana(0,0)">Mover ventana 0</button>
+    <button onclick="desplazarVentana(100,0)">Desplazar ventana 100 derecha</button>
+    <button onclick="desplazarVentanaIzq(-10,0)">Desplazar ventana 10 izquierda</button>
+    <button onclick="desplazarIntervaloVentana()">Desplazar Invertalo ventana 10,10</button>
+    <button onclick="pararIntervaloVentana()">Parar Invertalo ventana 10,10</button>
+    <button onclick="colorIntervaloVentana()">Color Invertalo ventana</button>
+    <button onclick="pararColorIntervaloVentana()">Parar Color Invertalo ventana</button>
+
+    <button onclick="colorTimeOutVentana()">Color Time Out ventana</button>
+    <button onclick="pararcolorTimeOutVentana()">Parar Color Time Out ventana</button>
+    <script>
+        var ventana;
+        var intervalo;
+        var intervaloColor;
+        var timeOutVentana;
+
+        function crearVentana(){
+            ventana = window.open("","Ventana hija","width=200, height=200")
+        }
+        function cerrarVentana(){
+            ventana.close(); 
+        }
+        function focoVentana(){
+            ventana.focus();
+        }
+        function moverVentana(x,y){
+            ventana.moveTo(x,y);
+            ventana.focus();
+        }
+        function desplazarVentana(x,y){
+            ventana.moveBy(x,y);
+            ventana.focus();
+        }
+        function desplazarVentanaIzq(x,y){
+            ventana.moveBy(x,y);
+            ventana.focus();
+        }
+        function desplazarIntervaloVentana(){
+            intervalo = setInterval(desplazarVentana2,500,"hola");
+        }
+        function desplazarVentana2(cadena){
+            ventana.moveBy(10,10);
+            ventana.focus();
+            ventana.console.log(cadena);
+            console.log(cadena);
+        }
+        function pararIntervaloVentana(){
+            clearInterval(intervalo);
+        }
+        function colorIntervaloVentana(){
+            intervaloColor = setInterval(colorVentana,500,"Color");
+            ventana.focus();
+        }
+        function colorVentana(){
+            let colores = ["green","yellow","red","blue","orange"];
+            let color = colores[Math.floor(Math.random()*colores.length)];
+            ventana.body.style.backgroundColor=color;
+        }
+        function pararColorIntervaloVentana(){
+            clearInterval(intervaloColor);
+        }
+        function colorTimeOutVentana(){
+            timeOutVentana = ventana.setTimeout(colorVentana,500,"time out");
+        }
+        function pararcolorTimeOutVentana(){
+            ventana.clearTimeout(timeOutVentana);
+        }
+    </script>
+</body>
+</html>

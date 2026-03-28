@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form name="formulario" id="formulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre"/>
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" name="apellidos"/>
+    <label for="provincia">Provincia:</label>
+    <input type="text" id="provincia" name="provincia"/>
+    <input type="button" id="enviar" value="Enviar"/>
+</form>
+
+<script>
+    var arrayInputs = document.getElementsByTagName("input");
+
+    function changeFocus(evento) {
+        var neighbour = this.nextElementSibling;
+        if(neighbour == null) {
+            neighbour = this.parentNode.firstElementChild;
+        }
+        while (neighbour.nodeName != "INPUT") {
+            neighbour = neighbour.nextElementSibling;
+        }
+
+        if (evento.key = "Enter") {
+            neighbour.focus();
+        }
+    }
+
+    for (let i = 0; i < arrayInputs.length; i++) {
+        arrayInputs[i].addEventListener("keypress", changeFocus, false);
+    }
+
+</script>
+
+<!--
+29. Incorpora este código HTML a una página web.
+Programa el código JavaScript para que pulsar la tecla Intro dentro de cualquiera de los
+inputs se mueve el foco al input siguiente incluyendo el botón.
+Al llegar al final del formulario (el botón) se debe pasar el foco al primer input del
+formulario.
+
+
+NOTA: tened en cuenta que el formulario es un nodo padre de los siguientes nodos y
+por este orden:
+
+ - Nodo elemento label nombre.
+ - Nodo texto que es un enter que hay detrás del label. Los retornos de carro, espacios en
+blanco etc. que hayan entre elementos los considera un nodo texto.
+ - Nodo elemento input nombre.
+ - Nodo texto que es un enter que hay detrás del input nombre.
+ - Nodo elemento label apellidos.
+ - Nodo texto que es un enter que hay detrás del label.
+ - Nodo elemento input apellidos.
+ - Nodo texto que es un enter que hay detrás del input apellidos.
+ - Nodo elemento label provincia.
+ - Nodo texto que es un enter que hay detrás del label.
+ - Nodo elemento input provincia.
+ - Nodo texto que es un enter que hay detrás del input provincia.
+ - Nodo elemento input button.
+ - Nodo texto que es un enter que hay detrás del input button.
+-->
+</body>
+</html>

@@ -1,0 +1,27 @@
+#map {
+    height: 400px;
+    width: 100%;
+}
+
+body {
+    background-color: lightsteelblue;
+}
+
+h1 {
+    text-align: center;
+}
+
+#cont {
+    border: 3px black solid;
+    margin: 20px;
+    padding: 20px;
+}
+
+button {
+    height: 60px;
+    width: 180px;
+}
+
+p {
+    font-size: 1.2em;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Array 2D</title>
+    <script>
+        let array2D;
+
+        function crearNuevoArray() {
+            array2D = new Array(4);
+            for (let i = 0; i < 4; i++) {
+                array2D[i] = new Array(4);
+                for (let j = 0; j < 4; j++) {
+                    array2D[i][j] = Math.floor(Math.random() * 9) + 1;
+                }
+            }
+            console.log("Array creado:");
+            console.log(array2D);
+        }
+
+        function visualizarArray() {
+            if (array2D) {
+                console.log("Visualizando array:");
+                console.log(array2D);
+            } else {
+                console.log("El array no ha sido creado aún.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="crearNuevoArray()">Crear Nuevo Array</button>
+    <button onclick="visualizarArray()">Visualizar Array</button>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+
+</head>
+<body>
+    <script>
+      //sentencia 
+      //if: especifica un bloque de código que se ejecuta si una
+      //condición es cierta.
+      var nota = 5;
+      if(nota >=5){
+        alert("has aprobado");
+      }
+
+      //else: especifica un bloque de 
+      //código que se ejecuta si una condición es falsa.
+      var nota2 = 8;
+      if(nota >= 5){
+        alert("has aprobado");
+      }else{
+        alert("has suspendido");
+      }
+
+      //else if: especifica una nueva condición
+      // si la primera es falsa.
+
+      var nota3 = 6;
+      if(nota < 5 ){
+        alert("suspendido");
+      }else if (nota3 == 5){
+        alert("suficiente");
+      }else if(nota3 == 6){
+        alert("bien");
+      }else if(nota3 == 7 || nota3 == 8){
+        alert("notable");
+      }else{
+        alert("sobresaliente");
+      }
+
+      //sentencia switch
+      /*
+      - se utiliza para hacer diferentes acciones basadas en diferentes condiciones.
+      - la condición se evalua una única vez.
+      - si hay alguna coincidencia con algún valor se ejecuta el bloque de código correspondiente.
+
+      */
+      var nota = 3;
+      var mensaje = "";
+      switch(nota){
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+          mensaje = "suspenso";
+          break;
+        case 5:
+          mensaje = "suficiente";
+          break;
+        case 6:
+          mensaje = "bien";
+          break;
+        case 7:
+        case 8:
+          mensaje = "notable";
+          break;
+        case 9:
+        case 10:
+          mensaje = "sobresaliente";
+          break;
+        default:
+          mensaje = "El valor no es valido";
+
+      }
+      alert(mensaje);
+
+    </script>
+</body>
+</html>

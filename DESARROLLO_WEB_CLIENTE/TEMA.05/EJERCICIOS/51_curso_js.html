@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+  </head>
+  <body>
+    <button type="button" id="verTodas">Ver todas las cookies</button>
+    <button type="button" id="crearCookie">Crear cookie</button>
+    <button type="button" id="modificarCookie">Modificar Cookie</button>
+    <button type="button" id="leerCookie">Leer Cookie</button>
+    <button type="button" id="borrarCookie">Borrar Cookie</button>
+    <script>
+      document.getElementById("verTodas").addEventListener("click", verCookies);
+      document.getElementById("crearCookie").addEventListener("click", crearModCookie);
+      document.getElementById("modificarCookie").addEventListener("click", crearModCookie);
+      document.getElementById("leerCookie").addEventListener("click", leerCookie);
+      document.getElementById("borrarCookie").addEventListener("click", borrarCookie);
+
+      function verCookies() {
+        alert("Cookies actuales:\n" + document.cookie);
+      }
+      function crearModCookie() {
+        var nombre = prompt("Introduce el nombre");
+        var valor = prompt("Introduce el valor");
+        var expiracion = parseInt(prompt("Introduce nº días"));
+        setCookie(nombre, valor, expiracion);
+        verCookies();
+      }
+      function leerCookie() {
+        var nombre = prompt("Introduce el nombre a consultar");
+        alert(getCookie(nombre));
+      }
+      function borrarCookie() {
+        var nombre = prompt("Introduce el nombre a borrar");
+        deleteCookie(nombre);
+        verCookies();
+      }
+
+      function setCookie(nombre, valor, expiracion) {
+        var d = new Date();
+        d.setTime(d.getTime() + expiracion * 24 * 60 * 60 * 1000);
+        var expiracion = "expires=" + d.toUTCString();
+        document.cookie = nombre + "=" + valor + ";" + expiracion + ";path=/";
+      }
+      function getCookie(nombre) {
+        var nom = nombre + "=";
+        var array = document.cookie.split(";");
+        alert(array);
+        for (let i = 0; i < array.length; i++) {
+          var c = array[i].trim();
+          alert(c);
+          while (c.charAt(0) == " ") {
+            //mira a ver si hay espacios
+            c = c.substring(1);
+            alert(c);
+          }
+          if (c.indexOf(nom) == 0) { //halla la posición de la cadena nom
+            return c.substring(nom.length, c.length);
+          }
+        }
+        return "";
+      }
+      function deleteCookie(nombre) {
+        setCookie(nombre, "", 0);
+      }
+    </script>
+  </body>
+</html>

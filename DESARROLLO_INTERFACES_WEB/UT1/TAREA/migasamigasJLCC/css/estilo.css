@@ -1,0 +1,121 @@
+@charset "utf-8";
+body {
+    	font: 100% Verdana, Arial, Helvetica, sans-serif;
+    	background: #990000;
+    	margin: 0; 
+    	padding: 0;
+    	text-align: center; 
+    	color: #000000;
+		width: 100%;
+		height: 100%;
+    }
+table{
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+a:link{
+	color: #000000;
+	text-decoration:none;
+	font-weight:bold;
+}
+a:hover{
+	color:#cccccc;
+	font-weight:bolder;
+	background-color:#FFFFFF;
+	text-decoration: overline underline;
+}
+a:visited{
+	text-decoration:none;
+	color:#000000;
+}
+p{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:1em;
+	font-style:normal;
+	text-align:justify;
+}
+h1{text-align:left;}
+h2{color:#FFAA00; text-align:left;}
+h3{padding:0px 10px;}
+    .unColor #container {
+		width: 1024px;
+		background: #FFFFFF;
+		margin: 0 auto;
+		border: 1px solid #000000;
+		text-align: center;
+		height: 768px;
+		
+    }
+    .unColor #header {
+		padding: 0 10px 0 20px;
+		/*background-color: #FFCC33;*/
+		width: 100%;
+		height: 200px;
+		background-image:url(../img/pan.jpg);
+		background-position:center;
+		 
+    }
+    .unColor #header h1 {
+    	margin: 0; 
+    	padding: 10px 0; 
+    }
+    .unColor #mainContent {
+	padding: 0 10px;
+	background: #FFcc00;
+	height: 545px;
+	width: 100%;
+	background-image:url(../img/pan2.jpg);
+	background-position:center;
+	background-repeat:no-repeat;
+    }
+	.unColor #mainContent table{
+		margin: 3px 10px;
+		height: 100%;
+		width: 100%;
+	}
+	.unColor #mainContent table tr{
+	width: 100%;
+	height: 120px;
+	}
+	.unColor #mainContent table tr td{
+	height: 120px;
+	}
+    .unColor #footer {
+	padding: 0 10px;
+	height: 23px;
+	width: 100%;
+	text-align: center;
+	background-image:url(../img/pan.jpg);
+	background-position:center bottom;
+    } 
+    .unColor #footer p {
+    	margin: 0; 
+    	padding: 10px 0;
+		font-weight:bolder;
+		color: #FFFFFF;
+		text-align:center;
+    }
+#bg {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+#seleccionado{
+	color: #CCCCCC;
+	text-decoration:underline;
+}
+.bordes{
+	border:#FF9933 solid 2px;
+}
+.bordes2 {
+	border:#dd6600 solid 2px;
+}
+.bordes3 {
+	border:#bb3300 solid 2px;
+}
+.mapa{
+	background:url(../img/ayamonte_isla_lepe.jpg) center no-repeat;
+}

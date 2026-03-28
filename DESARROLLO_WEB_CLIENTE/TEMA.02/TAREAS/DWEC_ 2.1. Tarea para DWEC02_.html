@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>Solución Tarea DWEC02</title>
+	</head>
+	<body>
+		<h2>Solución Tarea DWEC02 - Estructura del Lenguaje JavaScript</h2>
+		<script type="text/javascript">
+			//Creamos la variable i que usaremos a lo largo de todo el programa como contador.
+			var i;
+
+			document.write("<H3>TABLA DE MULTIPLICAR DEL 7</H3>");
+			// Empleamos el bucle for.
+
+			for (i = 0; i <= 10; i++) {
+				document.write("7 x " + i + " = " + 7 * i + "<br/>");
+			}
+
+			document.write("<H3>TABLA DE SUMAR DEL 8</H3>");
+			// Empleamos el bucle while()
+
+			// Inicializamos i a 0;
+			i = 0;
+
+			while (i <= 10) {
+				document.write("8 + " + i + " = " + (8 + i) + "<br/>");
+				// Incrementamos i en 1;
+				i++;
+			} // Fin del bucle while()
+
+			document.write("<H3>TABLA DE DIVIDIR DEL 9</H3>");
+			// Empleamos el bucle do while()
+			// Inicializamos i a 0;
+			i = 0;
+
+			do {
+				document.write("9 / " + i + " = " + 9 / i + "<br/>");
+				// Incrementamos i en 1;
+				i++;
+			} while (i <= 10); // Fin del bucle do ... while()
+
+			document.write(
+				"<H3>OPERACIONES ARITMÉTICAS EMPLEANDO DESPLAZAMIENTO DE BITS</H3>"
+			);
+			// Cuando desplazamos 1 bit a la derecha dividimos un entero por 2 y cuando lo desplazamos a la izquierda estamos multiplicando por 2.
+
+			document.write("125 / 8=" + (125 >> 3) + "<BR/>");
+			document.write("40 x 4 =" + (40 << 2) + "<BR/>");
+			document.write("25 / 2 =" + (25 >> 1) + "<BR/>");
+			document.write("10 x 16=" + (10 << 4) + "<BR/>");
+		</script>
+	</body>
+</html>

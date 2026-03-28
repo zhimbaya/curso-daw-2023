@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>
+<b>ENUNCIADO</b><br>
+Tenemos un formulario formado por el siguiente input tipo texto:<br>
+input type="text" id="myText" value="Mickey"<br><br>
+Y el siguiente input tipo reset<br>
+input type="reset" value="reset"<br><br>
+
+Fuera del formulario crea estos 3 botones que hagan lo siguiente:<br>
+a) Botón llamado "¿Ha cambiado el valor?": que indique si el usuario ha introducido algún valor en el input.<br>
+b) Botón llamado "Cambiar propiedad defaultValue": que modifique dicho valor a Goofy<br>
+c) Botón llamado "Imprime valores": que muestre los valores value y defaultValue del input text.<br><br>
+<b>PARA PROBAR:</b><br>
+<b>1- Haz click en el botón Valores</b>, te saldrá el valor de las propiedades defaultValue (value del HTML-Mickey) y value (el valor que ha introducido el usuario-Mickey porque no ha introducido ninguno)<br>
+2- <b>Escribe algo en el input y vuelve a pulsar el botón Valores</b>, te saldrá  como defaultValue Mickey, y como value lo introducido por el usuario<br>
+3- <b>Pulsa el botón Cambiar propiedad default</b>, te saldrá como defaultValue el nuevo valor (Goofy) y como value lo introducido por el usuario<br>
+4- <b>Pulsa el botón reset del formulario</b> (que va a poner todos sus elementos al estado por defecto)<b> y pulsa el botón Valores</b>, te saldra el value y defaultValue igual a Goofy
+</p>
+<br>
+<br>
+
+<form>
+First Name: <input type="text" id="myText" name="n_myText" value="Mickey">
+<input type="reset" value="reset"><br><br><br>
+</form>
+
+<button onclick="haCambiadoValor();">¿Ha cambiado el valor?</button><br>
+<button onclick="cambiarValorDefecto();">Cambiar Valor por defecto</button><br>
+<button onclick="imprimirValores();">Imprimir valores</button><br>
+
+<p id="demo"></p>
+
+<script>
+
+  function cambiarValorDefecto(){
+    myText.defaultValue="Goofy";
+  }
+
+function imprimirValores(){
+ 
+     demo.innerHTML="El valor del input es: "+myText.value+" y el valor por defecto del input es: "+myText.defaultValue+"<br>";
+}  
+  function haCambiadoValor(){
+    if (myText.value!=myText.defaultValue){
+     demo.innerHTML="El valor del input es: "+myText.value+" y el valor por defecto del input es: "+myText.defaultValue+". Por lo que podemos decir que SI ha cambiado<br>";
+    } else {
+     demo.innerHTML="El valor del input es: "+myText.value+" y el valor por defecto del input es: "+myText.defaultValue+". Por lo que podemos decir que NO ha cambiado<br>"; 
+    }
+
+  }
+
+
+</script>
+
+</body>
+</html>

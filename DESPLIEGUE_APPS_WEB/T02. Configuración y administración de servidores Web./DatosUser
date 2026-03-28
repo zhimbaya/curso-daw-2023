@@ -1,0 +1,6 @@
+--phpmyadmin
+user: dbdaw
+pass: password
+--wordpress: wp-admin
+user: daw
+pass: daw

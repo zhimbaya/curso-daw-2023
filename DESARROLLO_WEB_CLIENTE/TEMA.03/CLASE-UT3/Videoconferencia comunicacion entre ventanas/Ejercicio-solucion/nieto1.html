@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <title>Nieto 1</title>
+</head>
+<body>
+    <input type="text" id="textonieto1" placeholder="Introduce aqui un texto"><br>
+    <input type="button" value="Mandar a padre (abuelo)" onclick="mandarPadre()"><br>
+    <input type="button" value="Mandar a hijo 2 (mi tio)" onclick="mandarHijo2()">
+    <script type="text/javascript">
+        function mandarPadre(){
+            opener.opener.document.getElementById("textopadre").value=document.getElementById("textonieto1").value;
+        }
+        function mandarHijo2(){
+            opener.opener.h2.document.getElementById("textohijo2").value=document.getElementById("textonieto1").value;
+        }
+    </script>
+
+ </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Ejemplo</title>
+</head>
+
+<body>
+
+<button id="boton">Mostrar los datos del dia 24 de Marzo de 2022</button>
+
+<p id="demo"></p>
+
+<script>
+
+/* ENUNCIADO
+
+    Mostrar la probabilidad de precipitación, la cota de nieve y el estado del cielo 
+    del 24 de Marzo de 2022 en las diferentes franjas horarias 
+    Los datos van a ser recogidos de un documento XML.
+    Para facilitar el acceso al documento XML lo hemos descargado de la página web de aemet y está en nuestro propio  propio sitio web, concretamente en el directorio raiz.
+    Su nombre es localidad_28004.xml
+
+  FIN DE ENUNCIADO */
+
+boton.addEventListener("click",peticionAjax);
+
+function peticionAjax (){
+  var xhr = new XMLHttpRequest();
+  var url="localidad_28004.xml";
+  xhr.open("GET",url);
+  xhr.addEventListener("readystatechange", procesarResp);
+  xhr.send();
+}
+
+function procesarResp (){
+  var resXML;
+  var root;
+  var pred;
+  var dias;
+  var arrayPrecip;
+  var arrayNieve;
+  var arrayCielo;
+  var cad="";
+
+  if (this.readyState==4 && this.status==200){
+       resXML=this.responseXML;
+       root=resXML.getElementsByTagName("root")[0];
+       pred=root.getElementsByTagName("prediccion")[0];
+       dias=pred.getElementsByTagName("dia");
+       console.log(resXML);
+       console.log(root);
+       console.log(pred);
+       console.log(dias);
+
+       for (var i=0;i<dias.length;i++){
+       
+        let fecha=dias[i].getAttribute("fecha");
+       
+        if (parseInt(fecha.substr(0,4))==2022 && parseInt(fecha.substr(5,2))==3 && parseInt(fecha.substr(8,2))==24){
+              console.log(fecha);
+              arrayPrecip=dias[i].getElementsByTagName("prob_precipitacion");
+              arrayNieve=dias[i].getElementsByTagName("cota_nieve_prov");
+              arrayCielo=dias[i].getElementsByTagName("estado_cielo");
+              console.log(arrayPrecip);
+              console.log(arrayNieve);
+              console.log(arrayCielo);
+              for (var j=0;j<arrayPrecip.length;j++){
+                    cad+="<br>Dia "+fecha+" Periodo "+arrayPrecip[j].getAttribute("periodo")+"<br>"
+                    cad+="La probabilidad de lluvia es: "+arrayPrecip[j].innerHTML+"<br>";
+                    cad+="La cota de nieve es: "+arrayNieve[j].innerHTML+"<br>";
+                    cad+="El estado de cielo es: "+arrayCielo[j].getAttribute("descripcion")+"<br>";
+                    
+              }
+              demo.innerHTML=cad;
+        }
+       }
+  }
+}
+
+</script>
+
+</body> 
+</html>

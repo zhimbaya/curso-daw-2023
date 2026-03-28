@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.importante { color: red; }
+</style>
+	<title></title>
+</head>
+
+<body>
+	<div>Div1</div>
+	<div class="importante">Div2</div>
+	<div>Div3</div>
+	<div class="importante">Div4</div>
+	<div>Div5</div>
+	<input type="button" id="boton" value="Numero de elementos con clase importante">
+	<p id="info"></p>
+<script type="text/javascript">
+	
+	window.addEventListener("load",iniciar)
+
+	function iniciar(){
+		boton.addEventListener("click",mostrar)
+	}
+
+	function mostrar(){
+		let elemsImp=document.getElementsByClassName("importante")
+		info.innerHTML="Hay "+elemsImp.length+" elementos con clase importante"
+		console.log(elemsImp)
+		Array.from(elemsImp).forEach(elem=>{
+			info.innerHTML+=elem.innerHTML+" "
+		})
+	}
+</script>
+
+</body>
+</html>

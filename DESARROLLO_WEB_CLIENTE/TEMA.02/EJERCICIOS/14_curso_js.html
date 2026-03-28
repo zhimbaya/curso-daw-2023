@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+
+</head>
+<body>
+    <script>
+      // CADENAS O STRING
+      var cadena = "ada";
+      var cadena2 = ' lovelace';
+      var cadena3 = " Ada 'lovelace'";
+
+      //números
+      var entero = 3;
+      var decimal = 3.56;
+      var cientifico = 12e-5;
+
+      //BOOLEANOS
+      var cierto = true;
+      var falso = false;
+
+      //ARRAY
+      var lista = [1,"hola",6,"caracola"];
+
+      //OBJETOS
+      var animal ={
+        nombre: "lola",
+        tipo: "hamster",
+        raza: "Ruso",
+      };
+
+      //OPERADOR TYPEOF
+      alert(typeof cadena);
+      alert(typeof cierto);
+
+      //UNDEFINED
+      var objetoSinDefinir;
+      alert(objetoSinDefinir);
+
+      //VACIO
+      var cadena4 = "";
+      alert(cadena4); //vacio
+      alert(typeof cadena4); //string
+      
+      var cadena4 = undefined;
+      alert(cadena4); //undefined
+      alert(typeof cadena4); //undefined
+
+      //NULL
+      var animal = null;
+      alert(animal); //null
+      alert(typeof animal); //object
+
+      null === undefined // false
+      null == undefined // true
+
+    </script>  
+</body>
+</html>

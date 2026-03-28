@@ -1,0 +1,10 @@
+#cajatres { margin: 50px 70px; border: 10px groove #6600cc; background-color: #ccffff; 
+            padding: 15px ;}
+#cajatres h1 { font-family: arial; font-size: 2.2em; text-align: center; color: #660033; }
+#cajatres p { font-style: italic; font-family: tahoma; font-size: 1.1em; }
+#cajatres table { border: 2px solid #660066; border-collapse: collapse; margin: auto; 
+                  width: 80%; }
+#cajatres th, td { border: 1px solid #660066; font-family: arial; font-size: 1.1em;
+                   padding: 5px 10px; color: #660066; }
+#cajatres table caption { font-family: arial; font-size: 1.3em; color: #006600; 
+                          padding-bottom: 10px;}

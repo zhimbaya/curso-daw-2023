@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>ejercicio 1 - hospital</title>
+</head>
+<body>
+    <div id="info"></div>
+</body>
+<script>
+    class Hospital {
+        constructor(nombre) {
+            this.nombre = nombre;
+            this.salas = [];
+            this.nivel = [];
+        }
+
+        setSalas(cadena) {
+            this.salas = cadena.split(",");
+        }
+
+        setNivelLimpieza(siglasSalas, nivelLimpieza) {
+            this.salas.forEach((sala, i) => {
+                if (siglasSalas === sala) {
+                    this.nivel[i] = nivelLimpieza;
+                }
+            });
+        }
+
+        vistoBueno() {
+            var vistoB = [];
+
+            for (let i = 0; i < this.nivel.length; i++) {
+                if (this.nivel[i] < 3) {
+                    let va = this.salas[i];
+                    vistoB.push(va);
+                }
+            }
+            return vistoB.toString();
+        }
+    }
+
+    hospitalA = new Hospital("norte");
+    hospitalA.setSalas("QUI,PED,TRA,DER");
+
+    //Generar un numero aleatorio del 1 al 4:
+    function generarNumAl() {
+        var nroAlea = Math.floor(Math.random() * 4 + 1);
+        console.log(nroAlea);
+        return nroAlea;
+    }
+
+    //despues de llamar a esto hospitalA.salas = ["QUI","PED","TRA","DER"]
+    hospitalA.salas.forEach(sala => {
+        hospitalA.setNivelLimpieza(sala, generarNumAl());
+    });
+
+
+    let salasNOK = hospitalA.vistoBueno();
+    if (salasNOK.length > 0) {
+        document.getElementById("info").innerText = "El nivel de limpieza del hospital es No-OK. " +
+            "Las salas que no tienen un nivel adecuado son: " + salasNOK.toString();
+    } else {
+        document.getElementById("info").innerText = "El nivel de limpieza del hospital es OK.";
+    }
+
+    console.log(hospitalA.nivel);
+    console.log(hospitalA.salas);
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="Parrafo" title="Titulo"></p>
+<script>
+
+  var att=document.getElementById('Parrafo').attributes;
+  var paImprimir="";
+  for(var i=0;i<=att.length-1;i++){
+    paImprimir+=att[i].nodeName+"="+att[i].nodeValue+" ";
+  }
+  document.write(paImprimir);
+
+</script>
+</body>
+</html>

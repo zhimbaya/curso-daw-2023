@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>indexedDB</title>
+</head>
+<body>
+    <label for="nombre">Nombre: </label>
+    <input type="text" id="nombre"><br>
+    <label for="edad">Edad: </label>
+    <input type="number" id="edad"><br>
+    <label for="indice">Indice: </label>
+    <input type="number" id="indice"><br>
+    
+    <input type="button" id="bCrearAbrirBD" value="Crear/abrir BD">
+    <input type="button" id="bActualizarBD" value="Actualizar BD">
+    <input type="button" id="bCerrarBD" value="Cerrar BD">
+    <input type="button" id="bBorrarBD" value="Borrar BD">
+    <input type="button" id="bCrearAlmacen" value="Crear almacen">
+    <input type="button" id="bBorrarAlmacen" value="Borrar almacen">
+    <input type="button" id="bAddDato" value="Añadir dato">
+    <input type="button" id="bCrearBDCrearAlmacenAddDato" value="Crear BD, crear almacen y añadir dato">
+    <input type="button" id="bLeerDato" value="Leer dato">
+    <input type="button" id="bActualizarDato" value="Actualizar dato">
+    <input type="button" id="bBorrarDato" value="Borrar dato">
+    <input type="button" id="bLeerTodosDatos" value="Leer todos los datos">
+    <input type="button" id="bLeerTodosDatosCursor" value="Leer todos los datos con cursor">
+    
+<p id="info"></p>
+<script>
+
+    let bd=null
+
+    window.addEventListener("load",iniciar)
+    function iniciar(){
+        bCrearAbrirBD.addEventListener("click",crearAbrirBD)
+        bActualizarBD.addEventListener("click",actualizarBD)
+        bCerrarBD.addEventListener("click",cerrarBD)
+        bBorrarBD.addEventListener("click",borrarBD)
+        bCrearAlmacen.addEventListener("click",crearAlmacen)
+        bBorrarAlmacen.addEventListener("click",borrarAlmacen)
+        bAddDato.addEventListener("click",addDato)
+        bCrearBDCrearAlmacenAddDato.addEventListener("click",crearBDCrearAlmacenAddDato)
+        bLeerDato.addEventListener("click",leerDato)
+        bActualizarDato.addEventListener("click",actualizarDato)
+        bBorrarDato.addEventListener("click",borrarDato)
+        bLeerTodosDatos.addEventListener("click",leerTodosDatos)
+        bLeerTodosDatosCursor.addEventListener("click",leerTodosDatosCursor)
+    
+    }
+
+
+
+    function getVersionBD(){
+       let version=localStorage.getItem("versionBD")
+
+       if (version==null){
+          version="1"
+          localStorage.setItem("versionBD",version)
+       } 
+
+       return version
+    }
+    
+
+    function incrVersionBD(){
+       
+       let version=localStorage.getItem("versionBD")
+
+       if (version==null){
+          version="1"
+       } else {
+          version=parseInt(version)+1
+       } 
+
+      localStorage.setItem("versionBD",version)
+
+       return version
+
+    }
+
+    function crearAbrirBD(){
+
+        if (bd!=null)  bd.close()
+        
+        let version=getVersionBD()
+
+        let peticion=indexedDB.open("BD",version)
+        info.innerHTML+="Abriendo la BD ... No se puede utilizar hasta que no haya finalizado la apertura de la BD<br>"
+        peticion.addEventListener("success",function (e){
+            bd=e.target.result
+            console.log("Se ha abierto la BD")
+            info.innerHTML+="BD abierta<br>"
+        })
+        peticion.addEventListener("upgradeneeded",function (e){
+            bd=e.target.result
+            console.log("Se ha actualizado la BD")
+        })
+    }
+
+    function actualizarBD(){
+
+        if (bd!=null)  bd.close()
+        
+        let version=incrVersionBD()
+
+        let peticion=indexedDB.open("BD",version)
+
+        peticion.addEventListener("success",function (e){
+            bd=e.target.result
+            console.log("Se ha abierto la BD")
+        })
+        peticion.addEventListener("upgradeneeded",function (e){
+            bd=e.target.result
+            console.log("Se ha actualizado la BD")
+        })
+
+    }
+
+    function cerrarBD(){
+        if (bd) bd.close();
+    }
+
+    function borrarBD(){
+        
+        if (bd!=null)  bd.close()
+        
+        let peticion=indexedDB.deleteDatabase("BD")
+        
+        peticion.addEventListener("success",function (){
+            console.log("La BD se ha eliminado correctamente.")
+            localStorage.removeItem("versionBD")
+        })
+        
+        peticion.addEventListener("error",()=>console.log("Se ha producido un error al eliminar la BD."))
+    
+    }
+
+    function crearAlmacen(){
+
+        if (bd!=null)  bd.close()
+        
+        let version=incrVersionBD()
+
+        let peticion=indexedDB.open("BD",version)
+
+        peticion.addEventListener("success",function (e){
+            bd=e.target.result
+            console.log("Se ha abierto la BD")
+        })
+        peticion.addEventListener("upgradeneeded",function (e){
+            bd=e.target.result
+            console.log("Se ha actualizado la BD")
+            let almacen=bd.createObjectStore("almacen",{autoIncrement: true})
+            info.innerHTML+="Creando el almacen ... No se puede operar con este almacen hasta que no finalice su creación <br>"
+            almacen.transaction.addEventListener("complete",()=>{
+                console.log("Se ha creado el almacen")
+                info.innerHTML+="Se ha creado el almacen<br>"
+            })
+            almacen.transaction.addEventListener("error",()=>console.log("Se ha producido un error al crear el almacen"))
+        })
+
+    }
+
+    function borrarAlmacen(){
+
+        if (bd!=null)  bd.close()
+        
+        let version=incrVersionBD()
+
+        let peticion=indexedDB.open("BD",version)
+
+        peticion.addEventListener("success",function (e){
+            bd=e.target.result
+            console.log("Se ha abierto la BD")
+        })
+        peticion.addEventListener("upgradeneeded",function (e){
+            bd=e.target.result
+            console.log("Se ha actualizado la BD")
+            
+            if (bd.objectStoreNames.contains("almacen")){
+                bd.deleteObjectStore("almacen")
+                console.log("Se ha borrado el almacen.")
+            }
+            
+        })
+
+    }
+    
+    function addDato(){
+                //requiere tener abierta la BD
+
+        let transac=bd.transaction("almacen","readwrite")
+        
+        let almacen=transac.objectStore("almacen")
+
+        transac.addEventListener("complete",()=>{console.log("La transacción de añadir datos ok")})
+
+        transac.addEventListener("error",()=>{console.log("La transacción de añadir datos nok")})
+
+        let registro={"nombre":nombre.value,"edad":edad.value}
+
+        let peticAdd=almacen.add(registro)
+
+        peticAdd.addEventListener("success",()=>{console.log("Dato insertado ok")})
+        peticAdd.addEventListener("error",()=>{console.log("Dato insertado nok")})
+
+    }
+
+    function crearBDCrearAlmacenAddDato (){
+        //requiere tener borrada la BD anterior que pudiera haber
+
+        let version=getVersionBD()
+
+        let peticion=indexedDB.open("BD",version)
+
+        peticion.addEventListener("success",function (e){
+            bd=e.target.result
+            console.log("Se ha abierto la BD")
+        })
+        peticion.addEventListener("upgradeneeded",function (e){
+            bd=e.target.result
+            console.log("Se ha actualizado la BD")
+
+            let almacen=bd.createObjectStore("almacen",{autoIncrement: true})
+
+            almacen.transaction.addEventListener("complete",()=>{
+                console.log("Se ha creado el almacen")
+                addDato()                
+            })
+            almacen.transaction.addEventListener("error",()=>console.log("Se ha producido un error al crear el almacen"))
+        })
+     
+    }
+/* INCORRECTO
+function crearBDCrearAlmacenAddDato (){
+    crearAlmacen()
+    addDato() // puede ser que la orden de obtener la referencia al almacen se ejecute antes 
+            // de haber concluido la creación del almacén.
+}
+*/
+
+    function leerDato(){
+        //requiere tener abierta la BD
+
+        let transac=bd.transaction("almacen","readonly")
+        
+        let almacen=transac.objectStore("almacen")
+
+        transac.addEventListener("complete",()=>{console.log("La transacción de añadir datos ok")})
+
+        transac.addEventListener("error",()=>{console.log("La transacción de añadir datos nok")})
+
+        let clave=parseInt(indice.value)
+        let peticOrden=almacen.get(clave)
+
+        peticOrden.addEventListener("success",(e)=>{
+            let dato=e.target.result
+            if (dato){
+                info.innerHTML+="Dato nombre: "+dato.nombre+" edad: "+dato.edad+"<br>"
+            } else {
+                info.innerHTML+="No existe ningún dato con clave "+clave+"<br>"
+            }
+        })
+        peticOrden.addEventListener("error",()=>{console.log("Dato leer nok")})
+
+    }
+
+    function actualizarDato(){
+        //requiere tener abierta la BD
+
+        let transac=bd.transaction("almacen","readwrite")
+        
+        let almacen=transac.objectStore("almacen")
+
+        transac.addEventListener("complete",()=>{console.log("La transacción de modificar datos ok")})
+
+        transac.addEventListener("error",()=>{console.log("La transacción de modificar datos nok")})
+
+        let registro={"nombre":nombre.value,"edad":edad.value}
+
+        let peticModif=almacen.put(registro,parseInt(indice.value))
+
+        peticModif.addEventListener("success",()=>{console.log("Dato modificado ok")})
+        peticModif.addEventListener("error",()=>{console.log("Dato modificado nok")})
+
+    }
+
+    function borrarDato(){
+        let transac=bd.transaction("almacen","readwrite")
+        
+        let almacen=transac.objectStore("almacen")
+
+        transac.addEventListener("complete",()=>{console.log("La transacción de borrar dato ok")})
+
+        transac.addEventListener("error",()=>{console.log("La transacción de borrar dato nok")})
+
+        let peticBorrar=almacen.delete(parseInt(indice.value))
+
+        peticBorrar.addEventListener("success",()=>{console.log("Dato borrado ok")})
+        peticBorrar.addEventListener("error",()=>{console.log("Dato borrado nok")})
+
+    }
+    
+    function leerTodosDatos(){
+        //requiere tener abierta la BD
+
+        let transac=bd.transaction("almacen","readonly")
+        
+        let almacen=transac.objectStore("almacen")
+
+        transac.addEventListener("complete",()=>{console.log("La transacción de leer todos los datos ok")})
+
+        transac.addEventListener("error",()=>{console.log("La transacción de leer todos los datos nok")})
+
+        let peticOrden=almacen.getAll()
+
+        peticOrden.addEventListener("success",(e)=>{
+            let datos=e.target.result
+            if (datos.length!=0){
+                datos.forEach((item)=>{
+                    info.innerHTML+="Dato leido con nombre: "+item.nombre+" y edad: "+item.edad+"<br>"
+                })
+            } else {
+                info.innerHTML+="No existe ningún dato en el almacen <br>"
+            }
+        })
+        peticOrden.addEventListener("error",()=>{console.log("Dato leer todos los datos nok")})
+
+    }
+function leerTodosDatosCursor(){
+        //requiere tener abierta la BD
+
+        let transac=bd.transaction("almacen","readonly")
+        
+        let almacen=transac.objectStore("almacen")
+
+        transac.addEventListener("complete",()=>{console.log("La transacción de leer todos los datos con cursor ok")})
+
+        transac.addEventListener("error",()=>{console.log("La transacción de leer todos los datos con cursor nok")})
+
+        let peticCursor=almacen.openCursor()
+
+        peticCursor.addEventListener("success",(e)=>{
+            let cursor=e.target.result
+            if (cursor){
+                info.innerHTML+="Dato leido con clave: "+cursor.key+" con nombre: "+cursor.value.nombre+" y edad: "+cursor.value.edad+"<br>"
+                cursor.continue()
+            } else {
+                info.innerHTML+="Fin del almacen de objetos <br>"
+            }
+        })
+        peticCursor.addEventListener("error",()=>{console.log("Dato leer todos los datos con cursornok")})
+
+    }
+
+</script>
+</body>
+</html>

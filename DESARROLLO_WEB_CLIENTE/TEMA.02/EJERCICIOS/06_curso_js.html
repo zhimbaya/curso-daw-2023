@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso JavaScript</title>
+</head>
+<body>
+    <script>
+        // COMENTARIOS
+        // Declaración de variables
+        var a = 1;
+        var b = 2;
+        /*
+        Esta operación realiza la suma de a y b.
+        */
+        var c = a + b;
+        alert(c);
+    </script>
+    <p id="parrafo1"></p>
+    <p id="parrafo2"></p>
+    <p id="parrafo3"></p>
+    <script>
+        //variables
+        /*
+        - identificadores únicos.
+        - recomendable utilizar identificadores descriptivos.
+        - empiezan por letra, $, _ y siguen con letra, número, $ o _.
+        - pueden contener cadenas ("",'') y números(enteros o decimales)
+        - son sensibles a las mayúsculas.
+        - no pueden utilizarse palabras reservadas.
+        */
+       //declaración de variable
+       var nombre;
+       //mostramos el valor de la variable - undefined
+       document.getElementById("parrafo1").innerHTML = nombre;
+       //asignación de valor a una variable.
+       nombre = "diego";
+       //mostramos el valor de la variable
+       document.getElementById("parrafo2").innerHTML = nombre;
+       //declaración de variables en una sola sentencia.
+       //var pais, nacimiento;
+       var pais = "reino unido";
+       var nacimiento = "1815";
+       //asignación de operaciones a una variable.
+        var nombreApellido = "diego "+ "Simbaña";
+        document.getElementById("parrafo2").innerHTML = nombreApellido + " país de origen " + pais
+        + " fecha de nacimiento "+nacimiento;
+    </script>
+       
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <!-- 
+    Evento:
+    Mecanismo que se acciona cuando el usuario realiza un cambio
+    sobre la página web.
+    Capturar un evento es programar una acción para que se realice
+    una tarea.
+    El encargado de gestionar los eventos es el DOM (Documento Objecto Model).
+
+    Manejador:
+    Acción que se va a manejar . Ej: el evento click el manejador es onclick.
+    -->
+
+   <!-- W3C -->
+   <h1>Modelo de eventos avanzados del w3c</h1>
+   <h2 id="w3c">Modelo del W3C</h2>
+   <h3 id="w3canonima">Modelo del w3c anónima</h3>
+   <script>
+    document.getElementById("w3c").addEventListener("click",saludarUnaVez,false);
+    document.getElementById("w3c").addEventListener("click",colorearse,false);
+    document.getElementById("w3c").addEventListener("mouseover",fondo,false);
+    function saludarUnaVez(){
+      alert("!hola, caracola¡");
+      //para que se ejecute una vez
+      document.getElementById("w3c").removeEventListener("click",saludarUnaVez);
+    }
+    function colorearse(){
+      document.getElementById("w3c").style.color="red";
+    }
+    function fondo(){
+      document.getElementById("w3c").style.background="blue";
+    }
+    //FUNCIONES ANÓNIMAS
+    //
+    document.getElementById("w3canonima").addEventListener("click",function(){
+      this.style.background = "#C0C0C0";
+    });
+   </script>
+  </body>
+</html>

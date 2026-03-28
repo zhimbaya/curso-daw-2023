@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+  </head>
+  <body>
+    <div class="norte">
+      <h2>Galicia</h2>
+      <ul id="lista">
+        <li>A coruña</li>
+        <li>Lugo</li>
+        <li>Orense</li>
+        <li>Pondevedra</li>
+      </ul>
+    </div>
+    <div class="sur">
+      <h2>Canarias</h2>
+      <ul id="lista">
+        <li>Gran Canarias</li>
+        <li>Palma</li>
+      </ul>
+    </div>
+    <p id></p>
+    <script type="text/javascript">
+      window.addEventListener("load",iniciar);
+      function iniciar(){
+        for(let i; i<document.getElementsByTagName("h2").length;i++){
+          document.getElementsByTagName("h2")[i].addEventListener("click",recorrerAdelante);
+        }
+      }
+      function recorrerAdelante(){
+        var texto = "";
+
+      }
+    </script>
+  </body>
+</html>

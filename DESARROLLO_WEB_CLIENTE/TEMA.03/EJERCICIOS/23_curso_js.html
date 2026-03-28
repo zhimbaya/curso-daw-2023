@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //CARACTERÍSTICAS
+      /*
+      - solo hay un tipo de datos númericos.
+      - podemos representar: 34, 34.05, 123e4, 123e-4
+      */
+      //CAMBIO DE BASE ENTRE NÚMEROS: toString()
+      var base10 = 128;
+      alert(base10.toString(2));
+      alert(base10.toString(8));
+      alert(base10.toString(16));
+
+      //INFINITO Y - INFINITO
+      var inf = 2;
+      while (inf != Infinity) {
+        alert(inf);
+        inf = inf * inf;
+      }
+      var div1 = 2;
+      div2 = 0;
+      alert(div1 / div2);
+
+      //NOT A NUMBER: NaN
+      var atipico = 100 / "casa";
+      alert(atipico);
+      var atipico2 = 100 / "4";
+      alert(atipico2);
+      alert(isNaN(atipico));
+      alert(typeof atipico); //number
+
+      //NÚMEROS COMO OBJETOS
+      var num = 233;
+      var num2 = new Number(123); //no es recomendable
+      alert(typeof num); //number
+      alert(typeof num2); //object
+
+      //PROPIEDADES
+      alert(Number.MAX_VALUE);
+      alert(Number.MIN_VALUE);
+      alert(Number.NEGATIVE_INFINITY);
+      alert(Number.POSITIVE_INFINITY);
+      alert(Number.NaN);
+
+      //METODOS
+      //toFixed(): cadena con el número específico de decimales indicado.
+      var x = 9.8765;
+      alert(x.toFixed(0));
+      alert(x.toFixed(2));
+      alert(x.toFixed(6));
+
+      //toPrecision(): cadena con el número específico de cifras indicado.
+      var y = 9.8765;
+      alert(y.toPrecision());
+      alert(y.toPrecision(2));
+      alert(y.toPrecision(6));
+
+      //toExponencial: cadena con el número redondeado a notación científica.
+      var z = 98765432;
+      alert(z.toExponential(2));
+      //valueOf
+      //toString
+      var j = 123;
+      alert(j.toString());
+      alert((123).toString());
+
+      //METODOS GLOBALES PARA CONVERTIR VARIABLES EN NUMEROS:
+      //Number(): devuelve el valor númerico de la variable.
+      alert(Number(true)); //1
+      alert(Number(false)); //0
+      alert(Number(new Date())); //milesegundo desde 1/1/1970
+      alert(Number("10"));
+      alert(Number("casa"));
+
+      //parseInt() / parseFloat()
+      alert(parseInt("10.6"));
+      alert(parseInt("10 20")); //devuelve 10
+      alert(parseInt("casa 20")); //NaN
+
+    </script>
+  </body>
+</html>

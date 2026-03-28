@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="formulario">
+        <input type="radio" id="c_madrid" name="ciudad" value="Madrid">
+        <label for="c_madrid">MAdrid</label><br>
+
+        <input type="radio" id="c_sevilla" name="ciudad" value="Sevilla">
+        <label for="c_sevilla">Sevilla</label><br>
+
+        <input type="radio" id="c_cuenca" name="ciudad" value="Cuenca">
+        <label for="c_cuenca">Cuenca</label>
+    </form>
+
+    <button type="button" onclick="lista()">lista</button>
+    <p id="demo"></p>
+
+    <script>
+        /*Crea un boton que al pulsarlo lista los atributos value de cada elemento html con nombre ciudad
+        utiliza getElementByName y bucle for*/
+
+        function lista(){
+            var datos = document.getElementsByName("ciudad");
+            document.getElementById("demo").innerText = "";
+            for(var i = 0; i < datos.length; i++){
+                document.getElementById("demo").innerText += datos[i].value + "\n";
+            }
+        }
+    </script>
+</body>
+</html>

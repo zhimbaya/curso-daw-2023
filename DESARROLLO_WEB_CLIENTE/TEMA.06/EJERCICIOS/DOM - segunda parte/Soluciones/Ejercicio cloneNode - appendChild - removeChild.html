@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div>
+		<p>Primera línea</p>
+		<p>Segunda línea</p>
+		<p>Tercera línea</p>
+	</div>
+
+	<p id="info"></p>
+
+<script type="text/javascript">
+
+let elemDiv=document.getElementsByTagName("div")[0]
+
+let nuevoP1=elemDiv.firstElementChild.cloneNode(true)
+
+let nuevoDiv=elemDiv.cloneNode(true)
+
+document.body.appendChild(nuevoDiv)
+document.body.removeChild(document.body.lastElementChild) 
+// habría sido igual 
+//document.body.removeChild(nuevoDiv) 
+</script>
+
+</body>
+</html>

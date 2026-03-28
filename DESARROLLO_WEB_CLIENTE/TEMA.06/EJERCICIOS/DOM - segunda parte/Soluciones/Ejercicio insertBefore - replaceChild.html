@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div>
+		<p>Primera línea</p>
+		<p>Segunda línea</p>
+		<p>Tercera línea</p>
+	</div>
+
+	<p id="info"></p>
+
+<script type="text/javascript">
+let elemDiv=document.getElementsByTagName("div")[0]
+
+let ultPar=elemDiv.lastElementChild
+
+let copiaUltPar=ultPar.cloneNode(true)
+
+let p2=elemDiv.children[1]
+
+elemDiv.insertBefore(copiaUltPar,p2)
+//elemDiv.insertBefore(ultPar,p2)
+
+let p1=elemDiv.firstElementChild
+let copiaP1=p1.cloneNode(true)
+
+elemDiv.replaceChild(copiaP1,ultPar)
+
+
+
+</script>
+
+</body>
+</html>

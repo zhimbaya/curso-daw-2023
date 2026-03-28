@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UT6 - Ejercicio 8</title>
+</head>
+<body>
+  <p id="demo">Parrafo creado en HTML.</p>
+
+  <br><br>
+
+  <button id="crearParrafo">Crear parrafo</button>
+  <button id="reemplazarBr">Reemplazar br por un nuevo b</button>
+  <button id="eliminarNuevoB">Eliminar elemento nuevo b</button>
+  <button id="recorrerParrafo">Recorrer</button>
+
+  <p id="infoRecorrer"></p>
+
+<script>
+  let negritaOriginal;
+  let saltoLinea;
+  let negritaNueva;
+
+  document.getElementById("crearParrafo").addEventListener("click", () => {
+    let parrafito = document.createElement("p");
+    negritaOriginal = document.createElement("b");
+    saltoLinea = document.createElement("br");
+
+    parrafito.setAttribute("title", "Parrafo creado desde JavaScript");
+
+    let texto1 = document.createTextNode("Con JavaScript se");
+    let texto2 = document.createTextNode("pueden realizar");
+    let texto3 = document.createTextNode("un montón");
+    let texto4 = document.createTextNode("de cosas sobre el documento");
+
+    negritaOriginal.appendChild(texto2);
+    negritaOriginal.appendChild(saltoLinea);
+    negritaOriginal.appendChild(texto3);
+
+    parrafito.appendChild(texto1);
+    parrafito.appendChild(negritaOriginal);
+    parrafito.appendChild(texto4);
+
+    document.getElementById("demo").appendChild(parrafito); // p dentro de p no es HTML correcto pero oki ¯\_(ツ)_/¯
+  });
+
+  document.getElementById("reemplazarBr").addEventListener("click", () => {
+    negritaNueva = document.createElement("b");
+
+    let carrito = document.createTextNode("Retorno de carro");
+
+    negritaNueva.appendChild(carrito);
+
+    let parrafito = document.getElementById("demo").lastChild;
+
+    negritaOriginal.replaceChild(negritaNueva, saltoLinea);
+  });
+
+  document.getElementById("eliminarNuevoB").addEventListener("click", () => {
+    let parrafito = document.getElementById("demo").lastChild;
+
+    negritaOriginal.removeChild(negritaNueva);
+  });
+
+  function recorrerHijosNodo(nodoPadre, numEspacios=0) {
+    let texto = "".padStart(numEspacios * 6, "&nbsp;") + `- nodeName: ${nodoPadre.nodeName}, nodeValue: ${nodoPadre.nodeValue}<br>`;
+
+    if (nodoPadre.hasChildNodes()) {
+      for (const hijito of nodoPadre.childNodes) {
+        texto += recorrerHijosNodo(hijito, numEspacios + 4);
+      }
+    }
+
+    return texto;
+  }
+
+  document.getElementById("recorrerParrafo").addEventListener("click", () => {
+    let parrafoPadre = document.getElementById("demo");
+
+    let texto = recorrerHijosNodo(parrafoPadre);
+
+    document.getElementById("infoRecorrer").innerHTML = texto;
+  });
+</script>
+</body>
+</html>

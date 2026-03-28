@@ -1,0 +1,30 @@
+body {
+    font-size: 3em;
+}
+
+h2 {
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+    border-spacing: 10px;
+    width: 100%;
+}
+
+
+tr {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #D6EEEE;
+}
+
+.row-pair:hover {
+    background-color: #D6EEEE;
+}
+
+td {
+    width: 100%;
+}

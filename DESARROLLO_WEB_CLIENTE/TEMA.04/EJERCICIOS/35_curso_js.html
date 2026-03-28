@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //VARIABLES LOCALES
+      //-se definen dentro de una función.
+      //-tienen ámbito local en la función.
+      //-son accesibles únicamente dentro de la función.
+      //-podemos declarar variables con el mismo nombre en diferentes funciones.
+      //-variables local desaparece cuando finalize la función.
+
+      function saludar() {
+        var saludo = "hola";
+        alert(saludo);
+      }
+      //alert(saludo);
+      document.write(saludar());
+
+      //VARIABLES GLOBALES
+      //-se definen fuera de la funciones.
+      //-tienen ámbito global (en toda la página).
+      //-Son accesibles desde fuera y dentro de las funciones.
+      //-variables globales desaparecen cuando se sale de la página.
+      var despedida = "Adios";
+      function despedir() {
+        alert(despedida);
+      }
+      despedir();
+
+      //VARIABLES AUTOMÁTICAMENTE GLOBALES
+      //-SI asignamos un valor a una variable no declarada se convierte en global.
+      function preguntar() {
+        pregunta="En un lugar de la..";
+      }
+      preguntar();
+      alert(pregunta);
+
+      //VARIABLES LOCALES Y GLOBABLES CON EL MISMO NOMBRE.
+      var miVariable = "Fuera";
+      function ambito(){
+        var miVariable = "Dentro";
+        alert(miVariable);
+      }
+      alert(miVariable); //devuelve fuera
+      ambito(); //devuelve dentro
+      alert(miVariable); //devuelve fuera
+
+      //VARIABLE GLOBAL REDEFINIDA DENTRO DE UNA FUNCIÓN
+      var miVariable2 = "Fuera";
+      function ambito2(){
+        miVariable2 = "Dentro";
+        alert(miVariable);
+      }
+      alert(miVariable2); //devuelve fuera
+      ambito(); //devuelve dentro
+      alert(miVariable2); //devuelve DENTRO
+    </script>
+  </body>
+</html>

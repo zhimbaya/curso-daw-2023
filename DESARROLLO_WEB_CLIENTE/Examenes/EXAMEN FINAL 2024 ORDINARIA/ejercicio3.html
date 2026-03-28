@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Ejercicio 3</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div id="info"></div>
+    <input type="text" id="inpmod" name="inpmod">
+    <input type="text" id="inpnotas" name="inpnotas">
+
+    <button id="btncargar">Cargar BD</button>
+    <button id="btnsuspensas">Notas suspensas</button>
+
+    <script>
+        window.addEventListener('load', inicio);
+
+        function inicio() {
+            document.getElementById('btncargar').addEventListener('click', cargar);
+            document.getElementById('btnsuspensas').addEventListener('click', listar);
+        }
+        ;
+
+        var bd;
+        function cargar() {
+            var solicitud = indexedDB.open('EX8', 1);
+
+            solicitud.onsuccess = function (e) {
+                bd = e.target.result;
+                agregar();
+            };
+
+            solicitud.onupgradeneeded = function (e) {
+                bd = e.target.result;
+                bd.createObjectStore('notas', { autoIncrement: true });
+            };
+
+            solicitud.onerror = function () {
+                console.log('BD sin éxito');
+            };
+        }
+
+        function agregar() {
+            var modulosInput = document.getElementById('inpmod');
+            var notasInput = document.getElementById('inpnotas');
+
+            // los datos introducidos entran como una cadena, los separo a todas las palabras usando como delimitador las comas
+            // asi se crea un array con todas las palabras
+            var modulos = modulosInput.value.split(',');
+            var notas = notasInput.value.split(',');
+
+            var regex = /^[A-Z]{3,4}$/;
+            // uso la proìedad "every" para recorrer todo el modulo y aplicar la expresion uno por uno
+            var sonValidos = modulos.every(modulo => regex.test(modulo));
+            
+        if (!sonValidos) { // si algun modulo da error sale el mje
+                document.getElementById('info').innerText = 'Error: Los módulos deben ser 3 o 4 caracteres de A a Z en mayúsculas.';
+                return;
+            }
+
+            //con un bucle for nomrla seria:
+            for (let i = 0; i < modulos.length; i++) {
+                if (!regex.test(modulos[i])) {
+                    sonValidos = false;
+                    break;
+                }else{
+         document.getElementById('info').innerText = 'Error: Los módulos deben ser 3 o 4 caracteres de A a Z en mayúsculas.';
+        }
+            }
+
+            
+
+            var transaccion = bd.transaction(['notas'], 'readwrite');
+            var almacen = transaccion.objectStore('notas');
+
+            // iteramos el array de los modulos el cual separa uno a uno asignandole un index (indice)y lo vamos agregando 
+            //al almacen en la propiedad modulo, tb agregamos el array notas asociandole el index
+
+            /**  modulos.forEach((modulo, index) => {
+                  almacen.add({
+                      modulo: modulo,
+                      nota: notas[index]
+                  });
+              });*/
+
+            //Asi seria con un bucle for normal
+            for (let i = 0; i < modulos.length; i++) {
+                let modulo = modulos[i];
+                let nota = notas[i];
+
+                almacen.add({
+                    modulo: modulo,
+                    nota: nota
+                });
+            }
+
+
+            modulosInput.value = '';
+            notasInput.value = '';
+        }
+
+        function listar() {
+            var transaccion = bd.transaction(['notas'], 'readonly');
+            var almacen = transaccion.objectStore('notas');
+
+            var cursor = almacen.openCursor();
+            var info = document.getElementById('info');
+            info.innerHTML = '';
+
+            cursor.onsuccess = function (e) {
+                var cursor = e.target.result;
+                if (cursor) {
+                    var record = cursor.value;
+                    if (record.nota < 5) {
+                        info.innerHTML += `Clave: ${cursor.key}, Módulo: ${record.modulo}, Nota: ${record.nota}<br>`;
+                    }
+                    cursor.continue();
+                }
+            };
+        }
+    </script>
+
+</body>
+
+</html>

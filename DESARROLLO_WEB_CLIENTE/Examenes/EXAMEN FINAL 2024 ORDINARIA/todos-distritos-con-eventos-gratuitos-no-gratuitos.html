@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>ejercicio 2 - consumir</title>
+</head>
+
+<body>
+    <div id="info"></div>
+    <button id="mostrar2">muestra info</button>
+</body>
+
+<script>
+    window.onload = () => {
+        document.getElementById("mostrar2").addEventListener("click", mostrar);
+        function mostrar() {
+            //Llamar eventos.xml
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = processOutput;
+            xhttp.open("GET", "http://localhost/eventos.xml");
+            xhttp.send();
+        }
+    }
+
+    function processOutput() {
+        const xmlDoc = this.responseXML;
+        const contenidosArray = xmlDoc.getElementsByTagName("contenido");
+
+        const list = document.createElement("ul");
+
+        var distritos = [];
+
+        for (let i = 0; i < contenidosArray.length; i++) {
+            const atributosArray2 = contenidosArray[i].getElementsByTagName("atributo");
+
+            //Ponemos contador a 0
+            var contadorG = 0;
+            var contadorNG = 0;
+            var distrito;
+
+            for (let i = 0; i < atributosArray2.length; i++) {
+                if (atributosArray2[i].getAttribute("nombre") == "DISTRITO") {
+                    distrito = atributosArray2[i].firstChild.nodeValue;
+
+                    //Verificamos que no este incluido en nuestro array:
+                    if (!distritos.includes(distrito)) {
+                        //Lo incluimos para no volver a recorrerlo:
+                        distritos.push(distrito);
+
+                        //Volvemos a recorrer los contenido para hacer verificaciones:
+                        for (let k = 0; k < contenidosArray.length; k++) {
+                            const atributosArray = contenidosArray[k].getElementsByTagName("atributo");
+
+                            var gratuito;
+                            var distritoSinAnalizar;
+
+                            //Recorremos los atributos para buscar los gratuitos por distrito
+                            for (let j = 0; j < atributosArray.length; j++) {
+
+                                //Rellenamos con el texto de "GRATUITO"
+                                if (atributosArray[j].getAttribute("nombre") == "GRATUITO") {
+                                    gratuito = atributosArray[j].innerHTML;
+                                }
+
+                                //Rellenamos con el texto de "DISTRITO"
+                                if (atributosArray[j].getAttribute("nombre") == "DISTRITO") {
+                                    distritoSinAnalizar = atributosArray[j].firstChild.nodeValue;
+                                }
+                            }//Aqui termina cuarto for con todos los atributos de ese for contenido
+
+                            //Si el distritoSinAnalizar es igual al distrito que nos pasa el contenido.atributos.distrito y gratuito es "1" devolvemos el contador 
+                            if (distritoSinAnalizar == distrito && gratuito == 1) {
+                                contadorG++;
+                            } else if (distritoSinAnalizar == distrito && gratuito == 0) {
+                                contadorNG++;
+                            }
+                        }
+
+                        const node = document.createElement("li");
+                        if (contadorG > contadorNG) {
+                            node.innerText = `Se producen en el ${distrito} mas eventos gratuitos`;
+                        } else {
+                            node.innerText = `Se producen en el ${distrito} mas eventos no gratuito`;
+                        }
+                        list.appendChild(node);
+                    }//Aqui termina tercer for con todos los contenidos de nuevo por analizar con el distrito pasado por parametro
+                }
+            }//Aqui termina segundo for con todos los atributos de ese for contenido
+        } //Aqui termina primer for con todos los contenidos
+        document.getElementById("info").appendChild(list);
+    }
+</script>
+
+</html>

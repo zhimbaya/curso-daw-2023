@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mover elemento</title>
+</head>
+<body>
+  <p id="demo" style="position: absolute;">Holis</p>
+
+<script>
+  document.addEventListener("mousemove", (e) => {
+    document.getElementById("demo").style.left = `${e.clientX}px`;
+    document.getElementById("demo").style.top = `${e.clientY}px`;
+  });
+</script>
+</body>
+</html>

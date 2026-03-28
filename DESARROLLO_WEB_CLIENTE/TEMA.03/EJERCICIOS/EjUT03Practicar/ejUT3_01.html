@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UT3 - Ejercicio 1</title>
+</head>
+<body>
+  <button onclick="crearVentana()">1) Abrir nueva ventana</button>
+  <br><br>
+
+  <button onclick="mostrarNombre()">2) Mostrar nombre de la nueva ventana</button>
+  <br><br>
+
+  <button onclick="cerrarVentana()">3) Cerrar ventana</button>
+  <br><br>
+
+  <button onclick="ventanaCerrada()">4) Comprobar si ventana cerrada</button>
+  <br><br>
+
+  <button onclick="quitarFoco()">5) Quitar foco</button>
+  <br><br>
+
+  <button onclick="ponerFoco()">6) Poner foco</button>
+  <br><br>
+
+  <button onclick="mostrarURLNuevaVentana()">7) URL nueva ventana HTML</button>
+  <br><br>
+
+  <button onclick="mostrarURL()">8) URL ventana principal</button>
+  <br><br>
+
+  <button onclick="mensajeAsustar()">9) Borrar usuario</button>
+  <br><br>
+
+  <p id="demo10">Holis</p>
+  <button onclick="propiedadesLocation()">10) Propiedades location</button>
+  <br><br>
+
+  <button onclick="recargarWeb()">11) Recargar web</button>
+  <br><br>
+
+  <p id="demo12">Holis</p>
+  <button onclick="propiedadesNavigator()">12) Propiedades navigator</button>
+  <br><br>
+
+  <p id="demo13">Holis</p>
+  <button onclick="propiedadesDocument()">13) Propiedades document</button>
+  <br><br>
+
+  <button onclick="permiteJava()">15) Permite Java</button>
+  <br><br>
+
+<script>
+  var nuevaVentana;
+
+  // 1 y 14
+  function crearVentana() {
+    nuevaVentana = window.open("", "helloThere", "left=300, top=0, width=500, height=300");
+  }
+
+  // 2
+  function mostrarNombre() {
+    alert(nuevaVentana.name);
+  }
+
+  // 3
+  function cerrarVentana() {
+    nuevaVentana.close();
+  }
+
+  // 4
+  function ventanaCerrada() {
+    let texto = nuevaVentana.closed ? "La ventana está cerrada" : "La ventana NO está cerrada";
+    alert(texto);
+  }
+
+  // 5
+  function quitarFoco() {
+    nuevaVentana.blur();
+  }
+
+  // 6
+  function ponerFoco() {
+    nuevaVentana.focus();
+  }
+
+  // 7
+  function mostrarURLNuevaVentana() {
+    alert(nuevaVentana.location.href)
+  }
+
+  // 8
+  function mostrarURL() {
+    alert(location.href)
+  }
+
+  // 9
+  function mensajeAsustar() {
+    respuesta = confirm("El usuario va a ser borrado: ¿Está de acuerdo?");
+
+    alert(respuesta);
+  }
+
+  // 10
+  function propiedadesLocation() {
+    let texto = "";
+    for (const property in location) {
+      //texto += `${property}: ${location[property]}<br>`;
+      texto += property + ": " + location.property + "<br>";
+    }
+
+    document.getElementById("demo10").innerHTML = texto;
+  }
+
+  // 11
+  function recargarWeb() {
+    location.reload();
+  }
+
+  // 12
+  function propiedadesNavigator() {
+    let texto = "";
+    for (const property in navigator) {
+      texto += `${property}: ${navigator[property]}<br>`;
+    }
+
+    document.getElementById("demo12").innerHTML = texto;
+  }
+
+  // 13
+  function propiedadesDocument() {
+    document.cookie = 'cookie1=test; expires=Sun, 1 Dec 2021 00:00:00 UTC; path=/';
+    console.log(document.cookie); // Requiere usar servidor
+
+    let texto = "";
+    for (const property in document) {
+      texto += `${property}: ${document[property]}<br>`;
+    }
+
+    document.getElementById("demo13").innerHTML = texto;
+  }
+
+  // 15
+  function permiteJava() {
+    let texto = navigator.javaEnabled() ? "El navegador permite la ejecución de Java" : "El navegador NO permite la ejecución de Java";
+    alert(texto);
+  }
+</script>
+</body>
+</html>

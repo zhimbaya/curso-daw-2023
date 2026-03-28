@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>localStorge</title>
+</head>
+<body>
+  <label for="login">Login: </label>
+  <input type="text" id="login"><br>
+  <label for="clave">Clave: </label>
+  <input type="text" id="clave"><br>
+  <label for="edad">Edad: </label>
+  <input type="text" id="edad"><br>
+  <input type="button" value="Guardar datos" id="bGuardar"><br>
+  <input type="button" value="Ver datos" id="bVer"><br>
+  <input type="button" value="Borrar datos" id="bBorrar"><br>
+  <div id="info"></div>
+  
+<script>
+
+  function iniciar(){
+    bGuardar.addEventListener("click",guardar)
+    bVer.addEventListener("click",ver)
+    bBorrar.addEventListener("click",borrar)
+  }
+
+  function guardar (){
+     var usuario={
+      "login": login.value,
+      "clave": clave.value
+     }  
+
+     localStorage.setItem("usuario",JSON.stringify(usuario))
+     localStorage.setItem("edad",edad.value)
+  }
+
+  function ver(){
+
+       var usuarioStr=localStorage.getItem("usuario")
+       
+       if (usuarioStr !=null){
+            let usuarioJSON=JSON.parse(usuarioStr)     
+            info.innerHTML="Login vale: "+usuarioJSON.login+"<br>"
+            info.innerHTML+="Clave vale: "+usuarioJSON.clave+"<br>"
+
+       } else {
+        info.innerHTML="No existe el dato usuario en localStorage<br>"
+       }
+  
+  }
+
+  function borrar (){
+       //localStorage.removeItem("usuario")
+       localStorage.clear()
+  }
+
+  if (typeof(Storage)!="undefined"){
+    window.addEventListener("load",iniciar)
+  } else{
+    info.innerHTML="Nuestro navegador no soporta localStorage<br>"
+  }
+ 
+</script>
+</body>
+</html>

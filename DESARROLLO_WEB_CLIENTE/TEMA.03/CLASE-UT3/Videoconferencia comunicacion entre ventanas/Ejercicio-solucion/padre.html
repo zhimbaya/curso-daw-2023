@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+    <meta charset="UTF-8">
+    <title>Padre</title>
+</head>
+<body>
+   <input type="texto" id="textopadre"  placeholder="Introduce aqui un texto"><br>
+   <input type="button" value="Crear hijo 1" onclick="crearHijo1()"><br>
+   <input type="button" value="Cerrar hijo 1" onclick="cerrarHijo1()"><br>
+   <input type="button" value="Crear hijo 2" onclick="crearHijo2()"><br>
+   <input type="button" value="Mandar hijo 1" onclick="mandarHijo1()"><br>
+   <input type="button" value="Mandar nieto 1" onclick="mandarNieto1()"><br>
+
+   <script>
+    
+    var h1=null;
+    var h2=null;
+
+    function crearHijo1(){
+        h1=window.open("hijo1.html","Hijo 1","width=400,height=400");
+    }
+    function cerrarHijo1(){
+        h1.close();
+    }
+    function crearHijo2(){
+        h2=window.open("hijo2.html","Hijo 2","width=400,height=400");
+    }
+    function mandarHijo1(){
+        h1.document.getElementById("textohijo1").value=document.getElementById("textopadre").value;
+    }
+    
+    function mandarNieto1(){
+        h1.h1.document.getElementById("textonieto1").value=document.getElementById("textopadre").value;
+    }
+    
+   </script>
+
+</body>
+</html>

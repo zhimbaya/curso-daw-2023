@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+
+<body>
+<form id="formulario" action="noexiste.php">
+<input type="radio" id="c_madrid" name="ciudad" value="Madrid">
+<label for="c_madrid">Madrid</label><br>
+<input type="radio" id="c_sevilla" name="ciudad" value="Sevilla" checked>
+<label for="c_sevilla">Sevilla</label><br>
+<input type="radio" id="c_cuenca" name="ciudad" value="Cuenca">
+<label for="c_cuenca">Cuenca</label><br>
+<input type="submit" value="Enviar datos">
+</form>
+
+<button onclick="datos()">Mostrar datos</button>
+<p id="info"></p>
+<script>
+    function datos (){
+       info.innerHTML="El numero de radio-button es: "+formulario.ciudad.length+"<br>"
+
+       formulario.ciudad.forEach(radio=>{
+        info.innerHTML+="El radio radio-button "+radio.value+" tiene checked "+radio.checked+" y defaultChecked "+radio.defaultChecked+"<br>"
+       })
+       info.innerHTML+="El radio-button seleccionado es: "+formulario.ciudad.value+"<br>"
+
+    }
+</script>
+
+</body> 
+</html>

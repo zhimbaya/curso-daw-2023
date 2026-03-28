@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es-ES">
+<head>
+<meta charset="UTF-8">
+<title>Ejemplo</title>
+</head>
+
+<body>
+<form id="formulario" action="noexiste.php">
+<label for="prov">Elige una provincia: </label>
+<select id="prov" name="prov" multiple>
+   <option value="CR">Ciudad Real</option>
+   <option value="T">Toledo</option>
+   <option value="G">Guadalajara</option>
+   <option value="A">Albacete</option>
+   <option value="C">Cuencia</option>
+<br><br>
+<input type="submit" value="Enviar datos">
+</form>
+
+<button onclick="datos()">Mostrar datos</button>
+<p id="info"></p>
+
+<script>
+
+function datos(){
+   Array.from(prov.selectedOptions).forEach(elem=>{
+         info.innerHTML+="La provincia "+elem.text+" esta seleccionada.<br>"
+   })
+   }
+</script>
+
+</body> 
+</html>

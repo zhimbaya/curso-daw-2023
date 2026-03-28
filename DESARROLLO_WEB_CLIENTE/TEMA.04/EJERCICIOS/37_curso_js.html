@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Curso JavaScript</title>
+    <h1>Curso de JavaScript Ada LoveCode</h1>
+  </head>
+  <body>
+    <script>
+      //OBJETOS
+      //1. String
+      var x1 = new String();
+      var y1 = "Ada love";
+      //2. Number
+      var x2 = new Number();
+      var y2 = 3.14;
+      //3. Boolean
+      var x3 = new Boolean();
+      var y3 = true;
+      //4. Array
+      var x4 = new Array();
+      var y4 = [];
+      //5. Regexp
+      var x5 = new RegExp();
+      var y5 = /{}/;
+      //6. function
+      var x6 = new Function();
+      var y6 = function(){};
+      //7. Date
+      var x7 = new Date();
+      //8. Math
+      //no se puede declarar con new porque es un objeto global
+      //9. Object
+      var x8 = {};
+
+      //MÉTODOS
+      //Sintaxis de creación de métodos de un objeto.
+      var persona = {
+        nombre: "ada",
+        apellido: "lovelace",
+        anio: 1821,
+        nombreCompleto: function(){
+          return this.nombre +" "+ this.apellido;
+        },
+      };
+      alert(persona.nombre);
+      alert(persona.apellido);
+      //Sintaxis de acceso a métodos de un objeto
+      alert("Nombre completo: "+persona.nombreCompleto());
+
+      //PROTOTIPOS
+      //Sintaxis de creación de un prototipo de un objeto usando la función constructor.
+      function Persona (nom, ape, an){
+        this.nombre = nom;
+        this.apellido = ape;
+        this.anio = an;
+        this.nombreCompleto = function(){
+          return this.nombre + " " + this.apellido;
+        }
+      }
+      var ada = new Persona("ada ","lovelac",1938);
+      var charles = new Persona("Charles ","babbde",1791);
+
+      //Añadir una propiedad a un objeto.
+      ada.nacionalidad = "Inglesa"; //solo a ada
+      alert(ada.nacionalidad);
+
+      //Añadir un método a un objeto.
+      ada.nacimiento = function(){
+        return "Nacimiento en el año: " + this.anio;
+      }
+      alert (ada.nacimiento()); //solo a ada
+
+      //Añadir una propiedad a un prototipo
+      //Añadiendo directamente sobre la definición del prototipo.
+      //Mediante la sintaxis
+      Persona.prototype.muerte = "3000";
+      document.write("<br>"+charles.muerte);
+
+      //Añadir un método a un prototipo
+      //Añadiendo directamente sobre la definición del prototipo.
+      //Mediante la sintazis:
+      Persona.prototype.defuncion = function(){
+        return "Defunción: " + this.muerte;
+      }
+
+      var alan = new Persona("Alan","Turing",1912);
+      document.write("<br>"+alan.nombre);
+      document.write("<br>"+alan.defuncion());
+    </script>
+  </body>
+</html>

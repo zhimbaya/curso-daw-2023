@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div>
+		<p>Primera línea</p>
+		<p>Segunda línea</p>
+		<p>Tercera línea</p>
+	</div>
+
+	<p id="info"></p>
+<script type="text/javascript">
+	let elemDiv=document.getElementsByTagName("div")[0]
+	info.innerHTML="El primer párrafo del div contiene: "+elemDiv.children[0].innerHTML+"<br>"
+	info.innerHTML+="El segundo párrafo del div contiene: "+elemDiv.children[1].innerHTML+"<br>"
+	info.innerHTML+="El últimopárrafo del div contiene: "+elemDiv.children[elemDiv.childElementCount-1].innerHTML+"<br>"
+    info.innerHTML+="AHORA hacemos lo mismo con forEach<br>"
+	
+	Array.from(elemDiv.children).forEach(par=>{
+		info.innerHTML+=par.innerHTML
+	})
+	
+</script>
+
+</body>
+</html>

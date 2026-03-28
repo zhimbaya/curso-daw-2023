@@ -1,0 +1,33 @@
+<html>
+	<head></head>
+	<body>
+		<p id="demo">Parrafo creado en HTML</p><br>
+		<button onclick="crear()">Crear parrarfo</button>
+		
+		<script>
+		function crear(){
+			var parrafo = document.createElement('p');
+			var negrita = document.createElement('b');
+			var salto = document.createElement('br');
+			
+			parrafo.setAttribute("title", "Parrafo creado desde Javascript");
+			
+			var p1 = document.createTextNode("Con Javascript se ");
+			var p2 = document.createTextNode("pueden realizar ");
+			var p3 = document.createTextNode("un monton ");
+			var p4 = document.createTextNode("de cosas sobre el documento");
+			
+			
+			negrita.appendChild(p2);
+			negrita.appendChild(salto);
+			negrita.appendChild(p3);
+			
+			parrafo.appendChild(p1);
+			parrafo.appendChild(negrita);
+			parrafo.appendChild(p4);
+			
+			document.getElementById("demo").appendChild(parrafo);
+			}
+		</script>
+	</body>
+</html>

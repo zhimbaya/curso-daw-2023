@@ -1,0 +1,71 @@
+<html>
+	<head></head>
+	<body>
+		<p id="demo">Parrafo creado en HTML</p><br>
+		<button onclick="crear()">Crear parrarfo</button>
+		<button onclick="reemplazar()">Reemplazar br por nuevo b</button>
+		<button onclick="eliminar()">Eliminar nuevo b</button>
+		<button onclick="recorrerParrafo()">Recorrer parrafo</button>
+
+		<p id="demo2"></p>
+		
+		<script>
+		function crear(){
+			var parrafo = document.createElement('p');
+			var negrita = document.createElement('b');
+			var salto = document.createElement('br');
+			
+			parrafo.setAttribute("title", "Parrafo creado desde Javascript");
+			
+			var p1 = document.createTextNode("Con Javascript se ");
+			var p2 = document.createTextNode("pueden realizar ");
+			var p3 = document.createTextNode("un monton ");
+			var p4 = document.createTextNode("de cosas sobre el documento");
+			
+			
+			negrita.appendChild(p2);
+			negrita.appendChild(salto);
+			negrita.appendChild(p3);
+			
+			parrafo.appendChild(p1);
+			parrafo.appendChild(negrita);
+			parrafo.appendChild(p4);
+			
+			document.getElementById("demo").appendChild(parrafo);
+			}
+		function reemplazar() {
+			var negrita = document.createElement('b');
+			var p1 = document.createTextNode("Retorno de carro");
+			var elementoBR=document.getElementById("demo").childNodes[1].childNodes[1].childNodes[1];
+			var elementoPadre=elementoBR.parentNode;
+						
+			negrita.appendChild(p1);
+			elementoPadre.replaceChild(negrita,elementoBR);
+		}
+		function eliminar() {
+			var negrita=document.getElementById("demo").childNodes[1].childNodes[1].childNodes[1];
+			var elementoPadre=negrita.parentNode;
+			elementoPadre.removeChild(negrita);
+		}
+		function recorrerParrafo(){
+			demo2.innerHTML="";
+			recorrerHijos(document.getElementById("demo"));
+		}
+
+		function recorrerHijos(elemento) {
+			var hijos=elemento.childNodes;
+			var i=0;
+			demo2.innerHTML+="<b>Recorriendo: "+elemento.toString()+"</b><br>";
+
+			while (hijos[i]){	
+				demo2.innerHTML+=hijos[i].toString();
+				if (hijos[i].nodeType==3) {demo2.innerHTML+=hijos[i].nodeValue+"<br>"};
+				if (hijos[i].nodeType==1){recorrerHijos(hijos[i]);}
+				i++;
+			}
+			demo2.innerHTML+="Fin de recorrido: "+elemento.toString()+"<br>";
+		}
+
+		</script>
+	</body>
+</html>
