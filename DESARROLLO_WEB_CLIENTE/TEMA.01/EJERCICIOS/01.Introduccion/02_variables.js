@@ -1,5 +1,5 @@
 /*
-Tipos de datos que podemos guardar en las varialbes:
+Tipos de datos que podemos guardar en las variables:
 - string
 - number
 - boolean

@@ -23,19 +23,19 @@ var_dump(CONTRASEÑA); // string(8) "PASSWORD"
 
 echo '<br>';
 $mi_variable = 7;
-var_dump($mi_variable);
+var_dump($mi_variable); //int(7)
 
 $mi_entero = 3;
 $mi_real = 2.3;
 $resultado = $mi_entero + $mi_real;
-var_dump($resultado); // float (5.3)
-// La variable $resultado es de tipo real
+var_dump($resultado); // float (5.3) La variable $resultado es de tipo real
 
-$mi_entero2 = 3;$mi_real2 = 2.3;
+$mi_entero2 = 3;
+$mi_real2 = 2.3;
 $resultado2 = $mi_entero2 + (int) $mi_real2;
-var_dump($resultado2); // int(5)
 // La variable $mi_real se convierte a entero (valor 2) antes de sumarse.
 // La variable $resultado es de tipo entero (valor 5)
+var_dump($resultado2); // int(5)
 
 echo '<br>';
 $var=23;
@@ -71,10 +71,13 @@ $y2 = 8;
 $resultado3 = ($x2 > $y2) ? "x mayor" : "y mayor o igual";
 var_dump($resultado3);
 
-$parametro = $valor ?? 6; // Si $valor no está establecido se usa el valor 6 ya que su 
+echo '<br>';
+$parametro = $valorx ?? 6; // Si $valor no está establecido se usa el valor 6 ya que su 
 var_dump($parametro);
 
+echo '<br>';
 $a3=8;
+
 $x3=10;
 $y3=8;
 $z3=5;
@@ -114,7 +117,7 @@ var_dump(ltrim(" HOLA ")); // string(7) "HOLA "
 var_dump(str_contains("HOLA amigo", "HOLA")); // bool(true)
 var_dump(str_repeat("HOLA", 3)); // string(12) "HOLAHOLAHOLA"
 var_dump(str_replace("HOLA", "ADIOS", "HOLA amigo")); // string(11) "ADIOS amigo"
-var_dump(strcmp("HOLA", "HOLA")); // int(0)
+var_dump(strcmp("HOLA", "HOLA")); // int(0) -> compara si son iguales, >0 primera cadena, <0 primera cadena ASCII
 var_dump(strpos("HOLA amigo", "ami")); // int(5)
 var_dump(strlen("HOLA amigo")); // int(10)
 var_dump(strtolower("HOLA")); // string(4) "hola"
@@ -130,9 +133,9 @@ var_dump($c); // int(10)
 
 echo '<br>';
 echo '<br>';
-var_dump(false and 1/0); // bool(false)
-var_dump(true || 1/0); // bool(true)
-//var_dump(1/0 || true); // error division por cero
+var_dump(false and 1/0); // bool(false) -> solo evalua la primera expresión
+var_dump(true || 1/0); // bool(true) -> solo evalua la primera expresión
+//var_dump(1/0 || true); // error division por cero, tiene que evaluar las dos expresiones
 
 echo '<br>';
 echo '<br>';
@@ -152,12 +155,12 @@ echo '<br>';
 echo '<br>';
 $nota = 15;
 var_dump(match ($nota) {
-1, 2 => "Muy deficiente",
-3, 4 => "Insuficiente",
-5 => "Suficiente",
-6 => "Bien",
-7, 8 => "Notable",
-9, 10 => "Sobresaliente",
-default => "Nota incorrecta",
+    1, 2 => "Muy deficiente",
+    3, 4 => "Insuficiente",
+    5 => "Suficiente",
+    6 => "Bien",
+    7, 8 => "Notable",
+    9, 10 => "Sobresaliente",
+    default => "Nota incorrecta",
 }); // string(10) "Suficiente". Se puede añadir una clausula default por si el valor 
 

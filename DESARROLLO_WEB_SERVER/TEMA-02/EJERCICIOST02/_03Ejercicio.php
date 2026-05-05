@@ -11,7 +11,7 @@ var_dump(is_null($var));
 //Se declara la variable pero no se le asigna ningún valor
 $var;
 var_dump(is_null($var));
-
+/*
 echo '-----';
 $var1 = 'valor';
 $var2 = NULL;
@@ -30,3 +30,4 @@ var_dump(empty($var10));
 var_dump(empty($var20));
 var_dump(empty($var30));
 var_dump(empty($var3)); // no existe
+*/

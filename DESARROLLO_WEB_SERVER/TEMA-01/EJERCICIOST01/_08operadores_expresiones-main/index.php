@@ -38,125 +38,169 @@
                 <tr>
                     <td>$count2 = 5</td>
                     <td>++$count2 * 2 + --$count2 * 3</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $count2 = 5;
                         var_dump(++$count2 * 2 + --$count2 * 3);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td><pre>$base = 64;
-$exponente = 6</pre></td>
+                    <td>
+                        <pre>
+$base = 64;
+$exponente = 6
+                        </pre>
+                    </td>
                     <td>$base / 2 ** $exponent</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $base = 64;
                         $exponent = 6;
                         var_dump($base / 2 ** $exponent);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td><pre>$nombre = 'Juan';
-$apellido = 'Pérez'</pre></td>
+                    <td>
+                        <pre>
+$nombre = 'Juan';
+$apellido = 'Pérez'     
+                        </pre>
+                    </td>
                     <td>$nombre . ' ' . $apellido</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $nombre = 'Juan';
                         $apellido = 'Pérez';
                         var_dump($nombre . ' ' . $apellido);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td><pre>$valor = 13; // Binario 1101 
-$mascara = 3; // Binario 0011</pre></td>
+                    <td>
+                        <pre>
+$valor = 13; // Binario 1101 
+$mascara = 3; // Binario 0011
+                        </pre>
+                    </td>
                     <td>$valor & $mascara</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $valor = 13;
                         $mascara = 3;
                         var_dump($valor & $mascara);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>$num1 = 0b00010000; // Binario 00010000</td>
                     <td>$num1 >> 3</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $num1 = 0b00010000;
                         var_dump($num1 >> 3);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>$a = ($b = 4) + 5</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump($a = ($b = 4) + 5);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>!!!true</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump(!!!true);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>!(null ?? false || 5 < 10)</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump(!(null ?? false || 5 < 10));
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>$value = 3 > 2 && 5 == 4 || !true || !false</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump($value = 3 > 2 && 5 == 4 || !true || !false);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>$e = true || $x = 'foo'</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump($e = true || $x = 'foo');
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>"es " . (5 > 10 ? "verdad" : "mentira")</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump("es " . (5 > 10 ? "verdad" : "mentira"));
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td><pre>$car1 = 'supercali';
 $car2 = 'fragilistico';</pre></td>
                     <td>$car1 .= $car2 .= 'espialidoso'</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $car1 = 'supercali';
                         $car2 = 'fragilistico';
                         var_dump($car1 .= $car2 .= 'espialidoso');
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>$nota = 95;</td>
                     <td>$nota >= 90 && $nota <= 100</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $nota = 95;
                         var_dump($nota >= 90 && $nota <= 100);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
                     <td>!(5 - 3 * 2 / 2 > 7 % 3)</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump(!(5 - 3 * 2 / 2 > 7 % 3));
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td><pre>$tiene_tarjeta = true; 
-$tiene_efectivo = false</pre></td>
+                    <td><pre>
+$tiene_tarjeta = true; 
+$tiene_efectivo = false
+                        </pre></td>
                     <td>$tiene_tarjeta && !$tiene_efectivo</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $tiene_tarjeta = true;
                         $tiene_efectivo = false;
                         var_dump($tiene_tarjeta && !$tiene_efectivo);
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td></td>
@@ -196,50 +240,63 @@ $tiene_efectivo = false</pre></td>
                 <tr>
                     <td>$edad = 17;</td>
                     <td>($edad >= 18) ? "Si" : "No"</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $edad = 17;
                         var_dump(($edad >= 18) ? "Si" : "No");
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>$ruta1 = '';</td>
                     <td>$ruta1 ?: 'C:/'</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $ruta1 = '';
                         var_dump($ruta1 ?: 'C:/');
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>$ruta2 no definida</td>
                     <td>$ruta2 ?: 'C:/'</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump($ruta2 ?: 'C:/');
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>$ruta3 = null;</td>
                     <td>$ruta3 ?? '/'</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         $ruta3 = null;
                         var_dump($ruta3 ?? '/');
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>$ruta4 no definida</td>
                     <td>$ruta4 ?? '/'</td>
-                    <td class="respuesta"><?php
+                    <td class="respuesta">
+                        <?php
                         var_dump($ruta4 ?? '/');
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>$dia = 'Lunes';</td>
-                    <td><pre>match ($dia) {
+                    <td><pre>
+match ($dia) {
     'Lunes' => 'Es el comienzo de la semana',
     'Martes', 'Miercoles', 'Jueves', 'Viernes' => 'Es un día entre semana',
     'Saturday', 'Sunday' => 'Es el fin de semana',
     default => 'No es un día de la semana'
-};</pre></td>
-                    <td class="respuesta"><?php
+};
+                        </pre></td>
+                    <td class="respuesta">
+                        <?php
                         $dia = 'lunes';
                         var_dump(match ($dia) {
                             'Lunes' => 'Es el comienzo de la semana',
@@ -247,21 +304,26 @@ $tiene_efectivo = false</pre></td>
                             'Saturday', 'Sunday' => 'Es el fin de semana',
                             default => 'No es un día de la semana'
                         });
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>$numero = 15;</td>
-                    <td><pre>match (true) {
+                    <td><pre>
+match (true) {
     $numero % 2 == 0 => 'Número par',
     $numero % 2 != 0 => 'Número impar',
-};</pre></td>
-                    <td class="respuesta"><?php
+};
+                        </pre></td>
+                    <td class="respuesta">
+                        <?php
                         $numero = 15;
                         var_dump(match (true) {
                             $numero % 2 == 0 => 'Número par',
                             $numero % 2 != 0 => 'Número impar',
                         });
-                        ?></td>
+                        ?>
+                    </td>
                 </tr>
             </tbody>
         </table>

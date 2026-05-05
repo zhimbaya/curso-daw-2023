@@ -103,7 +103,11 @@
                     <td>"Esto es una cadena entre comillas dobles con secuencias de escape: \n\t- Salto de línea \n\t- Tabulación \n\t- Barra invertida (\\)"</td>
                 </tr>
                 <tr>
-                    <td><pre><?php var_dump("Esto es una cadena entre comillas dobles con secuencias de escape: \n\t- Salto de línea \n\t- Tabulación \n\t- Barra invertida (\\)"); ?></pre></td>
+                    <td>
+                        <pre>
+                            <?php var_dump("Esto es una cadena entre comillas dobles con secuencias de escape: \n\t- Salto de línea \n\t- Tabulación \n\t- Barra invertida (\\)"); ?>
+                        </pre>
+                    </td>
                 </tr>
             </tbody>
             <tbody class="row-pair">

@@ -14,7 +14,11 @@
                 <td>$radio = 563;</td>
                 <td><!-- Escribe tu código aquí --></td>
             </tr>
-            <tr><td colspan="2"><p>Obtención de una nota simbólica a partir de una nota numérica según los rangos: >=90 A, >=80 B, >=70 C, >=60 D, <60 F</p></td></tr>
+            <tr>
+                <td colspan="2">
+                    <p>Obtención de una nota simbólica a partir de una nota numérica según los rangos: >=90 A, >=80 B, >=70 C, >=60 D, <60 F</p>
+                </td>
+            </tr>
             <tr>
                 <td>$notaNumerica = 85;</td>
                 <td><!-- Escribe tu código aquí --></td>
